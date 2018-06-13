@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Meus Pedidos
+   ========================================================================== */
+
+body.orders{
+    .myorders{
+        .page-header{
+            h1{
+                @include font-size(2.5);
+                color: #000;
+                font-weight: 900;
+                margin: 40px 0 20px;
+            }
+
+            .nav-pills{
+                display: none;
+            }
+        }
+
+        .containerPage{
+            .form-search{
+                input{
+                    border: 1px solid #443322;
+                    padding: 5px 15px;
+                    width: 100%;
+                    border-radius: 0;
+                }
+            }
+
+            .myorders-list{
+                .ordergroup{
+                    padding: 20px 10px;
+                    border: 1px solid #000;
+                    border-radius: 0;
+
+                    .order-header{
+                        span{
+                            font-size: 20px;
+                        }
+
+                        .repeat-order{
+                            a{
+
+                                color: #000;
+                                border: 1px solid #000;
+                                text-decoration: none;
+                                padding: 10px;
+                                text-transform: lowercase;
+                            }
+                        }
+                    }
+
+                    .order-info{
+                        h3.section-info-title{
+                            font-size: 16px;
+                            font-weight: 400;
+                            margin-bottom: 8px;
+                            text-align: left;
+                        }
+
+                        .payment-info{
+                            .payments-list{
+                                span{
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+
+                        .total-info{
+                            table{
+                                tr{
+                                    th, td{
+                                        font-size: 14px;
+                                        padding: 10px 30px 10px 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .order-details{
+                        .showTrackingInfo {
+                            display: block;
+                            margin: 10px 0;
+                            overflow: hidden;
+                            padding: 10px 0;
+                        }
+
+                        .order-status-wrapper {
+                            background-color: #000;
+                            color: #fff;
+                            float: none;
+                            margin-bottom: 30px; 
+                            padding: 8px 20px 7px;
+                            width: 110px;
+
+                            span{
+                                font-size: 12px;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .items{
+                            table{
+                                width: 100%;
+
+                                thead{
+                                    border-bottom: 1px solid;
+                                    text-align: center;
+
+                                    td{
+                                        text-align: center;
+
+                                        &.align-right{
+                                            text-align: center;
+                                        }
+                                    }
+                                }
+
+                                tbody{
+                                    td{
+                                        padding: 15px 0 5px;
+                                        vertical-align: top;
+
+                                        a{
+                                            color: #000;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

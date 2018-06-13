@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Breadcrumb
+   ========================================================================== */
+
+.bread-crumb {
+	padding-left: 10px;
+	margin: 3% 0;
+
+	@include mq($screen-md) {
+		padding-left: 0;
+	}
+
+	ul {
+		li {
+			position: relative;
+			margin-right: 10px;
+			padding-right: 10px;
+			list-style-type: none;
+			display: inline-block;
+			text-transform: lowercase;
+
+			&:after {
+				top: 0;
+				right: -4px;
+				content: '>';
+				display: block;
+				color: #000;
+				position: absolute;
+			}
+			
+			a {
+				@include font-size(1.4);
+				color: #000;
+				text-decoration: none;
+				text-transform: lowercase;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			&:last-child {
+				&:after {
+					content: '';
+				}
+
+				a {
+					font-weight: bolder;
+				}
+			}
+		}
+	}
+}

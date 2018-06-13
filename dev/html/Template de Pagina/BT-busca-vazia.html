@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+    <head>
+        <title>Bruna Tessaro</title>
+        <vtex:metaTags/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <vtex:template id="BT-commonStyles" />
+    </head>
+    <body>
+
+        <vtex:template id="BT-header" />
+
+        <main>
+        
+            <div class="container custum-buscavazia">
+                <p>Desculpe,</p>
+                <p>Sua busca não encontrou nenhum resultado.</p>
+                <p>Por favor, faça uma nova busca. Ou se preferir, navegue em nosso menu.</p>
+                <p>A loja Bruna Tessaro agradece!</p>
+            </div>
+            
+            
+            <section class="destaque-shelf desk">
+                <div class="container">
+                    <div class="shelf shelf-destaque-one">
+                        <h2 title="Coleção Destaques da loja Bruna Tessaro" class="tlt-padrao">produtos em <strong>destaque</strong></h2>
+                        <div class="slider slide-wrap">
+                            <div class="slideShelf">
+                                <vtex:contentPlaceHolder id="colecao-destaques-one" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         </section>
+        </main>
+
+        <vtex:template id="BT-footer" />
+
+        <vtex:template id="BT-commonScripts" />
+
+        <script type="text/javascript" src="/arquivos/slick.js"></script>
+        <script type="text/javascript" src="/arquivos/percent-price-shelf-v14.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.orderBy').first().appendTo('.order');
+            });
+        </script>
+    </body>
+</html>

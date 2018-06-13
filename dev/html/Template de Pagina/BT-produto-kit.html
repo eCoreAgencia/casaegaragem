@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+    <head>
+        <title><vtex.cmc:productPageTitle /></title>
+        <vtex:metaTags/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <vtex:template id="BT-commonStyles" />
+
+    </head>
+    <body>
+            
+        <vtex:template id="BT-header" />
+
+        <main>
+            <div class="container">
+
+                <section class="breadcrumb">
+                    <vtex.cmc:breadCrumb />
+                </section>
+
+                <section class="product-view row">
+                    <section class="product-box col-xs-12 col-md-7">
+                        <vtex.cmc:ProductImage zoom="on" />
+                    </section><!-- product-box END -->
+
+                    <section class="buy-box col-xs-12 col-md-5">
+                        <vtex.cmc:productName />
+                        <div class="choose-skus">
+                            <vtex.cmc:skuRichSelection changeImage="1" />
+                        </div>
+                        <span class="bt-modal-aro">Não sabe o tamanho? Descubra o seu aro aqui</span>
+                        <div class="price-info">
+                            <div class="area_compra" >
+                                <div id="selecao_sku_kit">
+                                    <div class="opcao-kit one">
+                                        <vtex.cmc:skuPrice productIndex = "1"/>
+                                        <vtex.cmc:skuRichSelection jumpToCart="false" changeImage="1"  productIndex = "1" />
+                                        <vtex.cmc:BuyInPage productIndex = "1"/>
+                                        <div class="hide gender" style="display: none">
+                                            <vtex.cmc:productName productIndex = "1"/>
+                                        </div>
+                                    </div>
+                                    <div class="opcao-kit two">
+                                        <vtex.cmc:skuPrice productIndex = "2"/>
+                                        <vtex.cmc:skuRichSelection jumpToCart="false" changeImage="1"  productIndex = "2" />
+                                        <vtex.cmc:BuyInPage productIndex = "2"/>
+                                        <div class="gender" style="display: none">
+                                            <vtex.cmc:productName productIndex = "2"/>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        // Monta url do produto (da pra pegar essa url de alguma forma melhor) e coloca
+                                        // o lid de um template leve que contem somente informacoes necessarias.
+                                        // Apos isso da um load no genero da alianca, que é uma especificacao do produto.
+                                        $('.gender').each(function() {
+                                            var _this = $(this);
+                                            urlProduto = 'http://'+ document.domain + '/' + $(this).find('.productName').attr('class').split(' ')[3] + '/p' + '?lid=15be9849-7591-48f9-97c2-06f0975e239d';
+                                            urlProduto = urlProduto.replace("---", "-");
+                                        
+                                            $.ajax({
+                                                url: urlProduto,
+                                                type: 'GET',
+                                                success: function(data) {
+                                                    _this.parent().find('.specification').html($(data).find('.value-field.Genero').html())
+                                                    if($(data).find('.value-field.Genero').html() == "Aro Masculino"){
+                                                        _this.parent().removeClass('flt_left');
+                                                        _this.parent().removeClass('flt_right');
+                                                        _this.parent().addClass('flt_left');
+                                                    } else {
+                                                        _this.parent().removeClass('flt_left');
+                                                        _this.parent().removeClass('flt_right');
+                                                        _this.parent().addClass('flt_right');
+                                                    }
+                                        
+                                                },
+                                                error: function() {
+                                                }
+                                            });
+                                            $(document).ajaxStop(function() {
+                                              $('#selecao_sku_kit').fadeIn();
+                                            });
+                                        });
+                                    </script>
+                                </div><!-- selecao_sku_kit END -->
+                            </div><!--  area_compra END -->
+                            <div class="unidade">
+                                <vtex.cmc:skuPrice/>
+                            </div>
+                            <div class="desconto-box" style="display: none;">
+                                <vtex.cmc:desconto />
+                                <span id="percent"><vtex.cmc:discountHightLight/></span>
+                                <div class="desconto-info"></div>
+                                <div class="percent-info"></div>
+                            </div>
+                        </div>
+                        
+                        <vtex:contentPlaceHolder id="mini-tipbar" />
+                        
+                        <a href="/checkout/*/cart" class="buy-button">comprar</a>
+                        <vtex.cmc:shippingValue/>
+                    </section><!-- buy-box END -->
+                </section><!-- product-view END -->
+
+                <div class="row product-descriptions">
+                    <div class="col-xs-12 col-md-6 descricao">
+                        <vtex.cmc:ProductDescription/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 especificacao">
+                        <vtex.cmc:productSpecification/>
+                    </div>
+                </div>
+
+                <section class="hidden-xs hidden-sm compre-junto">
+                    <vtex.cmc:BuyTogether/>
+                </section><!-- compre-junto END -->
+
+            </div>
+        </main>
+
+        <vtex:template id="BT-footer" />
+
+        <!-- PopUp Newsletter -->
+        <div class="modal">
+            <div class="opacity"></div>
+            <span class="close-modal">fechar</span>
+            <div class="modal-container">
+                <article class="medidor-aro">
+                    <h2>Descubra o tamanho do seu aro</h2>
+                    <h3>Escolha o método para saber a medida do seu aro.</h3>
+                    <h4>Método 01:</h4>
+                    <p>Método recomendado. Mais preciso.</p>
+                    <p>Você vai precisar de um anel e de impressora.</p>
+                    <p>Passo a passo:</p>
+                    <div class="metodo_1">
+                        <p>1. Imprima o modelo abaixo com os tamanhos dos aros, para isso clique no botão imprimir;</p>
+                        <p>2. Pegue um anel que lhe sirva e que seja referente ao dedo que desejará usar;</p>
+                        <p>3. Coloque o anel sobre os aros impressos anteriormente;</p>
+                        <p>4. A parte de dentro do círculo do seu anel deverá ficar exatamente em cima do círculo interno do anel impresso, onde as setas serão o limite.</p>
+                        <p>5. Feito esse processo, é só ver o aro que está abaixo do círculo.</p>
+                        <img class="modelo-1" src="/arquivos/modelo.gif" />
+                        <span>Tamanho dos Aros:</span>
+                        <img class="tam_aros" src="/arquivos/aros.gif" />
+                    </div>
+                    <h4>Método 02:</h4>
+                    <p>Se você não tiver um anel ou impressora pode usar o método 2.</p>
+                    <p>Medir o tamanho do aro através de fita, barbante ou linha.</p>
+                    <p>Passo a passo:</p>
+                    <div class="metodo_2">
+                        <p>1. Dê uma volta no seu dedo com um barbante, fita ou linha;</p>
+                        <p>2. Marque no fio a medida exata da circunferência de seu dedo, sem deixar nenhuma folga, bem como não podendo deixar apertado demais;</p>
+                        <p>3. Estenda o fio sobre uma régua ou fita métrica e leia o comprimento marcado no fio;</p>
+                        <p>4. Veja na tabela abaixo o número equivalente ao seu aro.</p>
+                        <span>Exemplo:</span>
+                        <p>Você mediu 5,70cm então o número do aro é 17.</p>
+                        <img class="tabela-aros" src="/arquivos/tabela.jpg" />
+                    </div>
+                    <h5>Em caso de necessidade de acerto de aro, o procedimento da empresa é o que se segue:</h5>
+                    <p>- O cliente envia a peça por Sedex com Seguro, assumindo os custos deste envio;</p>
+                    <p>- Será feito o acerto e retornaremos a peça por Sedex com Seguro em um prazo de 10 dias, assumindo os custos do reparo e reenvio (para todo o território nacional);</p>
+                    <p>- Caso haja a necessidade de um segundo acerto de aro, o sedex de envio e reenvio, bem como o acerto do aro é por conta do cliente, com os valores variando de acordo com a peça e a região de envio.</p>
+                    <span>IMPORTANTE: O procedimento acima descrito vale para os casos que não seja necessário uma nova confecção da peça. Caso uma nova peça tenha que ser feita será cobrada uma taxa de mão de obra, que irá variar de acordo com a peça, para que seja feito o acerto de aro.</span>
+                </article>
+            </div>
+        </div><!-- modal END -->
+
+        <vtex:template id="BT-commonScripts" />
+        <script type="text/javascript" src="/arquivos/product-v15.js"></script>
+        <script type="text/javascript" src="/arquivos/product-price-kit.js"></script>
+        <script type="text/javascript" src="/arquivos/VideoApi.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+            // Scripts Modal //
+                // Open Modal //
+                    $('.bt-modal-aro').click(function() {
+                        $('.modal').fadeIn(600);
+                        $('body').addClass('modal_active');
+                    });
+                // Open Modal //
+
+                // Close Modal //
+                    $('.close-modal, .opacity').click(function() {
+                        $('.modal').fadeOut(600);
+                        $('body').removeClass('modal_active');
+                    });
+                    
+                    $(document).keyup(function(ev) {
+                        if (ev.keyCode == 27)
+                            $('.modal').fadeOut(600);
+                        $('body').removeClass('modal_active');
+                    });
+                // Close Modal //
+            // Scripts Modal //
+            });
+        </script>
+
+    </body>
+</html>

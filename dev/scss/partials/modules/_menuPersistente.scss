@@ -1,0 +1,22 @@
+/* ========================================================================
+	Menu Persistente
+	======================================================================= */
+	
+header {
+	position: relative;
+
+	&.menu-persistente {
+		display: none;
+
+		@include mq($screen-md) {
+			display: block;
+		}
+
+		@extend .transition;
+		top: 0;
+		width: 100%;
+		position: fixed;
+		z-index: 9999999999999;
+		background-color: #fff;
+	}
+}

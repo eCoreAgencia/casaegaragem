@@ -1,0 +1,41 @@
+#set($id = $product.Id)
+#set($idSku = $product.productVariantId)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<a title="$escapedName" href="$uri" class="productShelf $product.DepartmentName" data="$product.Id" categorydata="$product.CategoryName" departamentdata="$product.DepartmentName">
+    <span class="principal">$product.GetImageTag(30)</span>
+    <span class="secundario">$product.GetImageTag(30,"verso")</span>
+
+    <article>
+        <h3>$product.Name</h3>
+        #if ($product.IsInStock)
+            #if ($product.HasBestPrice)
+                <!--<span class="oldPrice"><strong>De:</strong> $product.ListPrice  Por</span>-->
+                <span class="bestPrice"><strong>Por:</strong> $product.BestPrice</span>
+            #else
+                <!--<span class="oldPrice"><strong>De:</strong> $product.ListPrice <strong>Por</strong></span>-->
+                <span class="bestPrice"><!--<strong>De:</strong>-->  $product.BestPrice <!--<strong>Por</strong>--></span>
+            #end
+            <em class="installment">
+                #if ($product.NumbersOfInstallment > 1)
+                    ${product.NumbersOfInstallment}X de $product.InstallmentValue <strong> ou </strong>
+                #else
+                    <span>à vista</span>
+                #end
+            </em>
+        #else
+            <span class="outOfStock">Produto Esgotado</span>
+        #end
+    </article>
+
+    <article class="action-button">
+        <a href="$product.Uri" class="btn look-product">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path d="M397.686 147.581H114.314l-84.3 119.224L256 512l225.986-245.196-84.3-119.223zm-17.02 32.881l48.461 68.537h-69.988l-23.857-68.537h45.384zm-169.132 0h88.93l23.857 68.537H187.678l23.856-68.537zm-80.2 0h45.383l-23.857 68.537H82.874l48.46-68.537zM88.625 281.88h64.908l52.331 127.203L88.625 281.88zm100.464 0h133.823L256 444.527 189.089 281.88zm117.048 127.204l52.33-127.204h64.909L306.137 409.084zM239.563 0h32.881v94.589h-32.881zM112.119 16.077l66.883 66.883-23.25 23.25-66.883-66.883zM399.876 16.076l23.25 23.25-66.883 66.883-23.25-23.25z" fill="#fff" /></svg>
+            <span>comprar</span>
+        </a>
+    </article>
+
+    <span class="flag-discount">$product.DiscountHightLight</span>
+    <span class="flag-discount-2">$product.HightLight</span>
+</a>

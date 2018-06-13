@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+    <head>
+        <title>Bruna Tessaro</title>
+        <vtex:metaTags/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <vtex:template id="BT-commonStyles" />
+    </head>
+    <body>
+
+        <vtex:template id="BT-header" />
+
+        <main>
+
+            <!-- slider -->
+            <section class="slider-main container">
+                <div class="slider slide-wrap">
+                    <div class="slide">
+                        <vtex:contentPlaceHolder id="banners-slide" />
+                    </div>
+                </div>
+            </section>
+            <!-- /slider -->
+            <section class="tipbar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 visible-md visible-lg">
+                            <vtex:contentPlaceHolder id="tipbar" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="banners-terciarios">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-3 banner-sec">
+                            <vtex:contentPlaceHolder id="banner-sec-one" />
+                        </div>
+                        <div class="col-xs-3 banner-sec">
+                            <vtex:contentPlaceHolder id="banner-sec-two" />
+                        </div>
+                        <div class="col-xs-3 banner-sec">
+                            <vtex:contentPlaceHolder id="banner-sec-tr" />
+                        </div>
+                        <div class="col-xs-3 banner-sec">
+                            <vtex:contentPlaceHolder id="banner-sec-four" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Banners secundarios -->
+            <!-- /Banners secundarios -->
+
+            <vtex:template id="tipbar" />
+
+            <!-- Banners secundarios -->
+            <section class="banners-secundarios">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4 banner-ter">
+                            <vtex:contentPlaceHolder id="banner-ter-one" />
+                        </div>
+                        <div class="col-xs-6 col-md-4 banner-ter">
+                            <vtex:contentPlaceHolder id="banner-ter-two" />
+                        </div>
+                            <div class="col-xs-12 col-md-4 banner-ter">
+                            <vtex:contentPlaceHolder id="banner-ter-tree" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Banners secundarios -->
+
+            <!-- Banners terciarios -->
+
+            <!-- /Banners terciarios -->
+
+            <!-- destaque-shelf -->
+            <section class="destaque-shelf desk">
+                <div class="container">
+                    <div class="shelf shelf-destaque-one">
+                        <h2 title="Coleção Destaques da loja Bruna Tessaro" class="tlt-padrao">produtos em <strong>destaque</strong></h2>
+                        <div class="slider slide-wrap">
+                            <div class="slideShelf">
+                                <vtex:contentPlaceHolder id="colecao-destaque" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="hidden-xs container banner-ult-one">
+                <div class="banner-one">
+                    <vtex:contentPlaceHolder id="banner-ult-one" />
+                </div>
+            </section>
+            <section class="hidden-xs destaque-shelf desk">
+                <div class="container">
+                    <div class="shelf shelf-destaque-one">
+                        <h2 title="Coleção Destaques da loja Bruna Tessaro" class="tlt-padrao">produtos em <strong>destaque</strong></h2>
+                        <div class="slider slide-wrap">
+                            <div class="slideShelf">
+                                <vtex:contentPlaceHolder id="colecao-destaques-one" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </section>
+             <section class="hidden-xs container banner-ult-two">
+                <div class="banner-two">
+                    <vtex:contentPlaceHolder id="banner-ult-Two" />
+                </div>
+            </section>
+            <section class="hidden-xs destaque-shelf desk">
+                <div class="container">
+                    <div class="shelf shelf-destaque-two">
+                        <h2 title="Coleção Destaques da loja Bruna Tessaro" class="tlt-padrao">produtos em <strong>destaque</strong></h2>
+                        <div class="slider slide-wrap">
+                            <div class="slideShelf">
+                                <vtex:contentPlaceHolder id="colecao-destaques-two" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </section>
+           
+
+        </main>
+
+        <vtex:template id="BT-footer" />
+
+        <vtex:template id="BT-commonScripts" />
+        <script type="text/javascript" src="/arquivos/slick.js"></script>
+        <script src="/arquivos/percent-price-shelf-v17.js"></script>
+    </body>
+</html>

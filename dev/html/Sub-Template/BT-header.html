@@ -1,0 +1,655 @@
+<header>
+
+    <!-- top-box -->
+    <section class="hidden-xs top-box">
+        <div class="container">
+            <div class="row">
+                <div class="hidden-xs col-sm-6 welcome-msg">
+                    <vtex.cmc:welcomeMessage/>
+                </div>
+                <nav class="hidden-xs col-sm-6 info-loja">
+                    <ul>
+                        <li><a href="/institucional/nossaslojas">nossas lojas</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=5548991294865">Whatsapp: (48) 99129-4865</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- /top-box -->
+
+    <!-- header-mob -->
+    <section class="hidden-md hidden-lg header-mob">
+        <div class="container">
+            <div class="row">
+                <!-- Menu SidePanel -->
+                <i class="col-xs-2 open-menu js-open-mobile-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 459 459"><path d="M0 382.5h459v-51H0v51zM0 255h459v-51H0v51zM0 76.5v51h459v-51H0z" fill="#6d6b6a"/></svg>
+                </i>
+                <i class="close-menu js-close-mobile-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 357 357"><path fill="#6d6b6a" d="M357 35.7L321.3 0 178.5 142.8 35.7 0 0 35.7l142.8 142.8L0 321.3 35.7 357l142.8-142.8L321.3 357l35.7-35.7-142.8-142.8z"/></svg>
+                </i>
+                <!-- Menu SidePanel -->
+                <div class="col-xs-6 logo">
+                    <h1>
+                        <a href="/" title="Loja On-Line Bruna Tessaro">
+                            <img alt="Loja On-Line Bruna Tessaro" src="/arquivos/logo-menor.png" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-xs-2 search-mob">
+                    <i class="ico-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.627 53.627" width="25" height="25"><path d="M53.627 49.385L37.795 33.553C40.423 30.046 42 25.709 42 21 42 9.42 32.58 0 21 0S0 9.42 0 21s9.42 21 21 21c4.709 0 9.046-1.577 12.553-4.205l15.832 15.832 4.242-4.242zM2 21C2 10.523 10.523 2 21 2s19 8.523 19 19-8.523 19-19 19S2 31.477 2 21z" fill="#828282"/></svg>
+                    </i>
+                </div>
+                <div class="col-xs-2 bag-mob">
+                    <a href="/checkout#/cart" title="Minha sacola">
+                        <i class="ico-bag-mob">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="33" height="33"><path d="M459.077 486.155l-30.008-330.121c-1.057-11.634-10.814-20.543-22.496-20.543h-67.765V82.824C338.808 37.155 301.654 0 255.985 0s-82.824 37.155-82.824 82.824v52.668h-67.765c-11.683 0-21.438 8.909-22.495 20.543L52.784 487.367A22.586 22.586 0 0 0 75.279 512H436.721c12.476 0 22.588-10.114 22.588-22.588 0-1.106-.08-2.194-.232-3.257zM211.722 249.339c-4.203 4.216-10.029 6.626-15.977 6.626s-11.761-2.409-15.964-6.626c-4.215-4.201-6.624-10.014-6.624-15.962s2.411-11.776 6.624-15.977a22.726 22.726 0 0 1 15.964-6.611c5.95 0 11.775 2.409 15.977 6.611 4.201 4.201 6.611 10.029 6.611 15.977s-2.411 11.761-6.611 15.962zm6.616-166.515c0-20.759 16.888-37.647 37.647-37.647 20.759 0 37.647 16.888 37.647 37.647v52.668h-75.294V82.824zm113.855 166.515c-4.203 4.216-10.029 6.626-15.977 6.626a22.676 22.676 0 0 1-15.964-6.626c-4.215-4.201-6.624-10.014-6.624-15.962s2.411-11.776 6.624-15.977c4.204-4.201 10.016-6.611 15.964-6.611s11.775 2.409 15.977 6.611c4.2 4.201 6.611 10.029 6.611 15.977s-2.411 11.761-6.611 15.962z" fill="#4a4949"/></svg>
+                        </i>
+                        <vtex.cmc:AmountItemsInCart />
+                    </a>
+                </div>
+                <div class="searchform-mob">
+                    <vtex.cmc:fullTextSearchBox/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /header-mob -->
+
+    <!-- menu-mob -->
+    <section id="menu-mob" class="hidden-md hidden-lg side-panel js-menu-mobile">
+        <div class="container">
+            <div class="row">
+                <nav class="col-xs-12 sidepanel-content">
+                    <ul class="menu-list-sidepanel">
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Alianças" href="/aliancas/par-de-aliancas" class="menu-anchor-sidepanel">Alianças</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/aliancas/aliancas-tradicionais" title="Alianças Tradicionais">Alianças Tradicionais</a></li>
+                                        <li><a href="/aliancas/aliancas-especiais" title="Alianças Especiais">Alianças Especiais</a></li>
+                                        <li><a href="/aliancas/aliancas-de-bodas" title="Alianças de Bodas">Alianças de Bodas</a></li>
+                                        <li><a href="/aliancas/aliancas-com-diamante" title="Alianças com Diamante">Alianças com Diamante</a></li>
+                                        <li><a href="/aliancas/Alianças-de-Compromisso" title="Alianças de Compromisso">Alianças de Compromisso</a></li>
+                                        <li><a href="/aliancas" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Anéis" href="/anéis" class="menu-anchor-sidepanel">Anéis</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/aneis/anel-chuveiro" title="Anel Chuveiro">Anel Chuveiro</a></li>
+                                        <li><a href="/aneis/anel-solitario" title="Anel Solitário">Anel Solitáro</a></li>
+                                        <li><a href="/aneis/aparador-de-aliancas" title="Aparador de Alianças">Aparador de Alianças</a></li>
+                                        <li><a href="/aneis/meia-alianca" title="Meia Aliança">Meia Aliança</a></li>
+                                        <li><a href="/aneis/Ouro%20Branco?PS=12&amp;map=c,specificationFilter_15" title="Anel Ouro Branco">Anel Ouro Branco</a></li>
+                                        <li><a href="/aneis/Ouro%20Rosê?PS=12&amp;map=c,specificationFilter_15" title="Anel Ouro Rosê">Anel Ouro Rosê</a></li>
+                                        <li><a href="/aneis/Diamante?PS=12&amp;map=c,specificationFilter_16" title="Anel de Diamante">Anel de Diamante</a></li>
+                                        <li><a href="/aneis/Rubi?PS=12&amp;map=c,specificationFilter_16" title="Anel de Rubi">Anel de Rubi</a></li>
+                                        <li><a href="/aneis/Zircônia?PS=12&amp;map=c,specificationFilter_16" title="Anel de Zircônia">Anel de Zircônia</a></li>
+                                        <li><a href="/aneis/Pedras%20Preciosas?PS=12&amp;map=c,specificationFilter_16" title="Anel de Pedras Preciosas">Anel de Pedras Preciosas</a></li>
+                                        <li><a href="/aneis/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_16" title="Anel sem Pedras">Anel sem Pedras</a></li>
+                                        <li><a href="/formatura" title="Anel de Formatura">Anel de Formatura</a></li>
+                                        <li><a href="/anel/anel-de-noivado" title="Anel de Noivado">Anel de Noivado</a></li>
+                                        <li><a href="/aneis/Infantil?PS=12&amp;map=c,specificationFilter_98" title="Anel Infantil">Anel Infantil</a></li>
+                                        <li><a href="/aneis/Masculino?PS=12&amp;map=c,specificationFilter_98" title="Anel Masculino">Anel Masculino</a></li>
+                                        <li><a href="/aneis/Religiosos?PS=12&amp;map=c,specificationFilter_14" title="Anel Religioso">Anel Religioso</a></li>
+                                        <li><a href="/anéis" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Brincos" href="/brincos" class="menu-anchor-sidepanel">Brincos</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/brincos/brincos-argola" title="Brincos Argola">Brincos Argola</a></li>
+                                        <li><a href="/brincos/brincos-bola" title="Brincos Bola">Brincos Bola</a></li>
+                                        <li><a href="/brincos/brincos-cartier" title="Brincos Cartier">Brincos Cartier</a></li>
+                                        <li><a href="/brincos/brincos-chuveiro" title="Brincos Chuveiro">Brincos Chuveiro</a></li>
+                                        <li><a href="/brincos/Ouro%20Branco?PS=12&amp;map=c,specificationFilter_18" title="Brincos Ouro Branco">Brincos Ouro Branco</a></li>
+                                        <li><a href="/brincos/Ouro%20Rosê?PS=12&amp;map=c,specificationFilter_18" title="Brincos Brincos Ouro Rosê">Brincos Ouro Rosê</a></li>
+                                        <li><a href="/brincos/Diamante?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Diamante ">Brincos de Diamante</a></li>
+                                        <li><a href="/brincos/Pérola?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Pérola">Brincos de Pérola</a></li>
+                                        <li><a href="/brincos/Zircônia?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Zircônia">Brincos de Zircônia</a></li>
+                                        <li><a href="/brincos/brinco-chuveiro" title="Brincos de Pedra Preciosa">Brincos de Pedra Preciosa</a></li>
+                                        <li><a href="/brincos/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_19" title="Brincos sem Pedra">Brincos sem Pedra</a></li>
+                                        <li><a href="/brincos/brincos-formatura" title="Brincos Formatura">Brincos Formatura</a></li>
+                                        <li><a href="/brincos/Infantil?PS=12&amp;map=c,specificationFilter_20" title="Brincos Infantil">Brincos Infantil</a></li>
+                                        <li><a href="/brincos/piercing-de-ouro" title="Piercing de Ouro">Piercing de Ouro</a></li>
+                                        <li><a href="/brincos/brincos-pendurado" title="Brincos Pendurado">Brincos Pendurado</a></li>
+                                        <li><a href="/joias-em-prata/brincos" title="Brincos Pendurado">Brincos em Prata</a></li>
+                                        <li><a href="/brincos" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Correntes" href="/correntes" class="menu-anchor-sidepanel">Correntes</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/correntes/corrente-tradicional" title="Corrente Tradicional">Corrente Tradicional</a></li>
+                                        <li><a href="/correntes/corrente-especial" title="Corrente Especial">Corrente Especial</a></li>
+                                        <li><a href="/correntes/corrente-macica" title="Corrente Maciça">Corrente Maciça</a></li>
+                                        <li><a href="/correntes/corrente-masculina" title="Corrente Masculina">Corrente Masculina</a></li>
+                                        <li><a href="/correntes/corrente-feminina" title="Corrente Feminina">Corrente Feminina</a></li>
+                                        <li><a href="/correntes/corrente-oca" title="Corrente Oca">Corrente Oca</a></li>
+                                        <li><a href="/correntes" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Colares" href="/colares" class="menu-anchor-sidepanel">Colares</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/colares/terco" title="Terço">Terço</a></li>
+                                        <li><a href="/colares/Escapulario" title="Escapulário">Escapulário</a></li>
+                                        <li><a href="/colares/ponto-de-luz" title="Ponto de Luz">Ponto de Luz</a></li>
+                                        <li><a href="/colares/colar-com-nome" title="Colar com Nome">Colar com Nome</a></li>
+                                        <li><a href="/colares/colar-gravata" title="Colar Gravata">Colar Gravata</a></li>
+                                        <li><a href="/colares/Diamante?PS=12&amp;map=c,specificationFilter_23" title="Colar de Diamante">Colar de Diamante</a></li>
+                                        <li><a href="/colares/Pérola?PS=12&amp;map=c,specificationFilter_23" title="Colar de Pérola">Colar de Pérola</a></li>
+                                        <li><a href="/colares/Zircônia?PS=12&amp;map=c,specificationFilter_23" title="Colar de Zircônia">Colar de Zircônia</a></li>
+                                        <li><a href="/colares/Outras%20Pedras?PS=12&amp;map=c,specificationFilter_23" title="Colar de Pedra Preciosa">Colar de Pedra Preciosa</a></li>
+                                        <li><a href="/colares/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_23" title="Colar sem Pedra">Colar sem Pedra</a></li>
+                                        <li><a href="/colares" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Pingentes" href="/pingentes" class="menu-anchor-sidepanel">Pingentes</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/pingentes/amuletos" title="Amuletos">Amuletos</a></li>
+                                        <li><a href="/pingentes/crucifixo" title="Crucifixo">Crucifixo</a></li>
+                                        <li><a href="/pingentes/medalhas" title="Medalhas">Medalhas</a></li>
+                                        <li><a href="/pingentes/Letras?PS=12&amp;map=c,specificationFilter_25" title="Pingente de Letra">Pingente de Letra</a></li>
+                                        <li><a href="/pingentes/Pingente-de-Bicho" title="Pingentes de Bicho">Pingentes de Bicho</a></li>
+                                        <li><a href="/pingentes/pingente-de-simbolos" title="pingentes de Símbolo">Pingentes de Símbolos</a></li>
+                                        <li><a href="/pingentes/Diamante?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Diamante">Pingente de Diamante</a></li>
+                                        <li><a href="/pingentes/Esmeralda?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Esmeralda">Pingente de Esmeralda</a></li>
+                                        <li><a href="/pingentes/Safira?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Safira">Pingente de Safira</a></li>
+                                        <li><a href="/pingentes/Zircônia?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Zircônia">Pingente de Zircônia</a></li>
+                                        <li><a href="//pingentes/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_27" title="Pingente sem Pedras">Pingente sem Pedras</a></li>
+                                        <li><a href="/pingentes/Formatura?PS=12&amp;map=c,specificationFilter_25" title="Pingente de Formatura">Pingente de Formatura</a></li>
+                                        <li><a href="/pingentes/pingente-masculino" title="Pingente Masculino">Pingente Masculino</a></li>
+                                        <li><a href="/pingentes/pingente-menina" title="Pingente Menina">Pingente Menina</a></li>
+                                        <li><a href="/pingentes/pingente-menino" title="Pingente Menino">Pingente Menino</a></li>
+                                        <li><a href="/pingentes/pingente-infantil" title="Pingente Infantil">Pingente Infantil</a></li>
+                                        <li><a href="/pingentes/pingente-religioso" title="Pingente Religioso">Pingente Religioso</a></li>
+                                        
+                                        <li><a href="/pingentes" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Pulseiras" href="/pulseiras" class="menu-anchor-sidepanel">Pulseiras</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/pulseiras/Feminino?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Femininas">Pulseiras Femininas</a>Pulseiras Femininas</li>
+                                        <li><a href="/pulseiras/Masculino?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Masculinas">Pulseiras Masculinas</a></li>
+                                        <li><a href="/pulseiras/Infantil?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Infantis">Pulseiras Infantis</a></li>
+                                        <li><a href="/pulseiras/braceletes" title="Braceletes">Braceletes</a></li>
+                                        <li><a href="/joias-em-prata/pulseiras" title="Pulseiras de Prata">Pulseiras de Prata</a></li>
+                                        <li><a href="/pulseiras" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Moments" href="/moments" class="menu-anchor-sidepanel">Moments</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/moments/pingentes-moments" title="Berloques Moments">Berloques Moments</a></li>
+                                        <li><a href="/moments/pulseiras-moments" title="Pulseiras">Pulseiras</a></li>
+                                        <li><a href="/moments/pingentes-moments" title="Berloques Moments">Berloques Moments</a></li>
+                                        <li><a href="/moments/colecao-magic-moments" title="Coleção Magic Moments">Coleção Magic Moments</a></li>
+                                        <li><a href="/moments" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Relógios" href="/relogios" class="menu-anchor-sidepanel">Relógios</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/relogios/Casio?PS=12&amp;map=c,specificationFilter_33" title="Casio">Casio</a></li>
+                                        <li><a href="/relogios/citizen" title="Guess">Citizen</a></li>
+                                        <li><a href="/relogios/Guess?PS=12&amp;map=c,specificationFilter_33" title="Guess">Guess</a></li>
+                                        <li><a href="/relogios/Skagen?PS=12&amp;map=c,specificationFilter_33" title="Skagen">Skagen</a></li>
+                                        <li><a href="/relogios/Oslo?PS=12&amp;map=c,specificationFilter_33" title="Oslo">Oslo</a></li>
+                                        <li><a href="/relogios" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <li class="menu-item-sidepanel has-sub">
+                            <a title="Bruna Tessaro - Ocasiões e Momentos" href="/ocasioes-e-presentes" class="menu-anchor-sidepanel">Ocasiões e Momentos</a>
+                            <div class="submenu-sidepanel">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/ocasioes-e-presentes/casamento" title="Casamento">Casamento</a></li>
+                                        <li><a href="/ocasioes-e-presentes/bodas" title="Bodas">Bodas</a></li>
+                                        <li><a href="/ocasioes-e-presentes/noivado" title="Noivado">Noivado</a></li>
+                                        <li><a href="/ocasioes-e-presentes/namorados" title="Namorados">Namorados</a></li>
+                                        <li><a href="/ocasioes-e-presentes/formatura" title="Formatura">Formatura</a></li>
+                                        <li><a href="/ocasioes-e-presentes/nascimento" title="Infantil">Infantil</a></li>
+                                        <li><a href="/ocasioes-e-presentes/pais" title="Pais">Dia dos Pais</a></li>
+                                        <li><a href="/ocasioes-e-presentes/joias-religiosas" title="Religioso">Religioso</a></li>
+                                        <li><a href="/ocasioes-e-presentes" title="Ver Todos">Ver Todos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                        <!-- <li class="menu-item-sidepanel">
+                            <a title="Bruna Tessaro - Sale" href="/sale" class="menu-anchor-sidepanel">Sale</a>
+                        </li> -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- /menu-mob -->
+
+    <!-- middle-box -->
+    <section class="hidden-xs hidden-sm middle-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 logo">
+                    <h1>
+                        <a href="/" title="Loja On-Line Bruna Tessaro">
+                            <img alt="Loja On-Line Bruna Tessaro" src="/arquivos/logo-top.png" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-md-6 searchform">
+                    <vtex.cmc:fullTextSearchBox/>
+                </div>
+                <div class="col-xs-3 account-cart">
+                    <nav class="account-itens">
+                        <ul>
+                            <li><a href="/account">minha conta</a></li>
+                            <li><a href="/account/orders">meus pedidos</a></li>
+                        </ul>   
+                    </nav>
+                    <div class="cart-itens">
+                        <i class="bag-ico">
+                            <vtex.cmc:AmountItemsInCart/>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="40" height="40"><path d="M459.077 486.155l-30.008-330.121c-1.057-11.634-10.814-20.543-22.496-20.543h-67.765V82.824C338.808 37.155 301.654 0 255.985 0s-82.824 37.155-82.824 82.824v52.668h-67.765c-11.683 0-21.438 8.909-22.495 20.543L52.784 487.367A22.586 22.586 0 0 0 75.279 512H436.721c12.476 0 22.588-10.114 22.588-22.588 0-1.106-.08-2.194-.232-3.257zM211.722 249.339c-4.203 4.216-10.029 6.626-15.977 6.626s-11.761-2.409-15.964-6.626c-4.215-4.201-6.624-10.014-6.624-15.962s2.411-11.776 6.624-15.977a22.726 22.726 0 0 1 15.964-6.611c5.95 0 11.775 2.409 15.977 6.611 4.201 4.201 6.611 10.029 6.611 15.977s-2.411 11.761-6.611 15.962zm6.616-166.515c0-20.759 16.888-37.647 37.647-37.647 20.759 0 37.647 16.888 37.647 37.647v52.668h-75.294V82.824zm113.855 166.515c-4.203 4.216-10.029 6.626-15.977 6.626a22.676 22.676 0 0 1-15.964-6.626c-4.215-4.201-6.624-10.014-6.624-15.962s2.411-11.776 6.624-15.977c4.204-4.201 10.016-6.611 15.964-6.611s11.775 2.409 15.977 6.611c4.2 4.201 6.611 10.029 6.611 15.977s-2.411 11.761-6.611 15.962z" fill="#ccbbb4"/></svg>
+                        </i>
+                        <div id="minicart">
+                            <div class="carrinho-vazio">
+                                <span>Você não tem nenhum item na sua sacola de compras.</span>
+                            </div>
+                            <div class="carrinho-cheio"><vtex.cmc:miniCart/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- /middle-box -->
+
+    <!-- menu-box -->
+    <section class="hidden-xs hidden-sm menu">
+        <div class="container">
+            <nav>
+                <ul class="menu-list">
+                    <li class="menu-item has-sub">
+                        <a title="Alianças" href="/aliancas/par-de-aliancas" class="menu-anchor">alianças</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/aliancas/aliancas-tradicionais" title="Alianças Tradicionais">Alianças Tradicionais</a></li>
+                                                    <li><a href="/aliancas/aliancas-especiais" title="Alianças Especiais">Alianças Especiais</a></li>
+                                                    <li><a href="/aliancas/aliancas-de-bodas" title="Alianças de Bodas">Alianças de Bodas</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/aliancas/aliancas-com-diamante" title="Alianças com Diamante">Alianças com Diamante</a></li>
+                                                    <li><a href="/aliancas/Alianças-de-Compromisso" title="Alianças de Compromisso">Alianças de Compromisso</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenubanner /></div>  
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="aneis" href="/aneis" class="menu-anchor">anéis</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/aneis/anel-chuveiro" title="Anel Chuveiro">Anel Chuveiro</a></li>
+                                                    <li><a href="/aneis/anel-solitario" title="Anel Solitário">Anel Solitáro</a></li>
+                                                    <li><a href="/aneis/aparador-de-aliancas" title="Aparador de Alianças">Aparador de Alianças</a></li>
+                                                    <li><a href="/aneis/meia-alianca" title="Meia Aliança">Meia Aliança</a></li>
+                                                    <li><a href="/aneis/Ouro%20Branco?PS=12&amp;map=c,specificationFilter_15" title="Anel Ouro Branco">Anel Ouro Branco</a></li>
+                                                    <li><a href="/aneis/Ouro%20Rosê?PS=12&amp;map=c,specificationFilter_15" title="Anel Ouro Rosê">Anel Ouro Rosê</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/aneis/Diamante?PS=12&amp;map=c,specificationFilter_16" title="Anel de Diamante">Anel de Diamante</a></li>
+                                                    <li><a href="/aneis/Rubi?PS=12&amp;map=c,specificationFilter_16" title="Anel de Rubi">Anel de Rubi</a></li>
+                                                    <li><a href="/aneis/Zircônia?PS=12&amp;map=c,specificationFilter_16" title="Anel de Zircônia">Anel de Zircônia</a></li>
+                                                    <li><a href="/aneis/Pedras%20Preciosas?PS=12&amp;map=c,specificationFilter_16" title="Anel de Pedras Preciosas">Anel de Pedras Preciosas</a></li>
+                                                    <li><a href="/aneis/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_16" title="Anel sem Pedras">Anel sem Pedras</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/formatura" title="Anel de Formatura">Anel de Formatura</a></li>
+                                                    <li><a href="/anel/anel-de-noivado" title="Anel de Noivado">Anel de Noivado</a></li>
+                                                    <li><a href="/aneis/Infantil?PS=12&amp;map=c,specificationFilter_98" title="Anel Infantil">Anel Infantil</a></li>
+                                                    <li><a href="/aneis/Masculino?PS=12&amp;map=c,specificationFilter_98" title="Anel Masculino">Anel Masculino</a></li>
+                                                    <li><a href="/aneis/Religiosos?PS=12&amp;map=c,specificationFilter_14" title="Anel Religioso">Anel Religioso</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:subMenuBannerAneis/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="brincos" href="/brincos" class="menu-anchor">brincos</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/brincos/brincos-argola" title="Brincos Argola">Brincos Argola</a></li>
+                                                    <li><a href="/brincos/brincos-bola" title="Brincos Bola">Brincos Bola</a></li>
+                                                    <li><a href="/brincos/brincos-cartier" title="Brincos Cartier">Brincos Cartier</a></li>
+                                                    <li><a href="/brincos/brincos-chuveiro" title="Brincos Chuveiro">Brincos Chuveiro</a></li>
+                                                    <li><a href="/brincos/Ouro%20Branco?PS=12&amp;map=c,specificationFilter_18" title="Brincos Ouro Branco">Brincos Ouro Branco</a></li>
+                                                    <li><a href="/brincos/Ouro%20Rosê?PS=12&amp;map=c,specificationFilter_18" title="Brincos Brincos Ouro Rosê">Brincos Ouro Rosê</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                     <li><a href="/brincos/Diamante?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Diamante ">Brincos de Diamante</a></li>
+                                                    <li><a href="/brincos/Pérola?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Pérola">Brincos de Pérola</a></li>
+                                                    <li><a href="/brincos/Zircônia?PS=12&amp;map=c,specificationFilter_19" title="Brincos de Zircônia">Brincos de Zircônia</a></li>
+                                                    <li><a href="/brincos/brinco-chuveiro" title="Brincos de Pedra Preciosa">Brincos de Pedra Preciosa</a></li>
+                                                    <li><a href="/brincos/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_19" title="Brincos sem Pedra">Brincos sem Pedra</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/brincos/brincos-formatura" title="Brincos Formatura">Brincos Formatura</a></li>
+                                                    <li><a href="/brincos/Infantil?PS=12&amp;map=c,specificationFilter_20" title="Brincos Infantil">Brincos Infantil</a></li>
+                                                    <li><a href="/brincos/piercing-de-ouro" title="Piercing de Ouro">Piercing de Ouro</a></li>
+                                                    <li><a href="/brincos/brincos-pendurado" title="Brincos Pendurado">Brincos Pendurado</a></li>
+                                                    <li><a href="/joias-em-prata/brincos" title="Brincos Pendurado">Brincos em Prata</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerBrincos/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="Correntes" href="/correntes" class="menu-anchor">correntes</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/correntes/corrente-tradicional" title="Corrente Tradicional">Corrente Tradicional</a></li>
+                                                    <li><a href="/correntes/corrente-especial" title="Corrente Especial">Corrente Especial</a></li>
+                                                    <li><a href="/correntes/corrente-macica" title="Corrente Maciça">Corrente Maciça</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/correntes/corrente-masculina" title="Corrente Masculina">Corrente Masculina</a></li>
+                                                    <li><a href="/correntes/corrente-feminina" title="Corrente Feminina">Corrente Feminina</a></li>
+                                                    <li><a href="/correntes/corrente-oca" title="Corrente Oca">Corrente Oca</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerCorrentes/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="colares" href="/colares" class="menu-anchor">colares</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/colares/terco" title="Terço">Terço</a></li>
+                                                    <li><a href="/colares/Escapulario" title="Escapulário">Escapulário</a></li>
+                                                    <li><a href="/colares/ponto-de-luz" title="Ponto de Luz">Ponto de Luz</a></li>
+                                                    <li><a href="/colares/colar-com-nome" title="Colar com Nome">Colar com Nome</a></li>
+                                                    <li><a href="/colares/colar-gravata" title="Colar Gravata">Colar Gravata</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/colares/Diamante?PS=12&amp;map=c,specificationFilter_23" title="Colar de Diamante">Colar de Diamante</a></li>
+                                                    <li><a href="/colares/Pérola?PS=12&amp;map=c,specificationFilter_23" title="Colar de Pérola">Colar de Pérola</a></li>
+                                                    <li><a href="/colares/Zircônia?PS=12&amp;map=c,specificationFilter_23" title="Colar de Zircônia">Colar de Zircônia</a></li>
+                                                    <li><a href="/colares/Outras%20Pedras?PS=12&amp;map=c,specificationFilter_23" title="Colar de Pedra Preciosa">Colar de Pedra Preciosa</a></li>
+                                                    <li><a href="/colares/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_23" title="Colar sem Pedra">Colar sem Pedra</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerColares/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="pingentes" href="/pingentes" class="menu-anchor">pingentes</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/pingentes/amuletos" title="Amuletos">Amuletos</a></li>
+                                                    <li><a href="/pingentes/crucifixo" title="Crucifixo">Crucifixo</a></li>
+                                                    <li><a href="/pingentes/medalhas" title="Medalhas">Medalhas</a></li>
+                                                    <li><a href="/pingentes/Letras?PS=12&amp;map=c,specificationFilter_25" title="Pingente de Letra">Pingente de Letra</a></li>
+                                                    <li><a href="/pingentes/Pingente-de-Bicho" title="Pingentes de Bicho">Pingentes de Bicho</a></li>
+                                                    <li><a href="/pingentes/pingente-de-simbolos" title="pingentes de Símbolo">Pingentes de Símbolos</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                     <li><a href="/pingentes/Diamante?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Diamante">Pingente de Diamante</a></li>
+                                                     <li><a href="/pingentes/Esmeralda?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Esmeralda">Pingente de Esmeralda</a></li>
+                                                     <li><a href="/pingentes/Safira?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Safira">Pingente de Safira</a></li>
+                                                     <li><a href="/pingentes/Zircônia?PS=12&amp;map=c,specificationFilter_27" title="Pingente de Zircônia">Pingente de Zircônia</a></li>
+                                                     <li><a href="//pingentes/Sem%20Pedras?PS=12&amp;map=c,specificationFilter_27" title="Pingente sem Pedras">Pingente sem Pedras</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/pingentes/Formatura?PS=12&amp;map=c,specificationFilter_25" title="Pingente de Formatura">Pingente de Formatura</a></li>
+                                                    <li><a href="/pingentes/pingente-masculino" title="Pingente Masculino">Pingente Masculino</a></li>
+                                                    <li><a href="/pingentes/pingente-menina" title="Pingente Menina">Pingente Menina</a></li>
+                                                    <li><a href="/pingentes/pingente-menino" title="Pingente Menino">Pingente Menino</a></li>
+                                                    <li><a href="/pingentes/pingente-infantil" title="Pingente Infantil">Pingente Infantil</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerPingentes/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="pulseiras" href="/pulseiras" class="menu-anchor">pulseiras</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/pulseiras/Feminino?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Femininas">Pulseiras Femininas</a></li>
+                                                    <li><a href="/pulseiras/Masculino?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Masculinas">Pulseiras Masculinas</a></li>
+                                                    <li><a href="/pulseiras/Infantil?PS=12&amp;map=c,specificationFilter_100" title="Pulseiras Infantis">Pulseiras Infantis</a></li>
+                                                    <li><a href="/pulseiras/braceletes" title="Braceletes">Braceletes</a></li>
+                                                    <li><a href="/joias-em-prata/pulseiras" title="Pulseiras de Prata">Pulseiras de Prata</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerPulseiras/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="Moments" href="/moments" class="menu-anchor">Moments</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/moments/pingentes-moments" title="Berloques Moments">Berloques Moments</a></li>
+                                                    <li><a href="/moments/pulseiras-moments" title="Pulseiras">Pulseiras</a></li>
+                                                    <li><a href="/moments/colecao-magic-moments" title="Coleção Magic Moments">Coleção Magic Moments</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerJoias/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="relogios" href="/relogios" class="menu-anchor">relógios</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                <li><a href="/relogios/Casio?PS=12&amp;map=c,specificationFilter_33" title="Casio">Casio</a></li>
+                                                <li><a href="/relogios/citizen" title="Guess">Citizen</a></li>
+                                                <li><a href="/relogios/Guess?PS=12&amp;map=c,specificationFilter_33" title="Guess">Guess</a></li>
+                                                <li><a href="/relogios/Skagen?PS=12&amp;map=c,specificationFilter_33" title="Skagen">Skagen</a></li>
+                                                <li><a href="/relogios/Oslo?PS=12&amp;map=c,specificationFilter_33" title="Oslo">Oslo</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerRelogios/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item has-sub">
+                        <a title="ocasioes e momentos" href="/ocasioes-e-presentes" class="menu-anchor">ocasiões e momentos</a>
+                        <div class="submenu">
+                            <div class="container">
+                                <div class="row flex">
+                                    <div class="submenu-items">
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/ocasioes-e-presentes/casamento" title="Casamento">Casamento</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/bodas" title="Bodas">Bodas</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/noivado" title="Noivado">Noivado</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/namorados" title="Namorados">Namorados</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="item">
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/ocasioes-e-presentes/formatura" title="Formatura">Formatura</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/nascimento" title="Infantil">Infantil</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/pais" title="Pais">Dia dos Pais</a></li>
+                                                    <li><a href="/ocasioes-e-presentes/joias-religiosas" title="Religioso">Religioso</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="submenu-banner"><vtex:submenuBannerOcasiao /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- <li class="menu-item has-sub">
+                        <a title="sale" href="/sale" class="menu-anchor">sale</a>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!-- /menu-box -->
+
+</header>

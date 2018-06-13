@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+	<head>
+		<title>Bruna Tessaro</title>
+		<vtex:metaTags/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<vtex:template id="BT-commonStyles" />
+	</head>
+	<body>
+
+        <vtex:template id="BT-header" />
+
+        <main>
+        	<section class="banner-departament">
+        		<div class="container">
+        			<vtex:contentPlaceHolder id="banner-departamento" />
+        		</div>
+        	</section>
+        	
+      		<section class="container mainShelf">
+                <div class="row">
+                    <div class="sidebar col-xs-12 col-md-3">
+		            	<vtex.cmc:searchNavigator />
+	          		</div>
+	  					 <div class="filter">
+							<span class="filter-label">Filtrar:</span>
+							<ul>
+								<li class="current"><a href="?PS=12&amp;O=OrderByTopSaleDESC">Mais Vendidos</a></li>
+								<li><a href="?PS=12&amp;O=OrderByPriceASC">Menor Preço</a></li>
+								<li><a href="?PS=12&amp;O=OrderByPriceDESC">Maior Preço</a></li>
+								<li><a href="?PS=12&amp;O=OrderByNameASC">Alfabética</a></li>
+								<li><a href="?PS=12&amp;O=OrderByReleaseDateDESC">Data de Lançamento</a></li>
+								<li><a href="?PS=12&amp;O=OrderByBestDiscountDESC">Melhor Desconto</a></li>
+							</ul>
+						</div> 
+	          		<div class="col-xs-12 col-md-9 order">
+		          		<div class="col-xs-12 produtos-shelf">
+	          			<vtex.cmc:searchResult layout="86bd82d4-6f3e-46d9-b2e1-f790e4f3c2a1" itemCount="12" columnCount="12" />
+	          			</div>
+			        </div>
+                </div>
+	        </section>
+        </main>
+
+        <vtex:template id="BT-footer" />
+
+		<vtex:template id="BT-commonScripts" />
+		<script src="/arquivos/percent-price-shelf-v17.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.orderBy').first().appendTo('.order');
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Tapume
+   ========================================================================== */
+
+body.tapume{
+      main{
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(/arquivos/bg-tapume.jpg) no-repeat scroll 0 0 transparent;
+          display: block;
+          background-size: cover;
+          width: 100%;
+          height: auto;
+          max-width: 1920px;
+          height: 100vh;
+      }
+
+      .tapume-top{
+          &__logo{
+              padding: 35px 0;
+          }
+          &__img{
+              width: 200px;
+              height: auto;
+          }
+
+          &--bottom-border{
+              border-bottom: 1px solid rgba(255,255,255,0.795);
+          }
+      }
+
+      .tapume-body{
+          color: #fff;
+
+          &__title{
+              padding: 45px 0;
+              font-size: 48px;
+              letter-spacing: 1px;
+              line-height: 60px;
+          }
+
+          &__subtitle{
+              font-size: 20px;
+              line-height: 28px;
+              letter-spacing: 1px;
+              margin-bottom: 45px;
+              font-weight: 300;
+
+              &--yellow{
+                  text-transform: uppercase;
+                  color: #E5B232;
+              }
+          }
+
+          &__newsletter{
+              fieldset{
+                  display: inline-block;
+                  margin-right: 10px;
+                  border-radius: 5px;
+                  border: none;
+              }
+
+              button{
+                  display: block;
+              }
+          }
+      }
+}

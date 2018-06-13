@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+    <head>
+        <title>Em breve | Casa e Garagem</title>
+        <vtex:metaTags/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <link rel="stylesheet" type="text/css" href="/arquivos/casaegaragem.css" />
+    </head>
+    <body>
+
+        <main>
+
+            <section class="tapume-top tapume-top--bottom-border container">
+                <h1 class="tapume-top__logo">
+                    <img class="tapume-top__img" src="/arquivos/logo-white.png" />
+                </h1>
+            </section>
+
+            <section class="tapume-body container">
+                <div class="wrapper--narrow">
+                    <h2 class="tapume-body__title">
+                        Falta pouco! Em breve estará disponível uma loja especial para você.
+                    </h2>
+                    <h3 class="tapume-body__subtitle">
+                        Enquanto trabalhamos, preparamos um presente! Ganhe já o <span class="tapume-body__subtitle--yellow">cupom promocional </span>com 10% de desconto em qualquer compra.
+                    </h3>
+                    <div class="tapume-body__newsletter">
+                        <form action="javascript:masterDataNewsletter()" method="POST" class="form-newsletter" data-module="newsletter">
+                            <input type="hidden" name="newsInternalPart" value="newsletter" />
+                            <input type="hidden" name="newsInternalPage" value="_" />
+                            <input type="hidden" name="newsInternalCampaign" value="newsletter:opt-in" />
+                            <fieldset class="whatsapp">
+                                <input type="text" name="newsletterClientWhatsapp" id="cl_whatsapp" class="whatsapp" placeholder="Whatsapp" data-validation="required whatsapp" data-msg-required="Whatsapp" data-msg-email="O número de whatsapp que você inseriu está incorreto" />
+                            </fieldset>
+                            <fieldset class="email">
+                                <input type="text" name="newsletterClientEmail" id="cl_email" class="email" placeholder="E-mail" data-validation="required email" data-msg-required="E-mail" data-msg-email="O e-mail que você inseriu está incorreto" />
+                            </fieldset>
+                            <button type="submit" class="newsletter-button-ok submit">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <script type="text/javascript" src="/arquivos/newsletter.js"></script>
+
+    </body>
+</html>
