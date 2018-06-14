@@ -107,18 +107,25 @@ input, select {
    Grid
    ========================================================================== */
 .container {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   max-width: 1200px; }
+  @media (min-width: 992px) {
+    .container {
+      width: 100%; } }
 
 .wrapper {
   width: 80%;
   max-width: 80%;
   margin: 0 auto; }
   .wrapper--narrow {
-    width: 70%;
-    max-width: 70%;
+    width: 100%;
+    max-width: 100%;
     margin: 0; }
+    @media (min-width: 992px) {
+      .wrapper--narrow {
+        width: 70%;
+        max-width: 70%; } }
 
 /* ==========================================================================
    Responsive: Utility classes

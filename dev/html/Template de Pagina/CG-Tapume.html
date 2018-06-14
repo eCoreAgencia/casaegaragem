@@ -23,7 +23,7 @@
                         Falta pouco! Em breve estará disponível uma loja especial para você.
                     </h2>
                     <h3 class="tapume-body__subtitle">
-                        Enquanto trabalhamos, preparamos um presente! Ganhe já o <span class="tapume-body__subtitle--yellow">cupom promocional </span>com 10% de desconto em qualquer compra.
+                        Enquanto trabalhamos, preparamos um presente! Ganhe já o <span class="tapume-body__subtitle--yellow">cupom promocional </span>com 10%* de desconto em qualquer compra.
                     </h3>
                     <div class="tapume-body__newsletter">
                         <form action="javascript:masterDataNewsletter()" method="POST" class="tapume-body__form" data-module="newsletter">
@@ -39,12 +39,48 @@
                             <button type="submit" class="tapume-body__btn-newsletter submit">Cadastrar</button>
                         </form>
                     </div>
+                    <p class="tapume-body__obs">*Desconto válido na sua próxima compra.</p>
                 </div>
             </section>
 
+            <div class="modal-tapume">
+                <div class="modal-tapume__opacity"></div>
+                <span class="modal-tapume__close-btn">x</span>
+                <div class="modal-tapume__modal-container">
+                    <div class="modal-tapume__header-modal">
+                        <span>Cupom promocional:</span>
+                        <h4>"NOVALOJA"</h4>
+                    </div>
+                    <div class="modal-tapume__footer-modal">
+                        <strong>Cadastro efetuado com sucesso!</strong>
+                        <p>Guarde esse cupom para utilizar esse desconto em nossa loja.</p>
+                        <p>*Desconto válido na sua próxima compra.</p>
+                    </div>
+                </div>
+            </div>
+
         </main>
 
-        <script type="text/javascript" src="/arquivos/newsletter.js"></script>
+        <script type="text/javascript" src="/arquivos/newsletter-v2.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+            // Scripts Modal //
+                // Close Modal //
+                    $('.modal-tapume__close-btn, .modal-tapume__opacity').click(function() {
+                        $('.modal-tapume').fadeOut(600);
+                        $('.modal-tapume').removeClass('active');
+                    });
+                    
+                    $(document).keyup(function(ev) {
+                        if (ev.keyCode == 27)
+                            $('.modal-tapume').fadeOut(600);
+                        $('.modal-tapume').removeClass('active');
+                    });
+                // Close Modal //
+            });
+        </script>
 
     </body>
 </html>

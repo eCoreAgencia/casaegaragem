@@ -25,18 +25,28 @@ $grid-float-breakpoint: $screen-sm-min;
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
  
 .container {
-	width: 100%;
+	width: 90%;
 	margin: 0 auto;
-	max-width: $container-max-width;
+    max-width: $container-max-width;
+    
+    @include mq($screen-md) {
+        width: 100%;
+    }
 }
 
 .wrapper {
     width: 80%;
     max-width: 80%;
     margin: 0 auto;
+
     &--narrow{
-        width: 70%;
-        max-width:70%;
+        width: 100%;
+        max-width:100%;
         margin: 0;
+
+        @include mq($screen-md) {
+            width: 70%;
+            max-width:70%;
+        }
     }
 }

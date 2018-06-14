@@ -1,9 +1,10 @@
 function masterDataNewsletter(){
     var jsonSaveDadosUser = {
+        "whatsapp": $("#cl_whatsapp").val(),
         "email": $("#cl_email").val()
     };
 
-    var urlSaveDadosUser = 'http://api.vtexcrm.com.br/casaegaragem/dataentities/NL/documents/';
+    var urlSaveDadosUser = 'https://casaegaragem.vtexcommercestable.com.br/api/dataentities/NL/documents/';
 
     $.ajax({
         headers: {
@@ -16,8 +17,10 @@ function masterDataNewsletter(){
         success: function (data) {
           console.log(data);
           $("div#messageSuccess").removeClass("hide");
+          $("#cl_whatsapp").val("");          
           $("#cl_email").val("");
-          alert("E-mail cadastrado com sucesso!");
+        //   alert("E-mail cadastrado com sucesso!");
+          $('.modal-tapume').addClass('active');
         },
         error: function (data) {
           console.log(data);

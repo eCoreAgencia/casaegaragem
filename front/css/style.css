@@ -230,7 +230,10 @@ header.menu-persistente,
 .modal .close-modal,
 .modal .close-modal:hover,
 .modal .modal-container,
-body.account [data-toggle="modal"] {
+body.account [data-toggle="modal"],
+body.tapume .modal-tapume,
+body.tapume .modal-tapume__close-btn,
+body.tapume .modal-tapume__modal-container {
 	transition-duration: .3s;
 	transition-timing-function: ease;
 }
@@ -256,7 +259,7 @@ main {
    ========================================================================== */
 
 .container {
-	width: 100%;
+	width: 90%;
 	margin: 0 auto;
 	max-width: 1200px;
 }
@@ -268,8 +271,8 @@ main {
 }
 
 .wrapper--narrow {
-	width: 70%;
-	max-width: 70%;
+	width: 100%;
+	max-width: 100%;
 	margin: 0;
 }
 
@@ -1523,10 +1526,10 @@ body.tapume .tapume-body {
 }
 
 body.tapume .tapume-body__title {
-	padding: 45px 0;
-	font-size: 48px;
+	padding: 35px 0;
+	font-size: 40px;
 	letter-spacing: 1px;
-	line-height: 60px;
+	line-height: 50px;
 }
 
 body.tapume .tapume-body__subtitle {
@@ -1545,6 +1548,7 @@ body.tapume .tapume-body__subtitle--yellow {
 body.tapume .tapume-body__newsletter fieldset {
 	display: inline-block;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 body.tapume .tapume-body__newsletter input {
@@ -1556,7 +1560,6 @@ body.tapume .tapume-body__newsletter input {
 	padding: 5px 10px;
 	background: rgba(255, 255, 255, 0.795);
 	font-size: 14px;
-	color: #fff;
 }
 
 body.tapume .tapume-body__newsletter button {
@@ -1573,6 +1576,96 @@ body.tapume .tapume-body__newsletter button {
 	height: 40px;
 	width: 180px;
 	color: #fff;
+	cursor: pointer;
+}
+
+body.tapume .tapume-body__newsletter button:hover {
+	opacity: 0.8;
+}
+
+body.tapume .tapume-body__obs {
+	font-size: 14px;
+	margin-top: 40px;
+}
+
+body.tapume .modal-tapume {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	min-height: 4500px;
+	position: absolute;
+}
+
+body.tapume .modal-tapume.active {
+	display: block;
+}
+
+body.tapume .modal-tapume__opacity {
+	width: 100%;
+	height: 100%;
+	opacity: 0.6;
+	position: absolute;
+	background-color: #000;
+	z-index: 9;
+}
+
+body.tapume .modal-tapume__close-btn {
+	top: 78px;
+	left: 50%;
+	color: #fff;
+	width: 70px;
+	height: 30px;
+	padding: 10px;
+	cursor: pointer;
+	position: fixed;
+	font-size: 35px;
+	line-height: 10px;
+	margin-left: 165px;
+	z-index: 999;
+	text-align: center;
+}
+
+body.tapume .modal-tapume__modal-container {
+	height: 300px;
+	left: 50%;
+	width: 430px;
+	margin-left: -208px;
+	position: fixed;
+	top: 70px;
+	background-color: #fff;
+	z-index: 99;
+	overflow: auto;
+	text-align: center;
+	border-radius: 10px;
+}
+
+body.tapume .modal-tapume__header-modal {
+	background-color: #E5B232;
+	padding: 8% 0;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+body.tapume .modal-tapume__header-modal span {
+	font-size: 14px;
+}
+
+body.tapume .modal-tapume__header-modal h4 {
+	font-size: 40px;
+	margin-top: 4px;
+}
+
+body.tapume .modal-tapume__footer-modal {
+	font-size: 20px;
+	line-height: 25px;
+	padding: 8% 12%;
+}
+
+body.tapume .modal-tapume__footer-modal p:last-of-type {
+	font-size: 14px;
+	margin-top: 8px;
 }
 
 /* ==========================================================================
@@ -2109,44 +2202,16 @@ body.account .slider .address-display-block {
 
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-
-.visible-md {
-	display: block !important;
-}
-
-table.visible-md {
-	display: table;
-}
-
-tr.visible-md {
-	display: table-row !important;
-}
-
-th.visible-md,
-td.visible-md {
-	display: table-cell !important;
-}
-
-.visible-md-block {
-	display: block !important;
-}
-
-.visible-md-inline {
-	display: inline !important;
-}
-
-.visible-md-inline-block {
-	display: inline-block !important;
-}
-
-.hidden-md {
-	display: none !important;
-}
-
-}
-
 @media (min-width: 992px) {
+
+.container {
+	width: 100%;
+}
+
+.wrapper--narrow {
+	width: 70%;
+	max-width: 70%;
+}
 
 .col-md-1,
 .col-md-2,
@@ -2395,6 +2460,49 @@ body.account .address-display-block {
 	width: 49%;
 	margin-right: 2%;
 	min-height: 390px;
+}
+
+body.tapume .tapume-body__title {
+	font-size: 48px;
+	line-height: 60px;
+	padding: 45px 0;
+}
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+.visible-md {
+	display: block !important;
+}
+
+table.visible-md {
+	display: table;
+}
+
+tr.visible-md {
+	display: table-row !important;
+}
+
+th.visible-md,
+td.visible-md {
+	display: table-cell !important;
+}
+
+.visible-md-block {
+	display: block !important;
+}
+
+.visible-md-inline {
+	display: inline !important;
+}
+
+.visible-md-inline-block {
+	display: inline-block !important;
+}
+
+.hidden-md {
+	display: none !important;
 }
 
 }
