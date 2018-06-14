@@ -1,6 +1,6 @@
 function masterDataNewsletter(){
     var jsonSaveDadosUser = {
-        "whatsapp": $("#cl_whatsapp").val(),
+        "whatsapp": $("#cl_whatsapp-2").val(),
         "email": $("#cl_email").val()
     };
 
@@ -17,7 +17,7 @@ function masterDataNewsletter(){
         success: function (data) {
           console.log(data);
           $("div#messageSuccess").removeClass("hide");
-          $("#cl_whatsapp").val("");          
+          $("#cl_whatsapp-2").val("");          
           $("#cl_email").val("");
         //   alert("E-mail cadastrado com sucesso!");
           $('.modal-tapume').addClass('active');

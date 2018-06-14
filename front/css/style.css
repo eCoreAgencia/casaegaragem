@@ -232,8 +232,7 @@ header.menu-persistente,
 .modal .modal-container,
 body.account [data-toggle="modal"],
 body.tapume .modal-tapume,
-body.tapume .modal-tapume__close-btn,
-body.tapume .modal-tapume__modal-container {
+body.tapume .modal-tapume__close-btn {
 	transition-duration: .3s;
 	transition-timing-function: ease;
 }
@@ -1502,17 +1501,17 @@ body.tapume main {
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(/arquivos/bg-tapume.jpg) no-repeat scroll 0 0 transparent;
 	display: block;
 	background-size: cover;
-	width: 100%;
+	width: 100vw;
 	height: auto;
-	max-width: 1920px;
 	height: 100vh;
+	overflow: hidden;
 }
 
 body.tapume .tapume-top__logo {
-	padding: 35px 0;
+	padding: 20px 0;
 }
 
-body.tapume .tapume-top__img {
+body.tapume .tapume-top svg {
 	width: 200px;
 	height: auto;
 }
@@ -1526,17 +1525,17 @@ body.tapume .tapume-body {
 }
 
 body.tapume .tapume-body__title {
-	padding: 35px 0;
-	font-size: 40px;
+	padding: 30px 0 20px;
+	font-size: 30px;
 	letter-spacing: 1px;
-	line-height: 50px;
+	line-height: 40px;
 }
 
 body.tapume .tapume-body__subtitle {
-	font-size: 20px;
-	line-height: 28px;
+	font-size: 16px;
+	line-height: 24px;
 	letter-spacing: 1px;
-	margin-bottom: 45px;
+	margin-bottom: 25px;
 	font-weight: 300;
 }
 
@@ -1585,7 +1584,7 @@ body.tapume .tapume-body__newsletter button:hover {
 
 body.tapume .tapume-body__obs {
 	font-size: 14px;
-	margin-top: 40px;
+	margin-top: 25px;
 }
 
 body.tapume .modal-tapume {
@@ -1612,7 +1611,7 @@ body.tapume .modal-tapume__opacity {
 }
 
 body.tapume .modal-tapume__close-btn {
-	top: 78px;
+	top: 188px;
 	left: 50%;
 	color: #fff;
 	width: 70px;
@@ -1622,18 +1621,18 @@ body.tapume .modal-tapume__close-btn {
 	position: fixed;
 	font-size: 35px;
 	line-height: 10px;
-	margin-left: 165px;
+	margin-left: 98px;
 	z-index: 999;
 	text-align: center;
 }
 
 body.tapume .modal-tapume__modal-container {
+	width: 300px;
 	height: 300px;
+	top: 188px;
 	left: 50%;
-	width: 430px;
-	margin-left: -208px;
+	margin-left: -150px;
 	position: fixed;
-	top: 70px;
 	background-color: #fff;
 	z-index: 99;
 	overflow: auto;
@@ -2462,10 +2461,25 @@ body.account .address-display-block {
 	min-height: 390px;
 }
 
+body.tapume .tapume-top__logo {
+	padding: 35px 0;
+}
+
 body.tapume .tapume-body__title {
 	font-size: 48px;
 	line-height: 60px;
 	padding: 45px 0;
+}
+
+body.tapume .tapume-body__subtitle {
+	font-size: 20px;
+	line-height: 28px;
+	letter-spacing: 1px;
+	margin-bottom: 45px;
+}
+
+body.tapume .tapume-body__obs {
+	margin-top: 40px;
 }
 
 }
