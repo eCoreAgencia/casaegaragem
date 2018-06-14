@@ -1545,12 +1545,34 @@ body.tapume .tapume-body__subtitle--yellow {
 body.tapume .tapume-body__newsletter fieldset {
 	display: inline-block;
 	margin-right: 10px;
-	border-radius: 5px;
+}
+
+body.tapume .tapume-body__newsletter input {
+	font-family: 'PT Sans Narrow', sans-serif;
+	border-radius: 10px;
 	border: none;
+	width: 205px;
+	height: 35px;
+	padding: 5px 10px;
+	background: rgba(255, 255, 255, 0.795);
+	font-size: 14px;
+	color: #fff;
 }
 
 body.tapume .tapume-body__newsletter button {
+	font-family: 'PT Sans Narrow', sans-serif;
 	display: block;
+	border-radius: 10px;
+	border: none;
+	padding: 5px;
+	margin-top: 20px;
+	background-color: #E5B232;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	height: 40px;
+	width: 180px;
+	color: #fff;
 }
 
 /* ==========================================================================
