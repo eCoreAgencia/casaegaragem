@@ -1,0 +1,60 @@
+extends ../layouts/default.pug
+
+block vars
+	- var pageTitle = 'Categoria'
+	- var bodyClass = 'institucional'
+
+block content
+	.container
+		section.section__page.section__institutional
+			.columns
+				aside.sidebar.institutional__sidebar.column.is-3
+					.menu
+						ul.menu-list
+							li
+								a(href="/institucional") Institucional
+							li
+								a(href="/privacidade") Privacidade
+							li
+								a(href="/trocas-devolucao") Trocas e Devolução
+							li
+								a(href="/duvidas-frequentes") Dúvidas Frequentes
+							li
+								a(href="/fale-conosco") Fale Conosco
+				.institutional__content.column
+					.banner.institutional__banner
+						+vtex-controller('<vtex:contentPlaceHolder id="Banner Institucional" />')
+					.institutional__text
+						+vtex-controller('<vtex:contentPlaceHolder id="Conteúdo Institucional" />')
+							h3.title Quem Somos
+							p Somos especialistas em Ferramentas, Materiais para Construção e Utilidades.
+							p Atuamos há mais de 5 anos levando produtos das melhores marcas do segmento para as mãos do profissional, para a sua casa e para sua empresa.
+							p Nosso foco está nas PESSOAS. Temos uma equipe altamente comprometida em oferecer atendimento de excelência, personalizado e focado na solução do seu problema e em sua satisfação.
+							p “Atendimento de loja de bairro. Preço e comodidade da Internet.”
+		section.section__page
+				.diff.container
+						.diff__container.diff__container--no-shadow
+								.diff__box
+										.diff__icon.diff__icon--boleto
+												include ../../svg/coupon.svg
+										.diff__info
+												span.diff__title 10% de desconto no boleto
+												span.diff__subtitle em todos os produtos do site
+								.diff__box
+										.diff__icon.diff__icon--frete
+												include ../../svg/truck.svg
+										.diff__info
+												span.diff__title frete grátis
+												span.diff__subtitle a partir de R$ 299 para o Sudeste
+								.diff__box
+										.diff__icon.diff__icon--troca
+												include ../../svg/refresh.svg
+										.diff__info
+												span.diff__title troca grátis (7 dias)
+												span.diff__subtitle Tranquilidade na sua primeira compra
+								.diff__box
+										.diff__icon.diff__icon--atacado
+												include ../../svg/percent.svg
+										.diff__info
+												span.diff__title Compre no Atacado
+												span.diff__subtitle Receba descontos especiais
