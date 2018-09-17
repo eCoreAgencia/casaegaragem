@@ -1,0 +1,206 @@
+.footer {
+    padding: 0;
+    background-color: transparent;
+    &__top {
+        background-color: $c-primary;
+        padding: 20px 0;
+    }
+
+    &__contact {
+        display: flex;
+				justify-content: space-between;
+				padding: 0 20px;
+        svg {
+
+            width: 20px;
+            path {
+                fill: $c-white;
+            }
+        }
+
+        &-bar {
+            display: flex;
+            margin-left: auto;
+        }
+
+        &-text {
+            display: flex;
+            color: #5391ba;
+            font-family: $f-secondary;
+            font-size: 22px;
+            align-items: center;
+            line-height: 1;
+            strong {
+                color: #5391ba;
+                display: block;
+                width: 100%;
+
+            }
+        }
+        &-title {
+            text-align: center;
+            padding-right: 15px;
+            border-right: 1px solid rgba(83, 145, 186, 0.8);
+        }
+        &-subtitle {
+            margin-left: 15px;
+            max-width: 300px;
+            font-size: 20px;
+        }
+
+        .contact {
+            &__box {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                color: $c-white;
+                max-width: 200px;
+
+                span {
+                    width: 100%;
+                    display: block;
+                }
+
+                strong {
+                    margin-left: 10px;
+                    margin-right: auto;
+                    color: $c-white;
+                }
+            }
+        }
+    }
+
+    &__menu {
+        a {
+            padding-left: 0;
+            padding-right: 0;
+            font-family: $f-base;
+            font-size: 18px;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+
+    }
+
+
+    &__main {
+        padding: 20px 20px 60px;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: $f-secondary;
+    }
+
+    &__copyright, &__main {
+        background-color: #e0e0e0;
+    }
+    &__copyright {
+        border-top: 1px solid #d3d3d3;
+        padding: 20px;
+
+        .footer__inner {
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-text {
+            margin-left: auto;
+            margin-right: auto;
+            font-family: $f-base;
+            font-size: 16px;
+        }
+    }
+    &__develop {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            &__vtex {
+                margin-left: 10px;
+                display: block;
+                width: 100px;
+            }
+        }
+    }
+
+    &__media {
+        padding-top: 20px;
+    }
+
+    &__newsletter {
+        padding-top: 40px;
+        .newsletter {
+            .input {
+                background-color: #cecece;
+                height: 44px;
+                border-radius: 10px;
+                box-shadow: none;
+                font-family: $f-base;
+                font-size: 18px;
+                border: none;
+            }
+            .button--newsletter {
+                background-color: $c-yellow;
+                color: $c-white;
+                border-radius: 10px;
+                height: 44px;
+                width: 187px;
+                font-family: $f-base;
+                font-size: 18px;
+                border: none;
+                &:hover {
+                    background-color: darken($c-yellow, 10%);
+                    border: none;
+                }
+
+
+            }
+            margin-bottom: 20px;
+        }
+    }
+
+
+}
+
+.social-links {
+    display: flex;
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg, path {
+            fill: #9e9e9e;
+        }
+        svg {
+            width: 30px;
+        }
+
+        li {
+            margin: 0 10px;
+        }
+
+
+    }
+
+    &__text {
+        font-size: 20px;
+        color: #000;
+        font-family: $f-secondary;
+        font-weight: 700;
+    }
+
+
+}
