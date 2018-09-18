@@ -5,15 +5,15 @@ header.header
         span.contact__phone.contact__box
           i.icon-phone
           strong Compre pelo Televendas:
-          | (24) 2221-2353
+            a(href="tel:(24) 2221-2353") (24) 2221-2353
         span.contact__help.contact__box
           i.icon-help
           strong Dúvida? Queremos ouvir você:
-          | (24) 2221-2353
+            a(href="tel:(24) 2221-2353") (24) 2221-2353
         span.contact__whatsapp.contact__box
           i.icon-whatsapp
           strong Atendimento via Whatsapp:
-          | (24) 2221-2353
+            a(href="https://wa.me/(24)2221-2353") (24) 2221-2353
   .header__area.header__main.container
     .header__inner
       .columns
@@ -40,4 +40,4 @@ header.header
             span Minha Conta
           .header__minicart.js-minicart
   .header__area.header__menu.container
-    nav.navbar(role='navigation', aria-label='dropdown navigation')
+    include ../components/menu.pug

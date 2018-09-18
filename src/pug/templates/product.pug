@@ -32,9 +32,11 @@ block content
                 span.share__text Compartilhe: 
                 ul.share__list
                   li
-                    a(href="")
+                    a.wa_btn.wa_btn_s(href='whatsapp://send', data-text='Take a look at this awesome website:', data-href='')
                       i.icon-whatsapp
+                    a(href="#")  
                       i.icon-facebook
+                    a(href="#")  
                       i.icon-twitter
 
         .product__info.column.is-6
@@ -51,6 +53,7 @@ block content
             .product__code
               span Cód:
               +vtex-controller('<vtex.cmc:skuReference/>')
+                .skuReference 7891602735994
           .product__price
               .price
                 +vtex-controller('<vtex.cmc:skuPrice />')
@@ -97,6 +100,7 @@ block content
                 button.button.button--more-products 
                   strong Leve mais 
                   | Pague Menos
+                  i.icon-stars
             .product__action-bottom
               +vtex-controller('<vtex.cmc:BuyButton/>')
                 a.buy-button.buy-button-ref(target='_top', href="javascript:alert('Por favor, selecione o modelo desejado.');", style='display:block')

@@ -235,4 +235,15 @@
      }
  }
 
+
+body.orders {
+  .nav-pills>li>a {
+    color: $c-primary;
+  }
+  .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background: $c-primary;
+    color: $c-white;
+  }
+} 
+
  

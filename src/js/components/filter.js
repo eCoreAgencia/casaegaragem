@@ -40,6 +40,9 @@ class Filter {
 }
 
 if($('body').hasClass('category')){
-  window.filter = new Filter();
+  $(document).ready(function(){
+    window.filter = new Filter();
+  })
+ 
 }
 

@@ -49,17 +49,17 @@ block content
               h2.call__title Compre por atacado
               span.call__subtitle Selecionamos as ferramentas ideias para você começar por a mão na obra
               a.button.button-transparent Ver Produtos
-          
   section.section__page.section__shelf
     .container
-      h2.section__title Novidades
+      h2.section__title Mais Vendidos
       .shelf.shelf__carousel--full
-        +vtex-controller('<vtex:contentPlaceHolder id="Colecao Novidades" />')
+        +vtex-controller('<vtex:contentPlaceHolder id="Colecao Mais Vendidos" />')
           .prateleira
             ul
               each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                 li
-                  include ../shelves/prateleira
+                  include ../shelves/prateleira            
+  
   section.section__page.section__shelf
     .container
       h2.section__title Ofertas da semana
@@ -88,14 +88,14 @@ block content
                 img(src='http://via.placeholder.com/175x75')/
   section.section__page.section__shelf
     .container
-      h2.section__title Mais Vendidos
+      h2.section__title Novidades
       .shelf.shelf__carousel--full
-        +vtex-controller('<vtex:contentPlaceHolder id="Colecao Mais Vendidos" />')
+        +vtex-controller('<vtex:contentPlaceHolder id="Colecao Novidades" />')
           .prateleira
             ul
               each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                 li
-                  include ../shelves/prateleira    
+                  include ../shelves/prateleira 
   section.section__page.section__shelf
     .container
       h2.section__title Produtos Coringas

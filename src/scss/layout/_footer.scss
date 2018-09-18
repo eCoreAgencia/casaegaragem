@@ -61,6 +61,10 @@
                     display: block;
                 }
 
+                a, a:hover {
+                    color: $c-white;
+                }
+
                 strong {
                     margin-left: 10px;
                     margin-right: auto;

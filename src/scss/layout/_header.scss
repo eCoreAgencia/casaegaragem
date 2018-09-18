@@ -77,6 +77,10 @@
 
 	&__menu {
     padding: 0!important;
+
+    &::before, &::after {
+      display: none;
+    }
 		.navbar-item {
 			align-items: stretch;
 			padding: 0;
@@ -117,9 +121,14 @@
     
     .navbar {
       justify-content: space-between;
+
+      &::before, &::after {
+        display: none;
+      }
     }
   }
   
+
  
 
 }

@@ -6,7 +6,7 @@
     padding-right: 10px;
   }
   &-item {
-    max-width: 100px;
+    // max-width: 100px;
 		font-family: $f-base;
 		&.is-first {
 			
@@ -20,14 +20,14 @@
 			
 		}
 		
-		&.has-dropdown:nth-child(n + 6){
+		&.has-dropdown:nth-child(n + 3){
 			.navbar-dropdown {
 				left: inherit;
 				right: -289px;
 			}
 			
 		}
-		&.has-dropdown:nth-child(n + 11){
+		&.has-dropdown:nth-child(n + 6){
 			.navbar-dropdown {
 				left: inherit;
 				right: 0;
@@ -59,7 +59,9 @@
 	}
 	
 	&-dropdown {
-		
+		#toda-loja & {
+			padding: 10px;
+		}
 		.navbar-item {
 			max-width: 100%;
 			display: block;
@@ -71,6 +73,11 @@
 
 		&-items {
 			display: flex;
+
+			#toda-loja & {
+				flex-direction: column;
+				margin-bottom: 15px;
+			}
   		
 		}
 
@@ -81,6 +88,12 @@
 				max-height: 315px;
     		width: 100%;
 			}
+		}
+		h3 {
+			font-size: 17px;
+			color: $c-primary;
+			padding: 0 15px 5px;
+			
 		}
 
 		

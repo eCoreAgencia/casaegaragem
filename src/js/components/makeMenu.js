@@ -4,10 +4,11 @@ import { slugify, myLoad } from '../utils';
 class MakeMenu {
   constructor() {
     this.categoryTree = [];
-    this.init();
+    //this.init();
     const self = this;
+    self.getBannerPlaceholder();
     $(window).on('makeMenuFinished', function(){
-      self.getBannerPlaceholder();
+      
       const all = `<div id="toda-loja" class="navbar-item is-first has-dropdown is-hoverable">
       <a href="/" class="navbar-link"> <i class="icon-menu"></i>Toda Loja</a>
       <div class="navbar-dropdown"></div>
@@ -21,13 +22,13 @@ class MakeMenu {
     });
   }
 
-  async init() {
-    let self = this;
-    const api = new vtexRequest();
-    const categories = await api.getCategoryTree(2);
-    self.displayMenu(categories);
-    $(window).trigger('makeMenuFinished');
-  }
+  // async init() {
+  //   let self = this;
+  //   const api = new vtexRequest();
+  //   const categories = await api.getCategoryTree(2);
+  //   self.displayMenu(categories);
+  //   $(window).trigger('makeMenuFinished');
+  // }
 
 
 
@@ -77,7 +78,7 @@ class MakeMenu {
       const id = $(this).attr('id');
       console.log(id);
       const container = `#${id} .navbar-dropdown-image`;
-      $(container).load(`/bannermenu.html #${id}`)
+      $(container).load(`/bannermenu #${id}`)
     })
   }
 
