@@ -58,7 +58,7 @@ export const productShelf = (product, list = false) => {
 $(document).ready(function () {
   $('.product--shelf .product__buy').on('click', function (e) {
     e.preventDefault();
-    const productID = $(this).data('product-id');
-    addToCart(productID);
+    const productID = $('.product__id', this).data('product-id');
+    addToCart($(this), productID);
   })
 });

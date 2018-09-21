@@ -1,4 +1,7 @@
-
+import swal from 'sweetalert';
+import {
+  addToCart
+} from '../utils';
 
 
 export default (function() {
@@ -65,6 +68,8 @@ if ($('body').hasClass('product')) {
       //   if (!val || val < 1) $(this).val(1)
       // })
 
+      
+
       $('.button--plus').on('click', () =>{
         self.changeQuantity(1);
       })
@@ -72,6 +77,41 @@ if ($('body').hasClass('product')) {
       $('.button--minus').on('click', () =>{
         self.changeQuantity(-1);
       })
+
+      $('.buy-button').on('click', function(e){ 
+        e.preventDefault();
+        let href = $(this).attr('href');
+        const text = "javascript:alert('Por favor, selecione o modelo desejado.');";
+        let qtd = $('.product__qtd-value').val()
+
+        if(href === text){
+          swal({
+            text: 'Selecione o sku',
+            icon: 'warning',
+          })
+          return false;
+        }
+
+        href = href.split('?');
+        href = href[1].split('&');
+        const sku = href[0].split('=');
+        console.log(sku);
+        addToCart($(this), sku[1], qtd)
+        
+      });
+
+      if($('ul.thumbs li').length > 4) {
+        const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
+        const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
+  
+        $('ul.thumbs').slick({
+          vertical: true,
+            slidesToShow: 4,
+            infinite: false,
+            prevArrow: shelf__prev,
+            nextArrow:shelf__next
+        });
+      }
     }
 
     changeQuantity(val) {
