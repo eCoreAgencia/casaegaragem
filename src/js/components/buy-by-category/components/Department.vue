@@ -2,8 +2,7 @@
   <div :id="slug" class="buy-by-category" :data-id="id">
     <div class="category category__card">
       <div class="category__card-header">
-        <div class="category__card-media">
-          <img :src="banner"/>
+        <div class="category__card-media" :style="banner">
         </div>
         <div class="category__card-info">
           <span class="category__name">{{ titulo }}</span>
@@ -46,7 +45,7 @@ import { slugify } from '../../../utils';
         return slug;
       },
       banner: function(){
-        let banner = `/arquivos/banner-${ slugify(this.titulo) }.jpg`;
+        let banner = `background-image: url('/arquivos/banner-${ slugify(this.titulo) }.jpg')`;
 
         return banner;
       }

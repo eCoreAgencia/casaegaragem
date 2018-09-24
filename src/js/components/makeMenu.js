@@ -6,7 +6,7 @@ class MakeMenu {
     this.categoryTree = [];
     //this.init();
     const self = this;
-    self.getBannerPlaceholder();
+    //self.getBannerPlaceholder();
     $(window).on('makeMenuFinished', function(){
 
       const all = `<div id="toda-loja" class="navbar-item is-first has-dropdown is-hoverable">
