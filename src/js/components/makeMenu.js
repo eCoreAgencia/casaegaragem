@@ -8,7 +8,7 @@ class MakeMenu {
     const self = this;
     self.getBannerPlaceholder();
     $(window).on('makeMenuFinished', function(){
-      
+
       const all = `<div id="toda-loja" class="navbar-item is-first has-dropdown is-hoverable">
       <a href="/" class="navbar-link"> <i class="icon-menu"></i>Toda Loja</a>
       <div class="navbar-dropdown"></div>
@@ -46,7 +46,7 @@ class MakeMenu {
                 </div>
                 <div class="navbar-dropdown-image">
 
-                  <img src="http://via.placeholder.com/400x289" />
+                  <img src="/arquivos/banner-${slug}.jpg" />
                 </div>
               </div>` : ''}
 					</div>

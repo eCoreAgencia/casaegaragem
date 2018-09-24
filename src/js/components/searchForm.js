@@ -43,8 +43,9 @@ export default class SearchForm {
     element.append(resultWrapper);
   }
 
-  getSearchResult(query) {
+  getSearchResult(term) {
     let self = this;
+    let query = `ft=${query}`;
     const endpoint = isLocalhost ? `/product.html` : vtexSearchPageEndpoint(query, this.shelfId, 3);
     axios.get(endpoint)
       .then(data => self.appendResultList(data.data))

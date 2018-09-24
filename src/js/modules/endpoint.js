@@ -2,7 +2,7 @@ import { isLocalhost } from '../utils';
 
 const baseUrl = `http://localhost:3000`
 
-export const vtexSearchPage = (query, shelfId, ps = 12) => isLocalhost ? `/shelf.html` : `/buscapagina?&ft=${query}&PS=${ps}&sl=${shelfId}&cc=50&sm=0&PageNumber=1`;
+export const vtexSearchPage = (query, shelfId, ps = 12) => isLocalhost ? `/shelf.html` : `/buscapagina?${query}&PS=${ps}&sl=${shelfId}&cc=50&sm=0&PageNumber=1`;
 
 export const vtexCategoryTree = (level) =>  isLocalhost ? `${baseUrl}/categoryTree` : `/api/catalog_system/pub/category/tree/${level}`;
 

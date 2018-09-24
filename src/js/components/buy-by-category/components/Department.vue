@@ -3,7 +3,7 @@
     <div class="category category__card">
       <div class="category__card-header">
         <div class="category__card-media">
-          <img src="http://via.placeholder.com/275x275">
+          <img :src="banner"/>
         </div>
         <div class="category__card-info">
           <span class="category__name">{{ titulo }}</span>
@@ -44,6 +44,11 @@ import { slugify } from '../../../utils';
       slug: function(){
         let slug = slugify(this.titulo);
         return slug;
+      },
+      banner: function(){
+        let banner = `/arquivos/banner-${ slugify(this.titulo) }.jpg`;
+
+        return banner;
       }
     },
     mounted(){
@@ -53,9 +58,9 @@ import { slugify } from '../../../utils';
       const api = new vtexRequest();
 
       const list = $(`.buy-by-category[data-id="${this.id}"] .shelf__carousel--category`);
-      
 
-      const products = api.getProductWithShelfId(this.id, '65c15678-2bbe-72e0-3aa6-0aa635db2f86')
+      const query = `fq=C:${this.id}`;
+      const products = api.getProductWithShelfId(query, '65c15678-2bbe-72e0-3aa6-0aa635db2f86')
                         .then(response => {
                           setTimeout(function(){
                             $(window).trigger('productFinished');
@@ -80,15 +85,7 @@ import { slugify } from '../../../utils';
 
 
 
-      if($(`#${this.slug}.buy-by-category`)[0]){
-        const slug = this.slug;
-        $(`#${slug}.buy-by-category .category__card-media`).load(`/bannermenu.html #${slug} img`, function(){
-          const src = $(`#${slug}.buy-by-category .category__card-media`).find('img').attr('src');
-          console.log(src);
-          $(`#${slug}.buy-by-category .category__card-media`).css('background-image', `url(${src})`);
 
-        });
-      }
 
 
     },
@@ -114,8 +111,9 @@ import { slugify } from '../../../utils';
           </div>`
 
         list.html(spinner);
+        const query = `fq=C:${id}`;
 
-        const products = api.getProductWithShelfId(id, '65c15678-2bbe-72e0-3aa6-0aa635db2f86')
+        const products = api.getProductWithShelfId(query, '65c15678-2bbe-72e0-3aa6-0aa635db2f86')
           .then(response => {
             if(response) {
               setTimeout(function(){
