@@ -25,7 +25,7 @@ $(document).ready(function(){
       })
     }
 
-    $('.product--shelf-flip .product__front').on('click', function(){
+    $('.shelf').on('click', '.product--shelf-flip .product__front', function(){
       $(this).parents('.product--shelf-flip').addClass('hover');
     })
 

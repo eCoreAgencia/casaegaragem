@@ -7,6 +7,12 @@ import {
 export default (function() {
 if ($('body').hasClass('product')) {
 
+  const productID = $('#___rc-p-id').val();
+
+  $('.button--product-more').on('click', function(){
+    $('.productSpecification').toggleClass('is-active');
+  })
+
   $('.product__share').share({ 'social': ['whatsapp','facebook']});
   let thumbs = $('.thumbs')
   let fix_zoom = function () {
@@ -68,7 +74,18 @@ if ($('body').hasClass('product')) {
       //   if (!val || val < 1) $(this).val(1)
       // })
 
-      
+      $('.button--add-list').on('click', () => {
+        vtexjs.checkout.getOrderForm()
+        .done(function(orderForm) {
+          if(!orderForm.loggedIn){
+            const returnUrl = encodeURI(window.location.href);
+            window.location = `/login?ReturnUrl=${returnUrl}`;
+
+          }else{
+            self.addList(orderForm.clientProfileData.email)
+          }
+        });
+      })
 
       $('.button--plus').on('click', () =>{
         self.changeQuantity(1);

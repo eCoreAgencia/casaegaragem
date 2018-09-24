@@ -9,4 +9,4 @@ export const vtexCategoryTree = (level) =>  isLocalhost ? `${baseUrl}/categoryTr
 export const vtexSeachProductByCategory = (categoryId) =>  isLocalhost ? `${baseUrl}/products` : `/api/catalog_system/pub/products/search/?fq=C:${categoryId}`;
 
 export const vtexProductWithVariations = (productId) =>  isLocalhost ? `${baseUrl}/product` : `/api/catalog_system/pub/products/variations/${productId}`;
-
+export const vtexMasterDataSearch = (entity, query = '') => isLocalhost ? `${baseUrl}/lista` : `/api/dataentities/${entity}/search${query}`;

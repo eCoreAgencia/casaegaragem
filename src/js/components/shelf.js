@@ -56,9 +56,9 @@ export const productShelf = (product, list = false) => {
 }
 
 $(document).ready(function () {
-  $('.product--shelf .product__buy').on('click', function (e) {
+  $('body').on('click','.product--shelf .product__buy', function (e) {
     e.preventDefault();
-    const productID = $('.product__id', this).data('product-id');
+    const productID = $(this).parents('.product--shelf').find('.product__id').data('product-id');
     addToCart($(this), productID);
   })
 });

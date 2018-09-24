@@ -61,4 +61,15 @@ export default class vtexRequest {
       console.log(err);
     }
   }
+
+  async getDocumentsSearchMD(entity, query) {
+    try {
+      const http = new requestHttp();
+      const response = await http.get(api.vtexMasterDataSearch(entity, query));
+      const search = await response.json();
+      return search;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

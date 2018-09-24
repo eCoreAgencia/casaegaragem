@@ -3724,5 +3724,8 @@
         "rewardValue": 0
       }
     ]
-  }
+  },
+  "lista": [
+    { "email": "luiz.felipe@ecorecomunicacao.com", "productIds": "123, 456, 789, 1011, 1213, 1415", "id": "470a3aef-b79a-11e8-821f-d169ad9719e4"}
+  ]
 }

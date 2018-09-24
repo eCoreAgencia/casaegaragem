@@ -8,6 +8,11 @@
 
   }
 
+  &__breadcrumb {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__title, &__subtitle {
     text-align: center;
     font-family: $f-secondary;
