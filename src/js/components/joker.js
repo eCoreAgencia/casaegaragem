@@ -69,7 +69,7 @@
                             </svg>
 
                         <p class="product__flip-phrase">${text}</p>
-                        <span class="product__flip-action">(clique para revelar o nome)  </span>
+                        <span class="product__flip-action">(Clique para revelar o nome)  </span>
                         </div>
                     </div>
                     <div class="product__back">      <span class="product__id" data-product-id="${product.productId}"></span>

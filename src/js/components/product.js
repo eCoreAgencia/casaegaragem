@@ -9,8 +9,14 @@ if ($('body').hasClass('product')) {
 
   const productID = $('#___rc-p-id').val();
 
+  if($('.value-field.Garantia').is(':not(:empty)')){
+    const garantia = $('.value-field.Garantia').text();
+    $('.button--garantia').css('display', 'flex');
+    $('.button--garantia strong').text(`Garantia de ${garantia}`);
+  }
+
   $('.button--product-more').on('click', function(){
-    $('.productSpecification').toggleClass('is-active');
+    $('#caracteristicas').toggleClass('is-active');
   })
 
   $('.product__share').share({ 'social': ['whatsapp','facebook']});
