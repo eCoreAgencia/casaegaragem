@@ -1,4 +1,5 @@
 //import Price from '../modules/price';
+import vtexRequest from '../modules/vtexRequest';
 
 (function($) {
     $.fn.joker = function(options) {
@@ -14,23 +15,13 @@
         var html = '';
         var methods = {
             init: function() {
-                const requestUrl = "/api/dataentities/PC/search?_fields=active,productId,text";
-                $.ajax({
-                    url: requestUrl,
-                    type: "GET",
-                    headers: {
-                        Accept: "application/vnd.vtex.masterdata.v10.profileSchema+json",
-                        "REST-Range": "resources=0-900"
-                    }
-                }).done(function (data) {
-                    data.map(item => {
-                        if(item.active){
-                            methods.create(item);
-                        }
-                    })
-                    
-                    
-                })
+
+                const api = new vtexRequest();
+
+                const data = api.getFromMasterData('PC', 'active=True', 'productId,text');
+
+                methods.create(data);
+                
             },
             getPrice: function(product){
                 const price = new Price(product);
@@ -48,7 +39,7 @@
             create: function(item){
                 const urlProduct = `/api/catalog_system/pub/products/search?fq=productId:${item.productId}`;
                 $.ajax({
-                    url: requestUrl,
+                    url: urlProduct,
                     type: "GET",
                     headers: {
                         "Accept": "application/json",

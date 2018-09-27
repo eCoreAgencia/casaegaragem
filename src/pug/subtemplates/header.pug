@@ -23,13 +23,15 @@ header.header
               a.logo__link(href="/")
                 img.logo__image(src="/arquivos/logo.png", alt="")/
         .header__search-form.column.is-6
-          .search-form#header-form
-            .field.has-addons
-              .control.is-expanded
-                input.input(type='text', placeholder='Digite o nome do produto...')/
-              .control
-                a.button
-                  span.icon-search
+          #header-form
+            form.search-form(action="/busca")
+              .field.has-addons
+                .control.is-expanded
+                  input.input(type='search', name='ft', required='required', autocomplete='off', placeholder='Digite o nome do produto...', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Digite o nome do produto...'")/
+                .control
+                  button.button
+                    span.icon-search
+            .search-form__result-list        
         .header__action-user.column
 
           a.button.button--buy-list(href='/lista-de-compras')

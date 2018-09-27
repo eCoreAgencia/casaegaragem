@@ -64,6 +64,7 @@ class Minicart {
      }
      
      removeItem(index) {
+         console.log(index, 'funciona');
        vtexjs.checkout.removeItems([{index}])
      }
      

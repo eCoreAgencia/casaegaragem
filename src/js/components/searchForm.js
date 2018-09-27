@@ -1,73 +1,136 @@
-import axios from 'axios';
-import {
-  isLocalhost,
-  vtexSearchPageEndpoint
-} from '../utils';
+(function ($) {
+   /**
+    * Formulário de busca nos moldes do Rex
+    * @method Searchform
+    * @param {Object} options Opções do plugin
+    */
+   $.fn.searchform = function (options) {
+     let self = $.fn.searchform
+     let el = this
+     let defaults = {
+       vtexStore: '',
+       autocomplete: true,
+       showDepartments: true,
+       thumbWidth: 100,
+       thumbHeight: 100,
+       charactersToStartAjax: 3,
+       excludeKeys: [9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 91, 92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 144, 145, 224],
+     }
+     let settings = $.extend({}, defaults, options)
+     if (!settings.vtexStore) throw Error('[searchform] Prop vtexStore can\'t be empty.')
+     let { vtexStore, autocomplete, showDepartments, thumbWidth, thumbHeight, charactersToStartAjax, excludeKeys } = settings
+     let isLocalhost = ((window.location.hostname === 'localhost') || (~window.location.hostname.indexOf('192.168'))) ? true : false
+     let urlPrefix = isLocalhost ? `//${vtexStore}.vtexcommercestable.com.br` : ''
+     let input = el.find('.input')
+     let select = el.find('.select')
+     let list = $('.search-form__result-list')
 
-export default class SearchForm {
-
-  constructor(element) {
-
-    this.form = $(element);
-    this.shelfId = 'ebccb84c-3bc2-590c-7999-9849b0cbd4d5';
-    this.init()
-  }
-
-  init() {
-    let self = this;
-    const input = this.form.find('.input');
-    this.listHtml(this.form)
-
-    input.on('keyup focus', function () {
+     input.on('keyup focus', function () {
       $('.search-form').addClass('search-form--focus');
-      const list = $('.search-form__result-list');
-      const word = $(this).val();
-      console.log(word)
-      if (word.length >= 3) self.getSearchResult(word)
+      
     })
 
     input.on('blur', function () {
-      const list = $('.search-form__result-list');
-      $('.search-form').removeClass('search-form--focus');
-      setTimeout(function () {
-        list.hide();
-        list.empty();
-      }, 500)
+      $('.search-form').removeClass('search-form--focus'); 
 
     })
-
-  }
-
-  listHtml(element) {
-    const resultWrapper = `<div class="search-form__result-list"></div>`;
-    element.append(resultWrapper);
-  }
-
-  getSearchResult(term) {
-    let self = this;
-    let query = `ft=${query}`;
-    const endpoint = isLocalhost ? `/product.html` : vtexSearchPageEndpoint(query, this.shelfId, 3);
-    axios.get(endpoint)
-      .then(data => self.appendResultList(data.data))
-      .catch(error => self.appendResultList(`<span class="no-result">Não foi encontrado nenhum resultado</span>`))
-
-  }
-
-  appendResultList(resultList) {
-    console.log(resultList);
-    if (!resultList) resultList = `<span>Não foi encontrado nenhum resultado</span>`;
-    const list = $('.search-form__result-list');
-
-    list.empty();
-    list.show();
-    list.append(resultList);
-
-  }
-
-
-
-}
-
-
-
-window.searchForm = new SearchForm('#header-form');
+  
+     self.searchformMountResultList = function (items) {
+       if (!items) return
+  
+       list.html('')
+       items.forEach(item => {
+         let { href, name, thumbUrl: thumb } = item
+         let html = `
+           <a class="search-form__result-item" href="${href}" title="${name}">
+             ${thumb ? `
+               <div class="search-form__result-img">
+                 <img src="${thumb.replace('-25-25', `-${thumbWidth}-${thumbHeight}`)}" alt="${name}"/>
+               </div>
+             ` : ''}
+             <span class="search-form__result-name">${name}</span>
+           </a>
+         `
+         list.append(html)
+       })
+     }
+  
+     self.searchformMountDepartmentList = function (departments) {
+       departments.forEach(function (department) {
+         let { name } = department
+         select.append(`<option value="${name}">${name}</option>`)
+       })
+     }
+  
+     self.searchformReset = function (e) {
+       input.val('').trigger('input')
+     }
+  
+     self.searchformDoSearch = function (e) {
+       let search = input.val().replace(/\./g, '').replace(/(^[\s]+|[\s]+$)/g, '')
+  
+       if (search.length >= settings.charactersToStartAjax) {
+         clearTimeout(self.timeOut)
+         self.timeOut = setTimeout(() => {
+           if (search === input.val()) self.searchformRequestApiData(search)
+         }, 500)
+       }
+       else {
+         if (search.length < settings.charactersToStartAjax) {
+           list.removeClass('is-fetching').hide()
+           self.searchformMountResultList(null)
+         }
+       }
+  
+       return false
+     }
+  
+     self.searchformRequestApiData = function (query) {
+       if (self.xhr) self.xhr.abort()
+  
+       list.addClass('is-fetching').show()
+  
+       self.xhr = $.ajax({
+         type: 'GET',
+         url: urlPrefix + '/buscaautocomplete/?productNameContains=' + query,
+         error(err) {
+           console.error(err)
+           list.removeClass('is-fetching').hide()
+           self.itemsReturned = null
+         },
+         success(data) {
+           console.log(data.itemsReturned)
+           list.removeClass('is-fetching')
+           self.searchformMountResultList(data.itemsReturned)
+         },
+       })
+     }
+  
+     self.searchformGetDepartments = function () {
+       $.ajax({
+         url: `${urlPrefix}/api/catalog_system/pub/category/tree/0`,
+         type: 'GET',
+         headers: { 'content-type': 'application/json' },
+         error(err) { $('.searchform__select').hide() },
+         success(data) { self.searchformMountDepartmentList(data) },
+       })
+     }
+  
+     this.on('submit', function (e) {
+       e.preventDefault()
+       let search = input.val().replace(/\./g, '').replace(/(^[\s]+|[\s]+$)/g, '')
+       let department = select.val() ? '/' + select.val() : ''
+       window.location = department + '/' + encodeURI(search)
+     })
+  
+     if (settings.showDepartments)
+       self.searchformGetDepartments()
+     else
+       select.remove()
+  
+     if (settings.autocomplete)
+       input.on('input', self.searchformDoSearch)
+     else
+       list.remove()
+   }
+  })(jQuery)

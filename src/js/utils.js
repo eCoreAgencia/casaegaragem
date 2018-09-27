@@ -1,3 +1,5 @@
+import swal from 'sweetalert';
+
 export let isLocalhost = ~window.location.host.indexOf('localhost') ? true : false;
 export const vtexSearchPageEndpoint = (query, shelfId, ps) => `/buscapagina?&ft=${query}&PS=${ps}&sl=${shelfId}&cc=50&sm=0&PageNumber=1`;
 export const vtexcategoryTreeEndpoint = (level) => `/api/catalog_system/pub/category/tree/${level}`;
@@ -5,14 +7,16 @@ export const vtexSeachProductByCategoryEndpoint = (categoryId) => `/api/catalog_
 
 export const addToCart = function(button, id, quantity = 1, seller = '1', redirect = false) {
 	let item = { id, quantity, seller }
-	console.log(item)
+    console.log(item)
+    button.addClass('button');
+    button.addClass('is-loading');
 	vtexjs.checkout.addToCart([item], null, 1)
 	  .done(orderForm => {
-      console.log(orderForm);
-      button.addClass('button--added');
-      setTimeout(function(){
-        button.removeClass('button--added');
-      }, 2000)
+        swal({
+            text: 'Produto Adicionado',
+            icon: 'success',
+          })
+          button.removeClass('is-loading');  
 	  })
 }
 

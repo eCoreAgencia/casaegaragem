@@ -20,9 +20,16 @@ import './components/buyList';
 
 import './pages/home';
 import './pages/empty-search';
+import './components/send-form'
 
 
 $(document).ready(function(){
+  if($('body').hasClass('search')){
+    const search = window.location.search;
+    const word = search.split('?ft=')
+    $('.search__word').text(`"${word[1]}"`);
+  }
+  $('.search-form').searchform({'vtexStore': 'casaegaragem'});
     if($('li.helperComplement')[0]){
         $('li.helperComplement').remove();
       }
@@ -30,5 +37,12 @@ $(document).ready(function(){
       if($('.shelf--flip')[0]){
         $('.shelf--flip').joker();
       }
+
+     
+
+
+
+
+      $('.newsletter .form').sendForm('NL')    
 })
 

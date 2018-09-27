@@ -58,7 +58,16 @@ export const productShelf = (product, list = false) => {
 $(document).ready(function () {
   $('body').on('click','.product--shelf .product__buy', function (e) {
     e.preventDefault();
-    const productID = $(this).parents('.product--shelf').find('.product__id').data('product-id');
-    addToCart($(this), productID);
+    const button = $(this);
+    const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
+    vtexjs.catalog.getProductWithVariations(productID).done(function(product){
+        if(product.skus.length > 1){
+
+        }else{
+            addToCart(button, productID);  
+        }
+    });
+    
+    //
   })
 });

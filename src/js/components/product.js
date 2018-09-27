@@ -160,7 +160,7 @@ if ($('body').hasClass('product')) {
     }
 
     simulateShipping() {
-      //window.OMSimulateShipping = new SimulateShipping()
+      window.OMSimulateShipping = new SimulateShipping()
     }
 
     

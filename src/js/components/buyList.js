@@ -1,8 +1,13 @@
-//import swal from 'sweetalert';
+import swal from 'sweetalert';
+import vtexRequest from '../modules/vtexRequest';
 
 $(document).ready(function () {
 
     const listUrlEmail = `/api/dataentities/LC/search?email=`;
+
+    const api = new vtexRequest();
+
+                
 
     let isLogin = false;
 
@@ -15,7 +20,6 @@ $(document).ready(function () {
         vtexjs.checkout.getOrderForm()
             .done(function(orderForm) {
                 if(orderForm.loggedIn){
-                    console.log(orderForm.loggedIn)
                     logged(orderForm.clientProfileData.email);
                 }
             });
@@ -23,19 +27,11 @@ $(document).ready(function () {
 
     const listExist = (email) => {
         let exist = false;
+        const data = api.getFromMasterData('LC', `email=${email}`, 'products,email'); 
 
-        $.ajax({
-            url: listUrlEmail + email,
-            type: "GET",
-            headers: {
-                Accept: "application/vnd.vtex.masterdata.v10.profileSchema+json",
-                "REST-Range": "resources=0-900"
-            }
-        }).done(function(data){
-            if(data.length > 0){
-                exist = true;
-            }
-        })
+        if(data.length > 0){
+            exist = true;
+        }
 
         return exist;
     }
@@ -44,7 +40,6 @@ $(document).ready(function () {
         sessionStorage.setItem('email', email)
     }
     const login = (productID) => {
-        //const returnUrl = encodeURI(window.location.href);
         sessionStorage.setItem('productID', productID);
         window.location = `/login`;
     }
@@ -55,15 +50,23 @@ $(document).ready(function () {
 
         if(listExist(email)){
             if(userList.products.find(product => product==productID)){
-                // swal({
-                //     text: 'Esse Produto já está na Lista',
-                //     icon: 'warning',
-                //   })
+                swal({
+                    text: 'Esse Produto já está na Lista',
+                    icon: 'warning',
+                  })
                   return false;
             }
             userList.products.push(productID);
 
             listUpdate(userList);
+        }else{
+
+            const list = {
+                email: sessionStorage.getItem('email'),
+                products: productID
+            }
+            const data = api.postFromMasterData('LC', list);
+            console.log(data); 
         }
 
     }

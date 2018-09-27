@@ -54,15 +54,16 @@ footer.footer
           .footer__newsletter
             .newsletter
               .newsletter__inner
-                .field.is-horizontal
-                  .field-body
-                    .field
-                      .control
-                        input.input(type="text", placeholder="Nome")/
-                    .field
-                      .control
-                        input.input(type="email", placeholder="E-mail")/
-                    button.button.button--newsletter Cadastrar 
+                form.form
+                  .field.is-horizontal
+                    .field-body
+                      .field
+                        .control
+                          input.input(type="text", name="whatsapp", placeholder="Whatsapp")/
+                      .field
+                        .control
+                          input.input(type="email", name="email", placeholder="E-mail")/
+                      button.button.button--newsletter Cadastrar 
             .social-links
               span.social-links__text Me segue ;)
 

@@ -60,7 +60,12 @@
 
 	&-dropdown {
 		#toda-loja & {
-			padding: 10px;
+            padding: 10px;
+            .navbar--all {
+                color: $c-primary;
+                font-size: 12px;
+                text-transform: none;
+            }
 		}
 		.navbar-item {
 			max-width: 100%;
@@ -89,7 +94,7 @@
 			height: 289px;
 			img {
 				max-height: 315px;
-    		width: 100%;
+    		    width: 100%;
 			}
 		}
 		h3 {
