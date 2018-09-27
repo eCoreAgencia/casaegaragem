@@ -1,5 +1,4 @@
 import '../scss/main.scss'
-import './modules/vtexRequest'
 import './components/share'
 import './components/joker'
 
@@ -19,7 +18,7 @@ import './components/buyList';
 
 
 import './pages/home';
-import './pages/empty-search';
+//import './pages/empty-search';
 import './components/send-form'
 
 

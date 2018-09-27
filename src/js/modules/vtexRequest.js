@@ -74,7 +74,7 @@ export default class vtexRequest {
 		}
 	}
 
-	getFromMasterData(entity, where, fields) {
+	getFromMasterData(entity, where, fields, callback = false) {
 		var urlProtocol = window.location.protocol;
 		var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}'/search?_where=${where}&_fields=${fields}`;
 		var response;

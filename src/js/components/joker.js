@@ -19,8 +19,7 @@ import vtexRequest from '../modules/vtexRequest';
                 const api = new vtexRequest();
 
                 const data = api.getFromMasterData('PC', 'active=True', 'productId,text');
-
-                methods.create(data);
+                data.map( product => methods.create(product));
                 
             },
             getPrice: function(product){
