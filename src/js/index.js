@@ -29,7 +29,7 @@ $(document).ready(function(){
     const word = search.split('?ft=')
     $('.search__word').text(`"${word[1]}"`);
   }
-  $('.search-form').searchform({'vtexStore': 'casaegaragem'});
+  $('.search-form').searchform({'vtexStore': 'casaegaragem', 'showDepartments': false});
     if($('li.helperComplement')[0]){
         $('li.helperComplement').remove();
       }
@@ -38,11 +38,11 @@ $(document).ready(function(){
         $('.shelf--flip').joker();
       }
 
-     
 
 
 
 
-      $('.newsletter .form').sendForm('NL')    
+
+      $('.newsletter .form').sendForm('NL')
 })
 

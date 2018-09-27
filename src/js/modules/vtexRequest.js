@@ -76,7 +76,7 @@ export default class vtexRequest {
 
 	getFromMasterData(entity, where, fields) {
 		var urlProtocol = window.location.protocol;
-		var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}'/search?_where=${where}&_fields=${fields}`;
+		var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}/search?_where=${where}&_fields=${fields}`;
 		var response;
 
 		$.ajax({
@@ -95,13 +95,13 @@ export default class vtexRequest {
 
 		return response;
     }
-    
+
     postInMasterData(entity, fields) {
         var urlProtocol = window.location.protocol;
-		var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}'/search?_where=${where}&_fields=${fields}`;
-		var response;  
-        
-    
+		var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}/search?_where=${where}&_fields=${fields}`;
+		var response;
+
+
         $.ajax({
             "headers": {
                 "Accept": "application/vnd.vtex.ds.v10+json",
@@ -117,7 +117,7 @@ export default class vtexRequest {
         }).fail(function(data) {
             response = data;
         });
-        
+
         return response;
     }
 }

@@ -4,14 +4,14 @@ import vtexRequest from '../modules/vtexRequest';
 (function($) {
     $.fn.joker = function(options) {
 
-        
+
 
         var element = $(this);
 
         var defaults = {};
-  
+
         var settings = $.extend( {}, defaults, options );
-        
+
         var html = '';
         var methods = {
             init: function() {
@@ -19,9 +19,9 @@ import vtexRequest from '../modules/vtexRequest';
                 const api = new vtexRequest();
 
                 const data = api.getFromMasterData('PC', 'active=True', 'productId,text');
-
+				console.log(data);
                 methods.create(data);
-                
+
             },
             getPrice: function(product){
                 const price = new Price(product);
@@ -48,7 +48,7 @@ import vtexRequest from '../modules/vtexRequest';
                 }).done(function (product) {
                     methods.render(item.text, product);
                 })
-                            
+
             },
             render: function(text, product){
                 var shelf = `<div class="product product--shelf product--shelf-flip">
@@ -73,7 +73,7 @@ import vtexRequest from '../modules/vtexRequest';
                             <div class="product__info">
                             <h3 class="product__name"><a class="product__link" title="${product.name}" href="${product.link}">${product.name}</a></h3>
                             <div class="product__price">
-                                
+
                             </div>
                         </div>
                         </div>

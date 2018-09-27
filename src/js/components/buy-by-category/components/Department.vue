@@ -113,7 +113,7 @@ import {
           </div>`
 
         list.html(spinner);
-        const query = `${id}`;
+        const query = `/${this.id}/${id}/`;
         let html = '';
         const products = api.getProductsByCategoryId(query)
           .then(response => {
@@ -128,7 +128,7 @@ import {
                   productWithVariations.image = product.items[0].images[0].imageTag;
                   const shelf = productShelf(productWithVariations, true);
                   html += shelf;
-                  
+
                   list.html(`<ul>${html}</ul>`);
                   //$(window).trigger('productFinished');
                 }

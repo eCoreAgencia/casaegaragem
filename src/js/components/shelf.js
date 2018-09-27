@@ -64,10 +64,10 @@ $(document).ready(function () {
         if(product.skus.length > 1){
 
         }else{
-            addToCart(button, product.skus[0].sku);  
+            addToCart(button, product.skus[0].sku);
         }
     });
-    
+
     //
   })
 });
