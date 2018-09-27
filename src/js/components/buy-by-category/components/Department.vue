@@ -113,34 +113,22 @@ import {
           </div>`
 
         list.html(spinner);
-        const query = `/${this.id}/${id}/`;
-        let html = '';
-        const products = api.getProductsByCategoryId(query)
+
+        const query = `fq=C:/${this.id}/${id}/`;
+
+        const products = api.getProductWithShelfId(query, '65c15678-2bbe-72e0-3aa6-0aa635db2f86')
           .then(response => {
             if(response) {
-              console.log(response);
-
-              const shelfs = response.map(async product => {
-                const api = new vtexRequest();
-                const productWithVariations = await api.getProductWithVariations(product.productId)
-                if(productWithVariations.available){
-                  productWithVariations.link = product.link;
-                  productWithVariations.image = product.items[0].images[0].imageTag;
-                  const shelf = productShelf(productWithVariations, true);
-                  html += shelf;
-
-                  list.html(`<ul>${html}</ul>`);
-                  //$(window).trigger('productFinished');
-                }
-              })
               setTimeout(function(){
                 $(window).trigger('productFinished');
               }, 1000)
+              list.html(response)
             } else {
               list.html('<span class="">Não há produtos nesta categoria</span>')
             }
           });
       }
+
 
 
     },

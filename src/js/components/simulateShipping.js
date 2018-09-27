@@ -1,22 +1,21 @@
 import swal from 'sweetalert'
-// import iconClose from '../svg/icon-x.svg'
 import formatInput from './formatInput'
 
 export default class SimulateShipping {
     constructor() {
         let self = this
         let body = $('body')
-        let zipCodeEl = '.js-simulate-shipping-postal-code'
+        let zipCodeEl = '.shipping__input'
 
         this.seller = 1
         this.skuId = skuJson.skus[0].sku
         this.country = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm.storePreferencesData.countryCode : 'BRA'
         this.salesChannel = +window.jssalesChannel || 1
-        this.containerElement = $('.js-simulate-shipping-result')
+        this.containerElement = $('.shipping__result')
 
         body.on('input', zipCodeEl, () => { formatInput(zipCodeEl, '00000-000') })
 
-        body.on('submit', '.js-simulate-shipping', function (e) {
+        body.on('submit', '.shipping__form', function (e) {
             e.preventDefault()
             if (skuJson.skus[0].available) {
             let postalCode = $(zipCodeEl).val().replace('-', '')
@@ -39,7 +38,7 @@ export default class SimulateShipping {
             }
         })
 
-        body.on('click', '.js-simulate-shipping-close', function (e) {
+        body.on('click', '.shipping__close', function (e) {
             e.preventDefault()
             self.containerElement.fadeOut(150)
         })
@@ -51,7 +50,7 @@ export default class SimulateShipping {
         const item = {
             id: this.skuId,
             seller: this.seller,
-            quantity: +$('.js-quantity-value').val(),
+            quantity: +$('.product__qtd-value').val(),
         }
         return vtexjs.checkout.simulateShipping([item], this.postalCode, this.country, this.salesChannel)
         })
@@ -71,10 +70,10 @@ export default class SimulateShipping {
 
     renderShippingResult(slas) {
         let html = `
-            <div class="wrapper--md product-shipping__result">
-            <button class="product-shipping__close js-simulate-shipping-close" type="button">${iconClose ? iconClose : 'fechar'}</button>
+            <div class="product__shipping__result">
+            <button class="product__shipping-close shipping__close" type="button">X</button>
 
-            <table class="product-shipping-table">
+            <table class="product__shipping-table">
                 ${slas.map(sla => this.renderShippingTypeRow(sla)).join('')}
             </table>
             </div>
@@ -89,12 +88,12 @@ export default class SimulateShipping {
         let daysText = days === 1 ? 'dia útil' : 'dias úteis'
         price = (price / 100).formatMoney()
         return `
-            <tr class="product-shipping-table__row">
-            <td class="product-shipping-table__cell">${name}</td>
-            <td class="product-shipping-table__cell">
-                <strong>Em até <span class="product-shipping-table__days">${days} ${daysText}</span></strong>
+            <tr class="product__shipping-table__row">
+            <td class="product__shipping-table__cell">${name}</td>
+            <td class="product__shipping-table__cell">
+                <strong>Em até <span class="product__shipping-table__days">${days} ${daysText}</span></strong>
             </td>
-            <td class="product-shipping-table__cell">${isFree ? 'Grátis' : `R$ ${price}`}</td>
+            <td class="product__shipping-table__cell">${isFree ? 'Grátis' : `R$ ${price}`}</td>
             </tr>
         `
     }

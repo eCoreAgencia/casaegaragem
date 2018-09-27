@@ -1,5 +1,4 @@
-//import Price from '../modules/price';
-import vtexRequest from '../modules/vtexRequest';
+import Price from '../modules/price';
 
 (function($) {
     $.fn.joker = function(options) {
@@ -16,10 +15,27 @@ import vtexRequest from '../modules/vtexRequest';
         var methods = {
             init: function() {
 
-                const api = new vtexRequest();
-
-                const data = api.getFromMasterData('PC', 'active=True', 'productId,text');
-                data.map( product => methods.create(product));
+                
+                var urlProtocol = window.location.protocol;
+                var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/PC/search?_where=active=True&_fields=productId,text`;
+                var response;
+        
+                $.ajax({
+                    "headers": {
+                        "Accept": "application/vnd.vtex.masterdata.v10.profileSchema+json"
+                    },
+                    "url": apiUrl,
+                    "async": false,
+                    "crossDomain": true,
+                    "type": "GET"
+                }).success(function (data) {
+                    data.map(item => {
+                        console.log(item, 'masterData')
+                        methods.create(item)
+                    })
+                }).fail(function (data) {
+                    response = data;
+                });
                 
             },
             getPrice: function(product){
@@ -45,11 +61,16 @@ import vtexRequest from '../modules/vtexRequest';
                         "Content-type": "rapplication/json"
                     }
                 }).done(function (product) {
-                    methods.render(item.text, product);
+                    methods.render(item.text, ...product);
                 })
+
+                vtexjs.ca
 
             },
             render: function(text, product){
+                const price = new Price(product.skus[0]);
+                console.log(product);
+                console.log(product.items[0].images[0].imageTag);
                 var shelf = `<div class="product product--shelf product--shelf-flip">
                     <div class="product__flip">
                     <div class="product__front">
@@ -66,13 +87,13 @@ import vtexRequest from '../modules/vtexRequest';
                         <div class="product__header">
                             <div class="product__media">
                                 <a class="product__link" href="${product.link}">
-                                    ${methods.getUrlImageTag(product.items[0].imageTag, 279, 365)}
+                                    ${methods.getUrlImageTag(product.skus[0].images[0].imageTag, 120, 120)}
                                 </a>
                             </div>
                             <div class="product__info">
                             <h3 class="product__name"><a class="product__link" title="${product.name}" href="${product.link}">${product.name}</a></h3>
                             <div class="product__price">
-
+                                ${price.mont(skus[0])}
                             </div>
                         </div>
                         </div>

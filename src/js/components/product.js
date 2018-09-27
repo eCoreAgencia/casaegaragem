@@ -3,6 +3,7 @@ import {
   addToCart
 } from '../utils';
 
+import SimulateShipping from './simulateShipping';
 
 export default (function() {
 if ($('body').hasClass('product')) {
@@ -62,23 +63,13 @@ if ($('body').hasClass('product')) {
       this.thumbsClickEvent()
       this.simulateShipping()
 
-      // $('.js-product-buy-button').on('click', function (e) {
-      //   e.preventDefault()
-      //   let quantity = $('.js-quantity-value').val()
-      //   addToCart(self.skuJson.skus[0], +quantity)
-      // })
+      if($('.flag.leve-mais-pague-menos')[0]){
+        $('.product__more').addClass('is-active');
+      }
 
-      // $('.js-product-qty-button').on('click', function (e) {
-      //   e.preventDefault()
-      //   let val = $(this).data('value')
-      //   self.changeQuantity(val)
-      // })
-
-      // $('.js-product-qty-value').on('blur', function (e) {
-      //   e.preventDefault()
-      //   let val = +$(this).val()
-      //   if (!val || val < 1) $(this).val(1)
-      // })
+      $('.button--more').on('click', () => {
+        $('.buy-more').toggleClass('is-active');
+      })
 
       $('.button--add-list').on('click', () => {
         vtexjs.checkout.getOrderForm()
@@ -135,6 +126,29 @@ if ($('body').hasClass('product')) {
             nextArrow:shelf__next
         });
       }
+
+
+    $(window).on('skuSelected', function(){
+    
+        if($('ul.thumbs li').length > 4) {
+            const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
+            const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
+            $('ul.thumbs').slick('unslick');
+            setTimeout(function(){
+                $('ul.thumbs').slick({
+                    vertical: true,
+                    slidesToShow: 4,
+                    infinite: false,
+                    prevArrow: shelf__prev,
+                    nextArrow:shelf__next
+                });
+            }, 2000)
+        
+        }
+    
+    })
+
+      
     }
 
     changeQuantity(val) {
@@ -160,7 +174,7 @@ if ($('body').hasClass('product')) {
     }
 
     simulateShipping() {
-      //window.OMSimulateShipping = new SimulateShipping()
+      window.SimulateShipping = new SimulateShipping()
     }
 
     

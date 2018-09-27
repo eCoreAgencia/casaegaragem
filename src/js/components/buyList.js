@@ -3,95 +3,121 @@ import vtexRequest from '../modules/vtexRequest';
 
 $(document).ready(function () {
 
-    const listUrlEmail = `/api/dataentities/LC/search?email=`;
-
-    const api = new vtexRequest();
-
-                
-
-    let isLogin = false;
-
-    if(sessionStorage.getItem('userList')){
-        sessionStorage.setItem('userList', '');
-    }
-
     
-    const checkIsLogin = () => {
-        vtexjs.checkout.getOrderForm()
-            .done(function(orderForm) {
-                if(orderForm.loggedIn){
-                    logged(orderForm.clientProfileData.email);
-                }
-            });
-    }
-
-    const listExist = (email) => {
-        let exist = false;
-        const data = api.getFromMasterData('LC', `email=${email}`, 'products,email'); 
-
-        if(data.length > 0){
-            exist = true;
-        }
-
-        return exist;
-    }
-
-    const logged = (email) => {
-        sessionStorage.setItem('email', email)
-    }
-    const login = (productID) => {
-        window.location = `/login`;
-    }
 
 
-    const addList = (productID) => {
-        const email =  sessionStorage.getItem('email');
 
-        if(listExist(email)){
-            if(userList.products.find(product => product==productID)){
-                swal({
-                    text: 'Esse Produto já está na Lista',
-                    icon: 'warning',
-                  })
-                  return false;
-            }
-            userList.products.push(productID);
 
-            listUpdate(userList);
-        }else{
-
-            const list = {
-                email: sessionStorage.getItem('email'),
-                products: productID
-            }
-            const data = api.postFromMasterData('LC', list);
-            console.log(data); 
-        }
-
-    }
-
-    const listUpdate = (userList) => {
-
-    }
-
-    $('.button--add-list').on('click', () => {
-
+    $('.button--add-list').on('click', function(){
         const productID = $('#___rc-p-id').val();
-        if(sessionStorage.getItem('email')) {
-            addList(productID);
-        }else{
-            
-            sessionStorage.setItem('productID', productID);
-            login(productID)
+
+        if(window.userEmail){
+            addList(window.userEmail, productID)
+        }else {
+            login();
         }
-    });
+    })
 
-    checkIsLogin();
-
-
-    if(sessionStorage.getItem('productID')){
-        addList(sessionStorage.getItem('productID'))
+    const login = () => {
+        sessionStorage.setItem('logged', true);
+        window.location.href = '/login';
     }
+
+    const addList = (email, productID) => {
+        $('.button--add-list').addClass('is-loading');
+        let item = {
+            email: email,
+            products: productID 
+        }
+
+        postInMasterData('LC', item);
+
+    }
+
+    const updateList = (item, productId) => {
+        
+        item.products.push(productId);
+
+        putInMasterData('LC', item);
+
+    }
+
+    const postInMasterData = (entity, fields) => {
+        var urlProtocol = window.location.protocol;
+		var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/${entity}/documents`;
+
+
+        $.ajax({
+            "headers": {
+                "Accept": "application/vnd.vtex.ds.v10+json",
+                "Content-Type": "application/json"
+            },
+            "url": apiUrl,
+            "async" : false,
+            "crossDomain": true,
+            "type": "POST",
+            "data": JSON.stringify(fields)
+        }).success(function(data) {
+            swal({
+                text: 'Produto Adicionado',
+                icon: 'success',
+            })
+            $('.button--add-list').removeClass('is-loading');
+        }).fail(function(data) {
+            swal({
+                text: 'Não foi possível adicionar o produto',
+                icon: 'error',
+              })
+            console.log(data);
+            $('.button--add-list').removeClass('is-loading');
+        });
+
+        //return response;
+    }
+
+
+    const putInMasterData = (name, item) => {
+        var urlProtocol = window.location.protocol;
+        var apiUrl = urlProtocol + '//api.vtexcrm.com.br/casaegaragem/dataentities/' + name + '/documents';
+    
+        
+    
+        $.ajax({
+            "headers": {
+                "Accept": "application/vnd.vtex.masterdata.v10+json",
+                "Content-Type": "application/json"
+            },
+            "url": apiUrl,
+            "async" : false,
+            "crossDomain": true,
+            "type": "PUT",
+            "data": JSON.stringify(item)
+        }).success(function(data) {
+            response = data;
+        }).fail(function(data) {
+            response = data;
+        });
+        
+        return response;
+    }
+
+
+    const checkLogin = () => {
+        const logged = sessionStorage.getItem('logged');
+        const productID = $('#___rc-p-id').val();
+
+        if(logged){
+           
+            addList(window.userEmail, productID)
+        }
+    }
+
+    $(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
+        if(orderForm.loggedIn){
+            window.userEmail = orderForm.clientProfileData.email;
+            checkLogin();
+        }
+    })
   
   
 });

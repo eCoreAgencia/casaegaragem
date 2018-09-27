@@ -24,9 +24,8 @@ import './components/send-form'
 
 $(document).ready(function(){
   if($('body').hasClass('search')){
-    const search = window.location.search;
-    const word = search.split('?ft=')
-    $('.search__word').text(`"${word[1]}"`);
+    const search = window.location.pathname;
+    $('.search__word').text(`"${search}"`);
   }
   $('.search-form').searchform({'vtexStore': 'casaegaragem', 'showDepartments': false});
     if($('li.helperComplement')[0]){

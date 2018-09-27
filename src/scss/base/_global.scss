@@ -33,6 +33,10 @@ html [type="button"],
   -webkit-appearance: button;
 }
 
+#ajaxBusy {
+    display: none !important;
+}
+
 
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
 @import "../../node_modules/bulma/sass/base/_all.sass";
