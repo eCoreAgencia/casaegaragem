@@ -40,7 +40,6 @@ $(document).ready(function () {
         sessionStorage.setItem('email', email)
     }
     const login = (productID) => {
-        sessionStorage.setItem('productID', productID);
         window.location = `/login`;
     }
 
@@ -78,10 +77,12 @@ $(document).ready(function () {
     $('.button--add-list').on('click', () => {
 
         const productID = $('#___rc-p-id').val();
-        if(sessionStorage.getItem('email', email)) {
-            login(productID)
-        }else{
+        if(sessionStorage.getItem('email')) {
             addList(productID);
+        }else{
+            
+            sessionStorage.setItem('productID', productID);
+            login(productID)
         }
     });
 
