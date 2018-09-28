@@ -15,19 +15,9 @@
 
 $(document).ready(function(){
   if($('body').hasClass('home')){
-    
-
-    if($('.call__box')[0]){
-      $('.call__box').each(function(){
-        const img = $('img', this).attr('src');
-
-        $(this).css('background-image', 'url('+img+')');
-      })
+    if($('li.helperComplement')[0]){
+      $('li.helperComplement').remove();
     }
-
-    $('.shelf').on('click', '.product--shelf-flip .product__front', function(){
-      $(this).parents('.product--shelf-flip').addClass('hover');
-    })
 
     var $gallery = $('.banner--full .banner__inner');
     var slideCount = null;
@@ -94,7 +84,7 @@ $(document).ready(function(){
       nextArrow:shelf__next
     });
 
-    $('.shelf__brand').slick({
+    $('.shelf__brand ul').slick({
       arrows: true,
       slideToShow: 4,
       slidesToScroll: 1,
@@ -104,25 +94,5 @@ $(document).ready(function(){
       prevArrow: shelf__prev,
       nextArrow:shelf__next
     });
-
-    $(window).on('productFinished', function () {
-      console.log('productFinished');
-      $('.buy-by-category .shelf ul').each(function () {
-        if($('li.helperComplement', this)[0]){
-          $('li.helperComplement', this).remove();
-        }
-        if ($('li', this).length > 5 && !$(this).hasClass('slick-initialized')) {
-          $(this).slick({
-            arrows: true,
-            slideToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            variableWidth: true,
-            prevArrow: shelf__prev,
-            nextArrow:shelf__next
-          });
-        }
-      })
-    })
   }
 })

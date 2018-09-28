@@ -1,341 +1,72 @@
-(function ($) {
-	/**
-	 * FormulÃ¡rio de busca nos moldes do Rex
-	 * @method searchform
-	 * @param {Object} options OpÃ§Ãµes do plugin
-	 */
-	$.fn.searchform = function (options) {
-		let self = $.fn.searchform
-		let el = this
-		let defaults = {
-			vtexStore: 'casaegaragem',
-			autocomplete: true,
-			showDepartments: true,
-			thumbWidth: 80,
-			thumbHeight: 80,
-			charactersToStartAjax: 3,
-			imagesOnly: false,
-			maxResults: 4,
-			showBrands: true,
-			showHint: false,
-			excludeKeys: [9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 91, 92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 144, 145, 224]
-		}
-		let settings = $.extend({}, defaults, options)
-		if (!settings.vtexStore) throw Error('[searchform] Prop vtexStore can\'t be empty.')
-		let {
-			vtexStore,
-			autocomplete,
-			showDepartments,
-			thumbWidth,
-			thumbHeight,
-			charactersToStartAjax,
-			imagesOnly,
-			maxResults,
-			showBrands,
-			excludeKeys
-		} = settings
-		let isLocalhost = ((window.location.hostname === 'localhost') || (~window.location.hostname.indexOf('192.168'))) ? true : false
-		let urlPrefix = isLocalhost ? `//${vtexStore}.vtexcommercestable.com.br` : ''
-		let input = el.find('.input')
-		let select = el.find('.select')
-		let list = $('.search-form__result-list')
-		let brandsList = el.find('.searchform-brands')
-		let hintEl = el.find('.searchform-hint')
+import axios from 'axios';
+import {
+  isLocalhost,
+  vtexSearchPageEndpoint
+} from '../utils';
 
-		self.searchformMountResultList = function (items, query) {
-            list.html('')
-            list.append(`<a class="search-form__link" href="${query}">Ver todos os resultados</a>`)
+export default class SearchForm {
 
-			if (!items) return
+  constructor(element) {
 
-			items.forEach(item => {
-				let {
-					link,
-					productName,
-					items,
-					productId
-				} = item
-				let imgId = items[0].images[0].imageId
-				let thumb = `http://${vtexStore}.vteximg.com.br/arquivos/ids/${imgId}-${thumbWidth}-${thumbHeight}`
+    this.form = $(element);
+    this.shelfId = 'ebccb84c-3bc2-590c-7999-9849b0cbd4d5';
+    this.init()
+  }
 
-			  //   console.log(productId)
-				vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
-				  //   console.log(data);
-					let bestPriceFormated = data.skus[0].bestPriceFormated;
-					let listPriceFormated = data.skus[0].listPriceFormated;
-					let stock = data.skus[0].availablequantity;
-					let listPrice = data.skus[0].listPrice;
-					let html = '';
-					let parcelas = data.skus[0].installments;
-					let valorParcela = data.skus[0].installmentsValue;
+  init() {
+    let self = this;
+    const input = this.form.find('.input');
+    this.listHtml(this.form)
 
-					let estoque = '';
+    input.on('keyup focus', function () {
+      $('.search-form').addClass('search-form--focus');
+      const list = $('.search-form__result-list');
+      const word = $(this).val();
+      console.log(word)
+      if (word.length >= 3) self.getSearchResult(word)
+    })
 
-					if (stock == 0) {
-						estoque = "<p style='color: red;'>Sem estoque</p>"
-					} else {
-						estoque = bestPriceFormated;
-					}
+    input.on('blur', function () {
+      const list = $('.search-form__result-list');
+      $('.search-form').removeClass('search-form--focus');
+      setTimeout(function () {
+        list.hide();
+        list.empty();
+      }, 500)
 
-				  //   function _formatCurrency(value){
-				  //       return parseFloat(num).toFixed(2).replace('.',',').toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
-				  //     }
-					  // montar parcela
-					  if(valorParcela !== 0){
-						  var num = valorParcela / 100;
-						  valorParcela = parseFloat(num).toFixed(2).replace('.',',');
-					  }
+    })
 
-                      if (listPrice == 0) {
-						html = `
-					  	<div class="product--shelf">
-							<div class="product__header">
-								<div class="product__media">
-									<a class="product__link" href="${link}" title="${productName}">
-										<img src="${thumb}" alt="${productName}"/>
-									</a>
-								</div>
-							</div>
-							<div class="product__info">
-								<h3 class="product__name">
-									<a class="product__link" href="${link}" title="${productName}">${productName}</a>
-								</h3>
-								<div class="product__price">
-									<div class="price">
-										<span class="price__list">${bestPriceFormated}</span>
-										<span class="price__instament">${(parcelas !== 0)? parcelas : ''}x R$ ${(valorParcela !== 0)? valorParcela : ''} sem juros.</span>
-									</div>
-								</div>
-							</div>
-						</div>`
-                      } else {
-                        html = `
-                        <div class="product--shelf">
-                          <div class="product__header">
-                              <div class="product__media">
-                                  <a class="product__link" href="${link}" title="${productName}">
-                                      <img src="${thumb}" alt="${productName}"/>
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="product__info">
-                              <h3 class="product__name">
-                                  <a class="product__link" href="${link}" title="${productName}">${productName}</a>
-                              </h3>
-                              <div class="product__price">
-                                  <div class="price">
-                                      <span class="price__list">${listPriceFormated}</span>
-                                      <span class="price__instament">${(parcelas !== 0)? parcelas : ''}x R$ ${(valorParcela !== 0)? valorParcela : ''} sem juros.</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>`
-                      }
-					list.prepend(html)
-                    $('.searchform-list').css('top', $('.pageHeader').height());
-                    
-				});
-            })
-            
-            
-		}
+  }
 
-		self.searchformSelecHint = function () {
-			let hint = hintEl.text();
-			let query = input.val()
+  listHtml(element) {
+    const resultWrapper = `<div class="search-form__result-list"></div>`;
+    element.append(resultWrapper);
+  }
 
-			if (hint.length > query.length) {
-				input.val(hint).trigger('input')
-			}
-		}
+  getSearchResult(query) {
+    let self = this;
+    const endpoint = isLocalhost ? `/product.html` : vtexSearchPageEndpoint(query, this.shelfId, 5);
+    axios.get(endpoint)
+      .then(data => self.appendResultList(data.data))
+      .catch(error => self.appendResultList(`<span class="no-result">Não foi encontrado nenhum resultado</span>`))
 
-		self.searchformMountHint = function (items, query) {
+  }
 
-			hintEl.html('')
+  appendResultList(resultList) {
+    console.log(resultList);
+    if (!resultList) resultList = `<span>Não foi encontrado nenhum resultado</span>`;
+    const list = $('.search-form__result-list');
 
-			if (items && items.length) {
-				let queryLen = query.split(' ').length
-				let pName = items[0].productName.toLowerCase()
+    list.empty();
+    list.show();
+    list.append(resultList);
 
-				if (pName.startsWith(query.toLowerCase())) {
-					let queryJ = pName.split(' ').slice(0, queryLen).join(' ')
+  }
 
-					hintEl.html(query + queryJ.slice(query.length, queryJ.length))
-				}
 
-			}
 
-		}
+}
 
-		self.searchformMountBrandsList = function (brands, query) {
-			brandsList.html('')
 
-			if (!brands) return
 
-			if (brands.length) {
-				brands.push('VER TODAS')
-			}
-
-			let tpl = ''
-
-			brands.forEach(brand => {
-
-				let url = `/${encodeURIComponent(brand).replace('.', '-')}/${query}`
-
-			  //   if (brand == 'VER TODAS') {
-			  //       url = `/busca/${query}`
-			  //   }
-				if (brand == 'VER TODAS') {
-				  url = `/${query}`
-			  }
-
-				tpl += `
-			<a class="searchform-brands-item" href="${url}" title="${brand}">
-			  <span>ver mais produtos</span>
-			</a>
-		  `
-			})
-
-			$('.searchform-list').append(tpl)
-		}
-
-		self.searchformMountDepartmentList = function (departments) {
-			departments.forEach(function (department) {
-				let {
-					name
-				} = department
-				select.append(`<option value="${name}">${name}</option>`)
-			})
-		}
-
-		self.searchformReset = function (e) {
-			input.val('').trigger('input')
-		}
-
-		self.searchformDoSearch = function (e) {
-			let search = input.val().replace(/\./g, '').replace(/(^[\s]+|[\s]+$)/g, '')
-
-			if (search.length >= settings.charactersToStartAjax) {
-				clearTimeout(self.timeOut)
-				self.timeOut = setTimeout(() => {
-					if (search === input.val()) {
-						self.searchformRequestApiData(search)
-					}
-				}, 500)
-			} else {
-				if (search.length < settings.charactersToStartAjax) {
-					list.removeClass('is-fetching').hide()
-					self.searchformMountResultList(null)
-					if (settings.showBrands) {
-						brandsList.removeClass('is-fetching').hide()
-						self.searchformMountBrandsList(null)
-					}
-					if (settings.showHint) {
-						self.searchformMountHint(null)
-					}
-				}
-			}
-
-			return false
-		}
-
-		self.searchformRequestApiData = function (query) {
-			if (self.xhrAutocomplete) self.xhrAutocomplete.abort()
-
-			hintEl.html('')
-
-			if (settings.showBrands) {
-				brandsList.addClass('is-fetching').show()
-			}
-
-			list.addClass('is-fetching').show()
-
-			self.xhrAutocomplete = $.ajax({
-				type: 'GET',
-				url: urlPrefix + '/api/catalog_system/pub/products/search/' + decodeURIComponent(query) + '?O=OrderByTopSaleDESC',
-				error(err) {
-					console.error(err)
-					list.removeClass('is-fetching').hide()
-					if (settings.showBrands) {
-						brandsList.addClass('is-fetching').hide()
-					}
-					self.itemsReturned = null
-				},
-				success(data) {
-					let items = data
-
-					let brands = []
-
-					list.removeClass('is-fetching')
-
-					if (settings.showBrands) {
-						brandsList.removeClass('is-fetching')
-
-						data.forEach(item => {
-							if (brands.indexOf(item.brand) == -1) {
-								brands.push(item.brand)
-							}
-						})
-					}
-
-					if (settings.maxResults) {
-						items = items.slice(0, settings.maxResults)
-					}
-
-					self.searchformMountResultList(items, query)
-
-					if (settings.showBrands) {
-						self.searchformMountBrandsList(brands, query)
-					}
-
-					if (settings.showHint) {
-						self.searchformMountHint(items, query)
-					}
-
-				},
-			})
-		}
-
-		self.searchformGetDepartments = function () {
-			$.ajax({
-				url: `${urlPrefix}/api/catalog_system/pub/category/tree/0`,
-				type: 'GET',
-				headers: {
-					'content-type': 'application/json'
-				},
-				error(err) {
-					$('.searchform__select').hide()
-				},
-				success(data) {
-					self.searchformMountDepartmentList(data)
-				},
-			})
-		}
-
-		this.on('submit', function (e) {
-			e.preventDefault()
-			let search = input.val().replace(/\./g, '').replace(/(^[\s]+|[\s]+$)/g, '')
-			let department = select.val() ? '/' + select.val() : ''
-			window.location = department + '/' + encodeURI(search)
-		})
-
-		if (settings.showDepartments)
-			self.searchformGetDepartments()
-		else
-			select.remove()
-
-		if (settings.autocomplete) {
-			input.on('input', self.searchformDoSearch)
-
-			$(document).keydown(function (e) {
-				if (e.keyCode == 39) {
-					self.searchformSelecHint()
-					$('.searchform-list').css('top', $('.pageHeader').height());
-				}
-			});
-		} else
-			list.remove()
-	}
-
-  })(jQuery)
-
+window.searchForm = new SearchForm('#header-form');

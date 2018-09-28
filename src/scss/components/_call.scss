@@ -2,19 +2,11 @@
   display: flex;
   flex-wrap: wrap;
 
-  img {
-    display: none;
-  }
-
   &__box {
     max-width: calc(100%/3);
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  &__inner {
     padding: 35px 70px;
+    background-color: rgba(0,0,0,0.4);
   }
 
   &__title {

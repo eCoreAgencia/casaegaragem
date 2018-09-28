@@ -1,134 +1,112 @@
 .header {
-  &__inner {
-    align-items: center;
-    .columns {
-      align-items: center;
-    }
-  }
-
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 55px;
   &__logo {
-
-  }
-
-  &__contact-bar {
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
+    max-width: 338px;
     width: 100%;
-
-    * {
-      padding: 0 10px;
-      font-family: $f-secondary;
-      font-size: 12px;
-      color: $c-primary;
-    }
-
-    [class^="icon-"], [class*=" icon-"] {
-      font-size: 20px;
-      padding: 0;
-    }
-
-    .icon-help {
-      font-size: 22px;
-    }
-  }
-  &__info {
-    border-bottom: 1px solid $c-gray;
-    padding: 0;
-
-
   }
 
-  &__main {
-    padding: 20px 10px;
-  }
+}
 
-  &__action-user {
-    display: flex;
-    align-items: center;
-    .button {
-      border: none;
+.body-cart #progrecao .prog-cart i, .body-checkout-confirmation #progrecao .prog-cart i, .body-checkout-confirmation #progrecao .prog-confirm i, .body-checkout-confirmation #progrecao .prog-id i, .body-checkout-confirmation #progrecao .prog-payment i, .body-order-form #progrecao .prog-cart i, .body-order-form #progrecao .prog-id i, .body-pag #progrecao .prog-cart i, .body-pag #progrecao .prog-id i, .body-pag #progrecao .prog-payment i, .prog-active i {
+  background-color: $c-yellow;
+}
 
-      [class^="icon-"], [class*=" icon-"] {
-        margin-right: 10px;
-      }
+.body-cart #progrecao .prog-cart circle, .body-cart #progrecao .prog-cart path, .body-cart #progrecao .prog-cart svg, .body-checkout-confirmation #progrecao .prog-cart circle, .body-checkout-confirmation #progrecao .prog-cart path, .body-checkout-confirmation #progrecao .prog-cart svg, .body-checkout-confirmation #progrecao .prog-confirm circle, .body-checkout-confirmation #progrecao .prog-confirm path, .body-checkout-confirmation #progrecao .prog-confirm svg, .body-checkout-confirmation #progrecao .prog-id circle, .body-checkout-confirmation #progrecao .prog-id path, .body-checkout-confirmation #progrecao .prog-id svg, .body-checkout-confirmation #progrecao .prog-payment circle, .body-checkout-confirmation #progrecao .prog-payment path, .body-checkout-confirmation #progrecao .prog-payment svg, .body-order-form #progrecao .prog-cart circle, .body-order-form #progrecao .prog-cart path, .body-order-form #progrecao .prog-cart svg, .body-order-form #progrecao .prog-id circle, .body-order-form #progrecao .prog-id path, .body-order-form #progrecao .prog-id svg, .body-pag #progrecao .prog-cart circle, .body-pag #progrecao .prog-cart path, .body-pag #progrecao .prog-cart svg, .body-pag #progrecao .prog-id circle, .body-pag #progrecao .prog-id path, .body-pag #progrecao .prog-id svg, .body-pag #progrecao .prog-payment circle, .body-pag #progrecao .prog-payment path, .body-pag #progrecao .prog-payment svg, .prog-active circle, .prog-active path, .prog-active svg {
+  fill: $c-primary
+}
 
-      & .icon-user {
-        font-size: 30px;
-      }
+.body-cart #progrecao .prog-cart:after, .body-checkout-confirmation #progrecao .prog-cart:after, .body-checkout-confirmation #progrecao .prog-confirm:after, .body-checkout-confirmation #progrecao .prog-id:after, .body-checkout-confirmation #progrecao .prog-payment:after, .body-order-form #progrecao .prog-cart:after, .body-order-form #progrecao .prog-id:after, .body-pag #progrecao .prog-cart:after, .body-pag #progrecao .prog-id:after, .body-pag #progrecao .prog-payment:after, .prog-active:after {
+  width: 100%
+}
 
-      & .icon-mark {
-        font-size: 30px;
-      }
-    }
-  }
+.body-cart #progrecao .prog-cart:first-of-type:after, .body-cart #progrecao .prog-cart:last-of-type:after, .body-checkout-confirmation #progrecao .prog-cart:first-of-type:after, .body-checkout-confirmation #progrecao .prog-cart:last-of-type:after, .body-checkout-confirmation #progrecao .prog-confirm:first-of-type:after, .body-checkout-confirmation #progrecao .prog-confirm:last-of-type:after, .body-checkout-confirmation #progrecao .prog-id:first-of-type:after, .body-checkout-confirmation #progrecao .prog-id:last-of-type:after, .body-checkout-confirmation #progrecao .prog-payment:first-of-type:after, .body-checkout-confirmation #progrecao .prog-payment:last-of-type:after, .body-order-form #progrecao .prog-cart:first-of-type:after, .body-order-form #progrecao .prog-cart:last-of-type:after, .body-order-form #progrecao .prog-id:first-of-type:after, .body-order-form #progrecao .prog-id:last-of-type:after, .body-pag #progrecao .prog-cart:first-of-type:after, .body-pag #progrecao .prog-cart:last-of-type:after, .body-pag #progrecao .prog-id:first-of-type:after, .body-pag #progrecao .prog-id:last-of-type:after, .body-pag #progrecao .prog-payment:first-of-type:after, .body-pag #progrecao .prog-payment:last-of-type:after, .prog-active:first-of-type:after, .prog-active:last-of-type:after {
+  width: 50%
+}
 
-  .contact {
-    &__box{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-	}
 
-	#top-menu {
-		display: none;
-	}
+#progrecao {
+  padding: 50px 0;
+  background-color: #fafafa
+}
 
-	&__menu {
-    padding: 0!important;
+#progrecao .container {
+  padding: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 540px
+}
 
-    &::before, &::after {
-      display: none;
-    }
-		.navbar-item {
-			align-items: stretch;
-			padding: 0;
-		}
-		.navbar-item:hover .navbar-link,
-		.navbar-item.has-dropdown:hover .navbar-link, 
-		.navbar-item.has-dropdown.is-active .navbar-link {
-			background-color: rgba(255,255,255, 0.2);
-			color: $c-primary;
+#progrecao i, #progrecao li {
+  display: inline-block;
+  transition-duration: .3s;
+  transition-timing-function: ease
+}
 
-			
-		}
+#progrecao li {
+  width: 25%;
+  z-index: 1;
+  list-style: none;
+  text-align: center;
+  position: relative
+}
 
-		.navbar-item.has-dropdown:hover {
-			.navbar-dropdown {
-				display: flex !important;
-				padding: 0;
-				border: none;
-				border-radius: 0;
-        box-shadow: none;
-        
-        		
-			}
-    }
+#progrecao li:after, #progrecao li:before {
+  left: 0;
+  top: 65px;
+  content: '';
+  height: 10px;
+  display: block;
+  position: absolute
+}
 
-    .navbar-item.has-dropdown.is-first:hover {
-			.navbar-dropdown {
-				display: grid !important;
-        width: 1300px;
-        display: grid;
-        grid-template-columns: repeat(7, 186px);
-      }
-      
-      .navbar-item {
-        font-size: 13px;
-      }
-    }
-    
-    .navbar {
-      justify-content: space-between;
+#progrecao li:before {
+  width: 100%;
+  z-index: -2;
+  background: #ccc
+}
 
-      &::before, &::after {
-        display: none;
-      }
-    }
-  }
-  
+#progrecao li:after {
+  width: 0;
+  z-index: -1;
+  background: $c-yellow;
+  transition-duration: .3s;
+  transition-timing-function: ease
+}
 
- 
+#progrecao li:first-of-type:before {
+  left: 50%;
+  width: 50%
+}
 
+#progrecao li:first-of-type:after {
+  left: 50%
+}
+
+#progrecao li:last-of-type:before {
+  width: 50%
+}
+
+#progrecao i {
+  padding: 10px;
+  border-radius: 100%;
+  background-color: #ccc
+}
+
+#progrecao i svg {
+  display: block;
+  transition-duration: .3s;
+  transition-timing-function: ease
+}
+
+#progrecao span {
+  width: 100%;
+  color: $c-primary;
+  display: block;
+  font-size: 18px;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }

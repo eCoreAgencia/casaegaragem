@@ -5,7 +5,7 @@
       position: absolute;
       right: 40px;
       bottom: 40px;
-      z-index: 10;
+      z-index: 99;
       color: $c-white;
       font-size: 29px;
       .current, .total {
@@ -37,7 +37,7 @@
 
       button {
         border: none;
-        background-color: $c-white;
+        background-color: #fff;
         width: 5px;
         height: 30px;
         font-size: 0;

@@ -4,34 +4,18 @@
   }
   &__diff {
     padding: 20px;
-    
 
-  }
-
-  &__breadcrumb {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__title, &__subtitle {
-    text-align: center;
-    font-family: $f-secondary;
   }
 
   &__title {
-    
+    text-align: center;
     text-transform: uppercase;
+    font-family: $f-secondary;
     font-size: 40px;
     font-weight: 700;
     color: $c-blue;
     margin-bottom: 20px;
   }
-
-  &__subtitle {
-   display: block;
-  }
-
-  
 
   &__shelf {
     margin: 20px 0;
@@ -44,7 +28,6 @@
 
   &__filter {
     background-color: #fafafa;
-    border-top: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
+    padding: 10px 20px;
   }
 }

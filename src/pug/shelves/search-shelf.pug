@@ -7,7 +7,7 @@ if (global.process.env.NODE_ENV === 'production')
   - var listPrice = '$product.ListPrice'
   - var bestPrice = '$product.BestPrice'
   - var flags = '$product.HightLight'
-  - var getImageTag = '$product.GetImageTag(2)'
+  - var getImageTag = '$product.GetImageTag("110-90")'
   - var getImageTag2 = '$product.GetImageTag(2)'
   - var categoryName = '+ $product.CategoryName'
   - var categoryHref = '$product.CategoryLink'
@@ -24,7 +24,7 @@ else
   - var categoryName = '+ Iluminação'
   - var categoryHref = '/category.html'
 
-.product--shelf
+.product__shelf
   span.product__id(data-product-id= dataProductId)
   .product__header
     .product__media
