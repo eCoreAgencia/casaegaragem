@@ -230,6 +230,10 @@
       text-align: left;
       .price__list {
         margin-bottom: 0;
+        font-size: 18px;
+      }
+      .price__instament {
+          font-size: 16px;
       }
     }
   }
@@ -306,7 +310,7 @@
 
     .product--shelf-flip.hover & { transform: rotateY(0deg); }
     .product--shelf-flip & {
-      padding: 30px;
+      padding: 20px;
     }
 
   }
