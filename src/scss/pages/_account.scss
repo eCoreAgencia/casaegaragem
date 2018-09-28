@@ -78,7 +78,7 @@
  .modal {
    position: fixed;
    top: 10%;
-   left: 50%;
+   left: 50% !important;
    z-index: 1050;
    width: 560px;
    margin-left: -280px;
@@ -178,6 +178,23 @@
      margin: 20px 0 30px;
      .columns {
          align-items: stretch;
+     }
+ }
+
+ .modal {
+     .controls {
+        display: flex;
+        align-items: center;
+     }
+     .gender-female-label {
+         margin-top: 0;
+     }
+
+     .radio {
+         input {
+             position: static;
+             margin-left: 0;
+         }
      }
  }
  

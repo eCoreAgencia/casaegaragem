@@ -80,4 +80,13 @@
     #returnToTop {
         display: none!important;
     }
+
+    .prateleira {
+        display: flex;
+        flex-direction: column;
+
+        .btn-load-more {
+            order: 1;
+        }
+    }
 }
