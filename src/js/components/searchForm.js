@@ -42,8 +42,9 @@
 		let brandsList = el.find('.searchform-brands')
 		let hintEl = el.find('.searchform-hint')
 
-		self.searchformMountResultList = function (items) {
-			list.html('')
+		self.searchformMountResultList = function (items, query) {
+            list.html('')
+            list.append(`<a class="search-form__link" href="${query}">Ver todos os resultados</a>`)
 
 			if (!items) return
 
@@ -85,7 +86,7 @@
 						  valorParcela = parseFloat(num).toFixed(2).replace('.',',');
 					  }
 
-
+                      if (listPrice == 0) {
 						html = `
 					  	<div class="product--shelf">
 							<div class="product__header">
@@ -101,17 +102,42 @@
 								</h3>
 								<div class="product__price">
 									<div class="price">
-										<span class="price__list">${listPriceFormated}</span>
+										<span class="price__list">${bestPriceFormated}</span>
 										<span class="price__instament">${(parcelas !== 0)? parcelas : ''}x R$ ${(valorParcela !== 0)? valorParcela : ''} sem juros.</span>
 									</div>
 								</div>
 							</div>
 						</div>`
-
-					list.append(html)
-					$('.searchform-list').css('top', $('.pageHeader').height());
+                      } else {
+                        html = `
+                        <div class="product--shelf">
+                          <div class="product__header">
+                              <div class="product__media">
+                                  <a class="product__link" href="${link}" title="${productName}">
+                                      <img src="${thumb}" alt="${productName}"/>
+                                  </a>
+                              </div>
+                          </div>
+                          <div class="product__info">
+                              <h3 class="product__name">
+                                  <a class="product__link" href="${link}" title="${productName}">${productName}</a>
+                              </h3>
+                              <div class="product__price">
+                                  <div class="price">
+                                      <span class="price__list">${listPriceFormated}</span>
+                                      <span class="price__instament">${(parcelas !== 0)? parcelas : ''}x R$ ${(valorParcela !== 0)? valorParcela : ''} sem juros.</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>`
+                      }
+					list.prepend(html)
+                    $('.searchform-list').css('top', $('.pageHeader').height());
+                    
 				});
-			})
+            })
+            
+            
 		}
 
 		self.searchformSelecHint = function () {
@@ -256,7 +282,7 @@
 						items = items.slice(0, settings.maxResults)
 					}
 
-					self.searchformMountResultList(items)
+					self.searchformMountResultList(items, query)
 
 					if (settings.showBrands) {
 						self.searchformMountBrandsList(brands, query)
