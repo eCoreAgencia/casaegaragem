@@ -1,9 +1,11 @@
 import swal from 'sweetalert';
-import vtexRequest from '../modules/vtexRequest';
+//import vtexRequest from '../modules/vtexRequest';
+
+import { isLogin, getUserEmail } from '../utils';
 
 $(document).ready(function () {
 
-    
+
 
 
 
@@ -27,7 +29,7 @@ $(document).ready(function () {
         $('.button--add-list').addClass('is-loading');
         let item = {
             email: email,
-            products: productID 
+            products: productID
         }
 
         postInMasterData('LC', item);
@@ -35,7 +37,7 @@ $(document).ready(function () {
     }
 
     const updateList = (item, productId) => {
-        
+
         item.products.push(productId);
 
         putInMasterData('LC', item);
@@ -79,9 +81,9 @@ $(document).ready(function () {
     const putInMasterData = (name, item) => {
         var urlProtocol = window.location.protocol;
         var apiUrl = urlProtocol + '//api.vtexcrm.com.br/casaegaragem/dataentities/' + name + '/documents';
-    
-        
-    
+
+
+
         $.ajax({
             "headers": {
                 "Accept": "application/vnd.vtex.masterdata.v10+json",
@@ -97,7 +99,7 @@ $(document).ready(function () {
         }).fail(function(data) {
             response = data;
         });
-        
+
         return response;
     }
 
@@ -107,17 +109,18 @@ $(document).ready(function () {
         const productID = $('#___rc-p-id').val();
 
         if(logged){
-           
-            addList(window.userEmail, productID)
+
+			addList(window.userEmail, productID)
+			sessionStorage.removeItem('logged');
         }
     }
 
     $(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
-        if(orderForm.loggedIn){
-            window.userEmail = orderForm.clientProfileData.email;
+        if(isLogin){
+            window.userEmail = getUserEmail(orderForm);
             checkLogin();
         }
     })
-  
-  
+
+
 });

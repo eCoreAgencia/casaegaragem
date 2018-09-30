@@ -16,7 +16,7 @@ export const addToCart = function(button, id, quantity = 1, seller = '1', redire
             text: 'Produto Adicionado',
             icon: 'success',
           })
-          button.removeClass('is-loading');  
+          button.removeClass('is-loading');
 	  })
 }
 
@@ -56,3 +56,13 @@ export const myLoad = (url, sourceContainer, targetContainer, replace) => {
   xhr.open("GET", url, true);
   xhr.send();
 }
+
+export const formatter = new Intl.NumberFormat('pt-BR', {
+	style: 'currency',
+	currency: 'BRL',
+	minimumFractionDigits: 2
+})
+
+export const isLogin = (orderForm) => orderForm.loggedIn;
+
+export const getUserEmail = (orderForm) => orderForm.clientProfileData.email;

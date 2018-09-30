@@ -1,5 +1,7 @@
 // Price from '../modules/price';
 
+import { formatter } from '../utils'
+
 (function($) {
     $.fn.joker = function(options) {
 
@@ -15,11 +17,11 @@
         var methods = {
             init: function() {
 
-                
+
                 var urlProtocol = window.location.protocol;
                 var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/PC/search?_where=active=True&_fields=productId,text`;
                 var response;
-        
+
                 $.ajax({
                     "headers": {
                         "Accept": "application/vnd.vtex.masterdata.v10.profileSchema+json"
@@ -36,7 +38,7 @@
                 }).fail(function (data) {
                     response = data;
                 });
-                
+
             },
             getPrice: function(product){
                 const price = new Price(product);
@@ -88,12 +90,12 @@
                     let valorParcela = data.skus[0].installmentsValue;
                     if(valorParcela !== 0){
                         var num = valorParcela / 100;
-                        valorParcela = parseFloat(num).toFixed(2).replace('.',',');
+                        valorParcela = formatter.format(num);
                     }
                     let installments = `<span class="price__instament">${parcelas}x de R$ ${valorParcela} sem juros</span>`
 
-                    
-                    
+
+
                     var shelf = `<div class="product product--shelf product--shelf-flip">
                         <div class="product__flip">
                         <div class="product__front">
@@ -134,11 +136,11 @@
                     html += `<li>${shelf}</li>`;
                     element.find('ul').append(html);
                 });
-                
 
-                
-                
-                
+
+
+
+
             }
 
         }

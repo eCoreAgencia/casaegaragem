@@ -30,10 +30,7 @@
   import Category from './Category.vue';
   import vtexRequest from '../../../modules/vtexRequest';
   import { setTimeout } from 'timers';
-import { slugify } from '../../../utils';
-import {
-  productShelf
-} from '../../shelf';
+  import { slugify } from '../../../utils';
 
   export default {
     props: {

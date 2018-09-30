@@ -1,7 +1,7 @@
 import {
   addToCart
 } from '../utils';
-
+/*
 import Price from '../modules/price';
 
 import vtexRequest from '../modules/vtexRequest';
@@ -53,7 +53,7 @@ export const productShelf = (product, list = false) => {
 
   if (list) product_shelf = `<li>${product_shelf}</li>`
   return product_shelf;
-}
+}*/
 
 $(document).ready(function () {
   $('body').on('click','.product--shelf .product__buy', function (e) {
