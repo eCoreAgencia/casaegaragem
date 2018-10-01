@@ -170,14 +170,17 @@ block content
 
         section.section__page.section__product-bottom
             .product__description
-                h2.product__description-title Informações:
-                .product__description-text
-                    +vtex-controller('<vtex.cmc:ProductDescription />')
-                        p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint voluptates laudantium nesciunt veniam quae in error similique aliquid, magnam voluptas ex eum autem architecto? Consequatur unde animi quae aliquid deserunt.
-                    +vtex-controller('<vtex.cmc:productSpecification/>')
-                        .productSpecification
-                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, dolores officia officiis necessitatibus nemo, dignissimos, provident ullam possimus aliquam sequi quas iusto placeat aperiam aliquid nulla a quibusdam laudantium exercitationem.
-                    button.button.button--product-more Ver mais
+                .columns
+                    .column
+                        h2.product__description-title Informações:
+                        .product__description-text
+                            +vtex-controller('<vtex.cmc:ProductDescription />')
+                                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint voluptates laudantium nesciunt veniam quae in error similique aliquid, magnam voluptas ex eum autem architecto? Consequatur unde animi quae aliquid deserunt.
+                    .column
+                        h2.product__description-title Especificações:    
+                        +vtex-controller('<vtex.cmc:productSpecification/>')
+                            .productSpecification
+                                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, dolores officia officiis necessitatibus nemo, dignissimos, provident ullam possimus aliquam sequi quas iusto placeat aperiam aliquid nulla a quibusdam laudantium exercitationem.
         section.section__page.section__shelf
             h2.section__title Quem viu, também gostou
             .shelf.shelf__carousel--full

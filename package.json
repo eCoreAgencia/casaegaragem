@@ -1,6 +1,6 @@
 {
   "name": "casaegaragem",
-  "version": "0.0.39",
+  "version": "0.0.41",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "promise": "^7.1.1",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
+    "ramda": "^0.25.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-inline-loader": "^0.8.0",

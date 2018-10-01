@@ -530,12 +530,7 @@
     }
 
     #caracteristicas {
-      margin: 30px auto;
-      display: none;
-
-      &.is-active {
-        display: block;
-      }
+      
     }
   }
   .button--product-more {
@@ -781,10 +776,16 @@
     }
 
     &__text {
-        font-size: 14px;
+        font-size: 20px;
         
         strong {
             color: $c-primary;
         }
+    }
+
+    &__inner {
+        background: linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+        padding: 20px;
+        border: 1px solid #eee;
     }
 }

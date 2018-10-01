@@ -1,12 +1,26 @@
 import swal from 'sweetalert';
-//import vtexRequest from '../modules/vtexRequest';
+import axios from 'axios';
+const R = require('ramda');
 
 import { isLogin, getUserEmail } from '../utils';
 
 $(document).ready(function () {
+    
+
+
+    
+      
 
 
 
+    const headers = {
+        "headers": {
+            "Accept": "application/vnd.vtex.ds.v10+json",
+            "Content-Type": "application/json"
+        }
+    }
+
+    
 
 
 
@@ -31,8 +45,15 @@ $(document).ready(function () {
             email: email,
             products: productID
         }
-
-        postInMasterData('LC', item);
+        const response = postInMasterData('LC', item);
+        response.then(res => {
+            if(res.status == 201){
+                swal({
+                    text: 'Produto Adicionado',
+                    icon: 'success',
+                })
+            }
+        });
 
     }
 
@@ -43,38 +64,18 @@ $(document).ready(function () {
         putInMasterData('LC', item);
 
     }
-
-    const postInMasterData = (entity, fields) => {
-        var urlProtocol = window.location.protocol;
-		var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/${entity}/documents`;
-
-
-        $.ajax({
-            "headers": {
-                "Accept": "application/vnd.vtex.ds.v10+json",
-                "Content-Type": "application/json"
-            },
-            "url": apiUrl,
-            "async" : false,
-            "crossDomain": true,
-            "type": "POST",
-            "data": JSON.stringify(fields)
-        }).success(function(data) {
-            swal({
-                text: 'Produto Adicionado',
-                icon: 'success',
-            })
-            $('.button--add-list').removeClass('is-loading');
-        }).fail(function(data) {
-            swal({
-                text: 'Não foi possível adicionar o produto',
-                icon: 'error',
-              })
-            console.log(data);
-            $('.button--add-list').removeClass('is-loading');
-        });
-
-        //return response;
+    
+    
+    const postInMasterData = async (entity, fields) => {
+        try {
+            var urlProtocol = window.location.protocol;
+		    var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/${entity}/documents`;
+            const response = await axios.post(apiUrl, headers);
+            console.log(response);
+        } catch(error) {
+            console.log(error)
+        }
+        
     }
 
 
@@ -121,6 +122,7 @@ $(document).ready(function () {
             checkLogin();
         }
     })
+
 
 
 });

@@ -65,9 +65,31 @@ if ($('body').hasClass('product')) {
 
       if($('.flag.leve-mais-pague-menos')[0]){
         $('.product__more').addClass('is-active');
+        $('.buy-more__inner').empty();       
+
+        
+        const desc = [
+            { leve: 2, pague: 0.02 },
+            { leve: 3, pague: 0.07 },
+            { leve: 4, pague: 0.06 },
+            { leve: 5, pague: 0.08 },
+            { leve: 6, pague: 0.1 },
+        ]
+        console.log(desc);
+        desc.map(item => {
+            const skuPrice = $('.skuBestPrice').text().replace(',', '.').replace('R$ ', '');
+            const html = `
+            <div class="buy-more__item">
+                    <span class="buy-more__text">Leve ${item.leve} pague <strong>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(skuPrice - skuPrice*item.pague)}</strong></span>
+                </div>`;
+            $('.buy-more__inner').append(html);
+        });
+
+        
+
       }
 
-      $('.button--more').on('click', () => {
+      $('.button--more-products').on('click', () => {
         $('.buy-more').toggleClass('is-active');
       })
 
@@ -113,35 +135,31 @@ if ($('body').hasClass('product')) {
         addToCart($(this), sku[1], qtd)
         
       });
-
-      if($('ul.thumbs li').length > 4) {
+      const thumbsCarousel = () {
         const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
         const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
   
         $('ul.thumbs').slick({
           vertical: true,
-            slidesToShow: 4,
+            slidesToShow: 3,
             infinite: false,
             prevArrow: shelf__prev,
             nextArrow:shelf__next
         });
       }
 
+      if($('ul.thumbs li').length > 3) {
+        thumbsCarousel();
+      }
+
 
     $(window).on('skuSelected', function(){
     
-        if($('ul.thumbs li').length > 4) {
-            const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
-            const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
+        if($('ul.thumbs li').length > 3) {
             $('ul.thumbs').slick('unslick');
+            
             setTimeout(function(){
-                $('ul.thumbs').slick({
-                    vertical: true,
-                    slidesToShow: 4,
-                    infinite: false,
-                    prevArrow: shelf__prev,
-                    nextArrow:shelf__next
-                });
+                thumbsCarousel();
             }, 2000)
         
         }

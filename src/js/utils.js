@@ -15,7 +15,18 @@ export const addToCart = function(button, id, quantity = 1, seller = '1', redire
         swal({
             text: 'Produto Adicionado',
             icon: 'success',
-          })
+            buttons: {
+                cancel: "Continuar Comprando",
+                checkout: {
+                    text: "Finalizar Pedido",
+                    value: true
+                }
+            }
+        }).then((value) => {
+            if(value){
+                window.location.href = "/checkout/#/cart"
+            }
+        });
           button.removeClass('is-loading');
 	  })
 }
