@@ -16,10 +16,15 @@ export const addToCart = function(button, id, quantity = 1, seller = '1', redire
             text: 'Produto Adicionado',
             icon: 'success',
             buttons: {
-                cancel: "Continuar Comprando",
+                texte: {
+                    text: "Continuar Comprando",
+                    value: false,
+                    className: "button"
+                },
                 checkout: {
                     text: "Finalizar Pedido",
-                    value: true
+                    value: true,
+                    className: "button button--primary"
                 }
             }
         }).then((value) => {

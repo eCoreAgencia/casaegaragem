@@ -764,6 +764,7 @@
     position: absolute;
     display: none;
     width: 465px;
+    z-index: 20;
 
     &.is-active{
         display: block;
@@ -788,4 +789,78 @@
         padding: 20px;
         border: 1px solid #eee;
     }
+}
+
+.buy-together-content {
+    tr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    td.buy {
+        width: 100%;
+        text-align: center;
+        font-size: 0;
+        margin-top: 20px;
+        
+        .price-cash {
+            font-size: 40px;
+            margin-bottom: 20px;
+            strong {
+                color: $c-primary;
+            }
+        }
+    }
+
+    td.itemA, td.itemB {
+        max-width: 276px;
+    }
+
+    td {
+        h3 {
+            @extend .product__name;
+            font-size: 19px;
+            text-align: center;
+
+            a {
+                color: $c-black;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .more {
+        display: none;
+    }
+
+    #lnkComprar {
+        @extend .button;
+        @extend .button--primary;
+        font-size: 36px;
+        border-radius: 24px;
+        padding: 5px 80px;
+    }
+
+    #divTitulo, td.equal, .buy-together {
+        display: none;
+    }
+
+    .plus {
+        color: $c-primary;
+        font-size: 126px;
+        margin: 0 50px;
+    }
+
+    .comprar-junto {
+        margin: 30px 0;
+    }
+
+}
+
+.swal-button.button {
+    font-weight: 300;
 }
