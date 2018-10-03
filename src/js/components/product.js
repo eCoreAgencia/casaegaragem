@@ -65,8 +65,8 @@ if ($('body').hasClass('product')) {
 
 
       
-      if(!$('td.buy')[0]){   
-          $('.section__buy-together').hide();
+      if($('td.buy')[0]){   
+          $('.section__buy-together').show();
       } 
 
     if($('td.buy')[0]){
