@@ -237,6 +237,10 @@
          }
      }
 
+     .address-update {
+         font-size: 14px;
+     }
+
      .modal {
          bottom: inherit;
      }
@@ -262,5 +266,53 @@ body.orders {
     color: $c-white;
   }
 } 
+
+.account {
+    .number {
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: inherit;
+        border-radius: none;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        font-size: inherit;
+        height: inherit;
+        -ms-flex-pack: center;
+        justify-content: inherit;
+        margin-right: 0;
+        min-width: inherit;
+        padding: 0;
+        text-align: inherit;
+        vertical-align: inherit;
+    }
+
+    .address-display-unit {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .edit-address-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
+
+        #address-update {
+            font-size: 14px;
+    
+        }
+    }
+
+    #address-update {
+        font-size: 14px;
+
+    }
+
+    .address-display-unit-info {
+        width: 100%;
+    }
+    
+}
 
  
