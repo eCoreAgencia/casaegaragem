@@ -146,7 +146,7 @@ if ($('body').hasClass('product')) {
 
         if(href === text){
           swal({
-            text: 'Selecione o sku',
+            text: 'Selecione o modelo',
             icon: 'warning',
           })
           return false;

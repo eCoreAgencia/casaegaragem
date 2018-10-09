@@ -13,10 +13,10 @@ export const addToCart = function(button, id, quantity = 1, seller = '1', redire
 	vtexjs.checkout.addToCart([item], null, 1)
 	  .done(orderForm => {
         swal({
-            text: 'Produto Adicionado',
+            text: 'Produto Adicionado\n Deseja fazer o que agora?',
             icon: 'success',
             buttons: {
-                texte: {
+                continue: {
                     text: "Continuar Comprando",
                     value: false,
                     className: "button"
