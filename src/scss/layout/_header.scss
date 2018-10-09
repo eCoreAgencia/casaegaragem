@@ -1,6 +1,11 @@
 .header {
   &__inner {
     align-items: center;
+    .contact_login {
+      font-size: 13px;
+      background: #e6b400;
+      padding: 2px 6px;
+    }
     .columns {
       align-items: center;
     }
@@ -46,6 +51,9 @@
   &__action-user {
     display: flex;
     align-items: center;
+    a#login {
+      color: #000;
+    }
     .button {
       border: none;
 
@@ -77,6 +85,10 @@
 
 	&__menu {
     padding: 0!important;
+
+    &::before, &::after {
+      display: none;
+    }
 		.navbar-item {
 			align-items: stretch;
 			padding: 0;
@@ -117,9 +129,14 @@
     
     .navbar {
       justify-content: space-between;
+
+      &::before, &::after {
+        display: none;
+      }
     }
   }
   
+
  
 
 }

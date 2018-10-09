@@ -1,14 +1,38 @@
+import swal from 'sweetalert';
+
 export let isLocalhost = ~window.location.host.indexOf('localhost') ? true : false;
 export const vtexSearchPageEndpoint = (query, shelfId, ps) => `/buscapagina?&ft=${query}&PS=${ps}&sl=${shelfId}&cc=50&sm=0&PageNumber=1`;
 export const vtexcategoryTreeEndpoint = (level) => `/api/catalog_system/pub/category/tree/${level}`;
 export const vtexSeachProductByCategoryEndpoint = (categoryId) => `/api/catalog_system/pub/products/search/?fq=C:${categoryId}`;
 
-export const addToCart = function(id, quantity = 1, seller = '1', redirect = false) {
+export const addToCart = function(button, id, quantity = 1, seller = '1', redirect = false) {
 	let item = { id, quantity, seller }
-	console.log(item)
+    console.log(item)
+    button.addClass('button');
+    button.addClass('is-loading');
 	vtexjs.checkout.addToCart([item], null, 1)
 	  .done(orderForm => {
-	    console.log(orderForm);
+        swal({
+            text: 'Produto Adicionado\n Deseja fazer o que agora?',
+            icon: 'success',
+            buttons: {
+                continue: {
+                    text: "Continuar Comprando",
+                    value: false,
+                    className: "button"
+                },
+                checkout: {
+                    text: "Finalizar Pedido",
+                    value: true,
+                    className: "button button--primary"
+                }
+            }
+        }).then((value) => {
+            if(value){
+                window.location.href = "/checkout/#/cart"
+            }
+        });
+          button.removeClass('is-loading');
 	  })
 }
 
@@ -48,3 +72,13 @@ export const myLoad = (url, sourceContainer, targetContainer, replace) => {
   xhr.open("GET", url, true);
   xhr.send();
 }
+
+export const formatter = new Intl.NumberFormat('pt-BR', {
+	style: 'currency',
+	currency: 'BRL',
+	minimumFractionDigits: 2
+})
+
+export const isLogin = (orderForm) => orderForm.loggedIn;
+
+export const getUserEmail = (orderForm) => orderForm.clientProfileData.email;

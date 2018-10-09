@@ -5,6 +5,19 @@
   border-radius: 10px;
   position: relative;
 
+  &__link {
+      text-align: center;
+      color: $c-primary; 
+      font-size: 16px;
+      display: none;
+      padding: 10px;
+      font-weight: 700;  
+
+      .product--shelf  + & {
+          display: block;
+      }
+  }
+
   .icon-search {
     font-size: 26px;
     color: #a0a0a0;
@@ -34,12 +47,13 @@
     background-color: transparent;
   }
 
-  
+
 
 
 
   .field {
     margin: 0;
+    align-items: center;
   }
   &__result-list {
     display: none;
@@ -69,6 +83,7 @@
       display: flex;
       align-items: flex-start;
       padding: 10px 20px;
+      border-bottom: 1px solid #eee;
       .product__name {
         text-align: left;
         padding: 0;
@@ -116,4 +131,9 @@
 
 
   }
+}
+
+
+#header-form {
+	position: relative;
 }

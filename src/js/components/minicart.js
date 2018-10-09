@@ -64,6 +64,7 @@ class Minicart {
      }
      
      removeItem(index) {
+         console.log(index, 'funciona');
        vtexjs.checkout.removeItems([{index}])
      }
      
@@ -103,7 +104,8 @@ class Minicart {
 $(document).ready(function(){
     window.Minicart = new Minicart();
 
-    $('body').on('click', '.minicart__handle', function(){
+    $('body').on('click', '.minicart__handle', function(e){
+        e.stopPropagation();
         $('.minicart').toggleClass('active');
     })
 })

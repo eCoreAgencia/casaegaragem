@@ -12,15 +12,18 @@ footer.footer
           span.contact__phone.contact__box
             i.icon-phone
             strong Televendas:
-            span (24) 99259 1944
+            span 
+              a(href="tel:(24) 2221-2353") (24) 2221-2353
           span.contact__help.contact__box
             i.icon-help
             strong SAC:
-            span (24) 2255 0796
+            span 
+              a(href="tel:(24) 2221-2353") (24) 2221-2353
           span.contact__whatsapp.contact__box
             i.icon-whatsapp
             strong Whatsapp:
-            span (24) 99259 1944
+            span 
+              a(href="https://wa.me/(24)2221-2353") (24) 2221-2353
   .footer__area.footer__main
     .container
       .footer__inner
@@ -28,16 +31,18 @@ footer.footer
           h3.footer__title Central de Ajuda
           .footer__menu
             ul.menu-list
-              li 
-                a(href="/institucional") Institucional
-              li 
-                a(href="/privacidade") Privacidade 
-              li 
-                a(href="/trocas-devolucao") Trocas e Devolução
-              li 
-                a(href="/duvidas-frequentes") Dúvidas Frequentes
-              li 
-                a(href="/fale-conosco") Fale Conosco       
+                li
+                    a(href="/institucional/quem-somos") Quem Somos
+                li
+                    a(href="/institucional/privacidade") Privacidade
+                li
+                    a(href="/institucional/politica-de-entrega") Política de Entrega     
+                li
+                    a(href="/institucional/politica-de-troca-e-devolucao") Política de Troca e Devolução
+                li
+                    a(href="/institucional/pagamento") Pagamento    
+                li
+                    a(href="/institucional/duvidas-frequentes") Dúvidas Frequentes
         .footer__box
           h3.footer__title Formas de Pagamento
           .footer__media
@@ -51,33 +56,34 @@ footer.footer
           .footer__newsletter
             .newsletter
               .newsletter__inner
-                .field.is-horizontal
-                  .field-body
-                    .field
-                      .control
-                        input.input(type="text", placeholder="Nome")/
-                    .field
-                      .control
-                        input.input(type="email", placeholder="E-mail")/
-                    button.button.button--newsletter Cadastrar 
+                form.form
+                  .field.is-horizontal
+                    .field-body
+                      .field
+                        .control
+                          input.input(type="text", name="whatsapp", placeholder="Whatsapp")/
+                      .field
+                        .control
+                          input.input(type="email", name="email", placeholder="E-mail")/
+                      button.button.button--newsletter Cadastrar 
             .social-links
               span.social-links__text Me segue ;)
 
               ul.social-links__list
                 li.social-links__item
-                  a(href="")
+                  a(href="//instagram.com/casaegaragem", rel="nofollow", target="_brank")
                     include ../../svg/ic_instagram.svg
                 li.social-links__item
-                  a(href="")
+                  a(href="//:facebook.com/casaegaragem", rel="nofollow", target="_brank")
                     include ../../svg/ic_facebook.svg
                 li.social-links__item
-                  a(href="")
-                    include ../../svg/ic_youtube.svg                       
+                  a(href="//:youtube.com/channel/UCX0PHuVfVrB9dg_yUwpDojQ", rel="nofollow", target="_brank")
+                    include ../../svg/ic_youtube.svg                                            
   .footer__area.footer__copyright
     .container
       .footer__inner
         .footer__copyright-text
-          | Casa e Garagem - CNPJ: 00.000.000/0000-00 Todos os direitos reservados. 2018
+          | Casa e Garagem - CNPJ: 21.859.785/0001-22 Todos os direitos reservados. 2018
         .footer__develop
           a.logo__ecore(href="", target="_blank")
             img(src="/arquivos/ecore-logo.png")/

@@ -22,8 +22,6 @@ block content
                     ul.filter__menu
                         li.filter__item
                             span Todos
-                            .filter__options
-                                label
                     .filter__actions
                         button.button.button--primary Aplicar
                 +vtex-controller('<vtex.cmc:searchNavigator />')
@@ -40,97 +38,97 @@ block content
                             a.search-navigator-tab.tab-navegue-ativo(title='Navegue', href='#') Navegar
                             a.search-navigator-tab.tab-refinar(title='Refinar Resultado', href='#') Refinar Resultado
                             .search-multiple-navigator(style='display: none;')
-                            h3.casa-e-jardim
-                                span
-                                a(href='https://casaegaragem.vtexcommercestable.com.br/casa-e-jardim', title='Casa e Jardim') Casa e Jardim
-                            h4.casa-e-jardim
-                                span
-                                a(href='https://casaegaragem.vtexcommercestable.com.br/casa-e-jardim', title='Casa e Jardim') Casa e Jardim
-                            a.bt-refinar.search-filter-button.even(title='Refinar Resultado', href='#') Refinar Resultado
-                            fieldset.refino-marca.even
-                                h5.even Marca
-                                div
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000001', type='checkbox', name='2000001', value='2000001')
-                                        | Black & Decker (2)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000003', type='checkbox', name='2000003', value='2000003')
-                                        | Fertak Tools (1)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000007', type='checkbox', name='2000007', value='2000007')
-                                        | Gamma (1)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000009', type='checkbox', name='2000009', value='2000009')
-                                        | Intech Machine (4)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000017', type='checkbox', name='2000017', value='2000017')
-                                        | Perlex (4)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000028', type='checkbox', name='2000028', value='2000028')
-                                        | Plasmar (1)
-                                    label
-                                        input.multi-search-checkbox(rel='fq=B:2000018', type='checkbox', name='2000018', value='2000018')
-                                        | Venti Delta (3)
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Modelo
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Marca
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Dimensões
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Componentes
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Garantia
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Alimentação
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Diâmetro do Disco
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Vida Útil
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Tipo de Soquete
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Fluxo Luminoso
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Tipo
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Tamanho
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Certificação
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Rendimento
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Aplicação
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Tensão
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Fixação
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Material
-                                div
-                            fieldset.refino(class='Especificações')
-                                h5(class='Especificações') Diluição
-                                div
-                            fieldset.refino.even(class='Especificações')
-                                h5.even(class='Especificações') Peso
-                                div
+                                h3.casa-e-jardim
+                                    span
+                                    a(href='https://casaegaragem.vtexcommercestable.com.br/casa-e-jardim', title='Casa e Jardim') Casa e Jardim
+                                h4.casa-e-jardim
+                                    span
+                                    a(href='https://casaegaragem.vtexcommercestable.com.br/casa-e-jardim', title='Casa e Jardim') Casa e Jardim
+                                a.bt-refinar.search-filter-button.even(title='Refinar Resultado', href='#') Refinar Resultado
+                                fieldset.refino-marca.even
+                                    h5.even Marca
+                                    div
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000001', type='checkbox', name='2000001', value='2000001')
+                                            | Black & Decker (2)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000003', type='checkbox', name='2000003', value='2000003')
+                                            | Fertak Tools (1)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000007', type='checkbox', name='2000007', value='2000007')
+                                            | Gamma (1)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000009', type='checkbox', name='2000009', value='2000009')
+                                            | Intech Machine (4)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000017', type='checkbox', name='2000017', value='2000017')
+                                            | Perlex (4)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000028', type='checkbox', name='2000028', value='2000028')
+                                            | Plasmar (1)
+                                        label
+                                            input.multi-search-checkbox(rel='fq=B:2000018', type='checkbox', name='2000018', value='2000018')
+                                            | Venti Delta (3)
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Modelo
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Marca
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Dimensões
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Componentes
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Garantia
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Alimentação
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Diâmetro do Disco
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Vida Útil
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Tipo de Soquete
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Fluxo Luminoso
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Tipo
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Tamanho
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Certificação
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Rendimento
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Aplicação
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Tensão
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Fixação
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Material
+                                    div
+                                fieldset.refino(class='Especificações')
+                                    h5(class='Especificações') Diluição
+                                    div
+                                fieldset.refino.even(class='Especificações')
+                                    h5.even(class='Especificações') Peso
+                                    div
                             .search-single-navigator(style='display:block')
                             h3.casa-e-jardim
                                 span
@@ -349,4 +347,4 @@ block content
                         a.btn-comparar(title='Comparar', href='#') Comparar
 
 block scripts
-    script(src='/arquivos/vtex-SmartResearch.js?v=%PROJECT_VERSION%')
+    script(src='/arquivos/vtex-smartResearch.js?v=%PROJECT_VERSION%')

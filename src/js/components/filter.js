@@ -7,7 +7,7 @@ class Filter {
   init(){
     $('.orderBy .select select').on('change', function(){
       const value = $(this).val();
-      window.location.href = window.location.pathname + '?PS=12&' + value;
+      window.location.href = window.location.href + '?PS=12&O=' + value;
     })
     
     if(this.isExist(this.menu)){
@@ -16,10 +16,10 @@ class Filter {
       console.log('Não existe');
     }
 
-    $('.filter fieldset h5').each(function(){
-      if($(this).next('div').find('label')[0]){
-        const text = $(this).text();
-        let label = $(this).next('div').html();
+    $('.filter .search-multiple-navigator fieldset').each(function(){
+      if($('div', this).find('label')[0]){
+        const text = $('h5', this).text();
+        let label = $('div', this).html();
         const html = `
           <li class="filter__item"><span>${text}</span>
             <div class="filter__options">
@@ -40,6 +40,9 @@ class Filter {
 }
 
 if($('body').hasClass('category')){
-  window.filter = new Filter();
+  $(document).ready(function(){
+    window.filter = new Filter();
+  })
+ 
 }
 

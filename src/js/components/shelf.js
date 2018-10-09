@@ -1,7 +1,7 @@
 import {
   addToCart
 } from '../utils';
-
+/*
 import Price from '../modules/price';
 
 import vtexRequest from '../modules/vtexRequest';
@@ -53,12 +53,21 @@ export const productShelf = (product, list = false) => {
 
   if (list) product_shelf = `<li>${product_shelf}</li>`
   return product_shelf;
-}
+}*/
 
 $(document).ready(function () {
-  $('.product--shelf .product__buy').on('click', function (e) {
+  $('body').on('click','.product--shelf .product__buy', function (e) {
     e.preventDefault();
-    const productID = $(this).data('product-id');
-    addToCart(productID);
+    const button = $(this);
+    const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
+    vtexjs.catalog.getProductWithVariations(productID).done(function(product){
+        if(product.skus.length > 1){
+
+        }else{
+            addToCart(button, product.skus[0].sku);
+        }
+    });
+
+    //
   })
 });

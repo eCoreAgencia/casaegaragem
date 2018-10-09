@@ -9,12 +9,18 @@
         padding-bottom: 20px;
     }
     .section__banner {
-        height: 207px;
     }
 
-    &.empty-search {
+    &.search {
 		main {
 			min-height: calc(50vh - 500px);
+		}
+		&__word {
+			color: $c-primary;
+		}
+
+		&__word, &__title {
+			font-size: 23px;
 		}
 
     	 .empty {
@@ -59,4 +65,15 @@
 			}
       	}
     }
+}
+
+.search {
+	&__word {
+		color: $c-primary;
+		font-weight: 700;
+	}
+
+	&__word, &__title {
+		font-size: 23px;
+	}
 }

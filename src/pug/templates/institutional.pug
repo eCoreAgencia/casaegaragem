@@ -1,60 +1,161 @@
 extends ../layouts/default.pug
 
 block vars
-	- var pageTitle = 'Categoria'
-	- var bodyClass = 'institucional'
+    - var pageTitle = 'Categoria'
+    - var bodyClass = 'institucional'
 
 block content
-	.container
-		section.section__page.section__institutional
-			.columns
-				aside.sidebar.institutional__sidebar.column.is-3
-					.menu
-						ul.menu-list
-							li
-								a(href="/institucional") Institucional
-							li
-								a(href="/privacidade") Privacidade
-							li
-								a(href="/trocas-devolucao") Trocas e Devolução
-							li
-								a(href="/duvidas-frequentes") Dúvidas Frequentes
-							li
-								a(href="/fale-conosco") Fale Conosco
-				.institutional__content.column
-					.banner.institutional__banner
-						+vtex-controller('<vtex:contentPlaceHolder id="Banner Institucional" />')
-					.institutional__text
-						+vtex-controller('<vtex:contentPlaceHolder id="Conteúdo Institucional" />')
-							h3.title Quem Somos
-							p Somos especialistas em Ferramentas, Materiais para Construção e Utilidades.
-							p Atuamos há mais de 5 anos levando produtos das melhores marcas do segmento para as mãos do profissional, para a sua casa e para sua empresa.
-							p Nosso foco está nas PESSOAS. Temos uma equipe altamente comprometida em oferecer atendimento de excelência, personalizado e focado na solução do seu problema e em sua satisfação.
-							p “Atendimento de loja de bairro. Preço e comodidade da Internet.”
-		section.section__page
-				.diff.container
-						.diff__container.diff__container--no-shadow
-								.diff__box
-										.diff__icon.diff__icon--boleto
-												include ../../svg/coupon.svg
-										.diff__info
-												span.diff__title 10% de desconto no boleto
-												span.diff__subtitle em todos os produtos do site
-								.diff__box
-										.diff__icon.diff__icon--frete
-												include ../../svg/truck.svg
-										.diff__info
-												span.diff__title frete grátis
-												span.diff__subtitle a partir de R$ 299 para o Sudeste
-								.diff__box
-										.diff__icon.diff__icon--troca
-												include ../../svg/refresh.svg
-										.diff__info
-												span.diff__title troca grátis (7 dias)
-												span.diff__subtitle Tranquilidade na sua primeira compra
-								.diff__box
-										.diff__icon.diff__icon--atacado
-												include ../../svg/percent.svg
-										.diff__info
-												span.diff__title Compre no Atacado
-												span.diff__subtitle Receba descontos especiais
+    .container
+        section.section__page.section__institutional
+            .columns
+                aside.sidebar.institutional__sidebar.column.is-3
+                    .menu
+                        ul.menu-list
+                            li
+                                a(href="/institucional/quem-somos") Quem Somos
+                            li
+                                a(href="/institucional/privacidade") Privacidade
+                            li
+                                a(href="/institucional/politica-de-entrega") Política de Entrega     
+                            li
+                                a(href="/institucional/politica-de-troca-e-devolucao") Política de Troca e Devolução
+                            li
+                                a(href="/institucional/pagamento") Pagamento    
+                            li
+                                a(href="/institucional/duvidas-frequentes") Dúvidas Frequentes
+                .institutional__content.column.is-9
+                    .banner.institutional__banner
+                        +vtex-controller('<vtex:contentPlaceHolder id="Banner Institucional" />')
+                    .institutional__text
+                        +vtex-controller('<vtex:contentPlaceHolder id="Conteúdo Institucional" />')
+                            h3.title Quem Somos
+                            br/
+                            p Somos especialistas em Ferramentas, Materiais para Construção e Utilidades.
+                            p Atuamos há mais de 5 anos levando produtos das melhores marcas do segmento para as mãos do profissional, para a sua casa e para sua empresa.
+                            p Nosso foco está nas PESSOAS. Temos uma equipe altamente comprometida em oferecer atendimento de excelência, personalizado e focado na solução do seu problema e em sua satisfação.
+                            p “Atendimento de loja de bairro. Preço e comodidade da Internet.”
+
+                            h3.title Política de Entrega
+                            br/
+                            p As entregas são realizadas de segunda-feira a sexta-feira, das 9h às 19h. Excepcionalmente entregas podem ocorrer aos sábados, domingos e feriados.
+                            p Os prazos são calculados na página do produto ou no carrinho de compras e o prazo passa a ser considerado a partir da confirmação do pagamento em dias úteis, ou seja, não inclui sábados, domingos e feriados. 
+                            p É importante conferir as dimensões do produto e certificar-se de que estão adequadas aos elevadores, portas e corredores do local da entrega, pois os nossos transportadores não fazem a montagem, desmontagem do produto e/ou portas e janelas.
+                            p IMPORTANTE: Após a finalização do pedido não é possível alterar a forma de entrega, solicitar adiantamento ou prioridade. Todos os prazos de entrega levam em consideração o estoque, a região, o processo de emissão da nota fiscal e o tempo de preparo do produto. A cada atualização no status do pedido nosso sistema envia, automaticamente, e-mails de alerta. Por isso, é importante manter seu e-mail atualizado no cadastro.
+                            p Após a conclusão do pedido, não é possível alterar o endereço de entrega. Caso tenha fornecido o endereço errado, entre em contato com o setor de atendimento ao cliente para que possamos lhe orientar e solucionar o seu caso.
+                            p Caso tenha fornecido o endereço incompleto, entre em contato com o setor de atendimento ao cliente e informe os dados que faltaram.
+
+                            p A entrega só pode ser realizada a uma pessoa maior de 18 anos que apresente documento de identificação.
+
+                            p É vedado à transportadora:
+                            p - entrar no domicílio;
+                            p - entregar por meios alternativos (exemplo: içar produto por janela);
+                            p - realizar instalação ou manutenção de produtos;
+                            p - abrir a embalagem do produto;
+                            p - coletar produtos de devolução;
+                            p - realizar entrega a menores de idade ou sem documento de identificação.
+                            p 
+                                strong Quando recusar a entrega:
+                            p Se ocorrer qualquer das hipóteses abaixo, recuse o recebimento da mercadoria e escreva o motivo da recusa no verso do DANFE:
+                            p - embalagem aberta ou avariada;
+                            p - produto avariado;
+                            p - produto em desacordo com o pedido;
+                            p - falta de acessórios.
+
+
+                            h3.title Política de Troca e Devolução
+                            br/
+                            p Se você precisar trocar ou devolver um produto, saiba que estaremos aqui para solucionar o seu caso com o objetivo de lhe proporcionar uma ótima experiência de compra. Pensando nisso, criamos a política de troca e devolução com base no código de defesa do consumidor, de forma que tudo fique totalmente transparente e que os direitos de nossos clientes sejam sempre respeitados.
+                            
+                            ul(style='margin-top: 0pt; margin-bottom: 0pt; margin-left: 50px;')
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    strong Desistência/Arrependimento
+                            p O prazo é de até 7 (sete) dias corridos a partir do recebimento do produto (conforme Art. 49 do Código de Defesa do Consumidor).
+                            
+                            ul(style='margin-top: 0pt; margin-bottom: 0pt; margin-left: 50px;')
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    strong Defeito técnico ou de fabricação
+                            p O prazo é de até 7 (sete) dias corridos a partir do recebimento do produto para trocar diretamente com a loja. Após este prazo, você deverá entrar em contato com a Central de Atendimento do Fabricante ou em contato direto com uma Assistência Técnica Autorizada do Fabricante em sua cidade. O contato com o fabricante e com suas assistências técnicas autorizadas encontram-se no manual do produto ou no site do fabricante.
+                            
+                            ul(style='margin-top: 0pt; margin-bottom: 0pt; margin-left: 50px;')
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    strong Avaria
+                            p Pedimos que, no ato do recebimento, certifique-se das condições do produto. Caso exista alguma avaria de transporte, falta de volume e violação da embalagem, recuse o produto no momento da entrega.
+                            
+                            ul(style='margin-top: 0pt; margin-bottom: 0pt; margin-left: 50px;')
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    strong Produto em desacordo com o pedido feito
+                            p Recuse o produto no momento da entrega ou solicite a troca ou devolução em até 7 (sete) dias corridos a partir do recebimento do produto (conforme Art. 49 do Código de Defesa do Consumidor).
+                            p
+                                strong ATENÇÃO:
+                                | Entre em contato com a nossa equipe antes de enviar o produto, através do telefone: (24) 2221-2353, por e-mail: sac@casaegaragem.com.br ou através do nosso WhatsApp: (24) 2221-2353, para que possamos orientá-lo sobre como proceder. A restituição dos valores será realizada somente após o recebimento e análise das condições do produto.
+                            
+                            p
+                                strong
+                                    | Para trocar ou devolver um produto, as seguintes condições deverão ser respeitadas:
+                            p
+                                | O produto deverá ser encaminhado na embalagem original, sem indícios de uso, sem violação do lacre original do fabricante, acompanhado do DANFE, do manual e todos os acessórios inclusos.
+                            p
+                                | Caso o produto não esteja dentro desses padrões, e haja qualquer sinal de mau uso ou ausência de seus acessórios, não se fará necessário à Casa e Garagem aceitar a devolução e proceder com o estorno do valor. Neste caso será realizado o reenvio do produto para o cliente.
+                            
+                            p
+                                strong Para sempre ter uma ótima experiência de compra, siga algumas dicas preciosas:
+                            ul(style='margin-top: 0pt; margin-bottom: 0pt; margin-left: 50px;')
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    | Leia sempre a descrição e as especificações do produto que você quer comprar, validando suas características e compatibilidades. Em caso de dúvidas, estaremos à disposição para lhe orientar, através do telefone: (24) 2221-2353, e-mail: sac@casaegaragem.com.br ou através do nosso WhatsApp: (24) 2221-2353.
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    | Guarde sempre a Nota Fiscal Eletrônica. Ela é a garantia do seu produto;
+                                li(style="list-style-type: disc; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;")
+                                    | Guarde a embalagem original: ela será necessária em caso de troca ou devolução do produto.
+                            h3.title Política de Privacidade e Segurança
+
+                            p A Casa e Garagem sabe o quanto é importante para nossos clientes as questões relacionadas à segurança e à privacidade na internet. Para garantir a sua tranquilidade, informamos aqui quais são as práticas que utilizamos para a que a sua navegação em nosso site seja sempre segura.
+
+                            p Nosso ambiente utiliza o certificado de segurança SSL, para garantir os níveis legalmente requeridos quanto à proteção de dados, o mesmo utilizado pelos bancos, que é um sistema que permite compras online com absoluta segurança.
+
+                            p Esse certificado é um software que permite criptografar (técnica pela qual a informação pode ser transformada da sua forma original para outra ilegível) seus dados no momento que você envia para nosso servidor. Seu nome, endereço, cidade e dados do cartão de crédito, ficarão impossíveis de serem identificados por terceiros, pois, somente o seu computador e o nosso servidor entendem.
+
+                            p O seu endereço de e-mail e WhatsApp poderão ser utilizados para envio de promoções e lançamentos de nosso site, desde que previamente autorizado por você em seu cadastro na Casa e Garagem.
+
+                            
+                            h3.title Pagamento
+                            p Para facilitar e agilizar o seu processo de compra, a Casa e Garagem disponibiliza o pagamento em diversas bandeiras de cartão de crédito, boleto bancário e débito online.
+                            p
+                                strong Cartão de Crédito
+                            p Aqui você poderá pagar suas compras com as principais bandeiras de cartões disponíveis no mercado, tais como: Visa, MasterCard, Diners, Amex, Elo, Hipercard, etc.
+                            p As compras poderão ser parceladas em até 12 vezes. E O MELHOR, você não paga juros e conta com total segurança dos seus dados (conforme descrito na Política de Privacidade e Segurança).
+                            p 
+                                strong Boleto Bancário
+                            p Se você não possui cartão de crédito ou prefere pagar suas compras no banco, casas lotéricas ou aplicativo, a sua opção é o boleto bancário (somente à vista). No processo de compra, escolha a opção BOLETO BANCÁRIO, confirme seu pedido e imprima o boleto.
+                            p FIQUE ATENTO! Para pagamento à vista no boleto, eventualmente disponibilizaremos descontos especiais de até 20%! São chances imperdíveis para garantir os produtos que você deseja com ótimos preços!
+
+                            p 
+                                strong Dúvidas Frequentes
+                            p  
+                                ul
+                                    li(style='list-style-type: decimal; font-size: 11pt; font-family: Calibri; color: #000000; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;')
+                                strong Comprar na Casa e Garagem é seguro?
+                            p Sim! Para manter todos os seus dados protegidos, a Casa e Garagem conta com o Certificado de Segurança SSL, o mesmo utilizado pelos Bancos, que garante que todos o seus dados pessoais, endereço e dados de cartão de crédito jamais sejam divulgados. Para mais detalhes, acesse o menu Política de Privacidade e Segurança.
+                            p Sendo assim, você pode ficar tranquilo para realizar suas compras com total segurança.
+                            p  
+                                ul
+                                    li(style='list-style-type: decimal; font-size: 11pt; font-family: Calibri; color: #000000; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;')
+                                        strong Qual o prazo de entrega do meu pedido?
+                            p   O prazo de entrega poderá variar de acordo com a sua região e tipo de envio escolhido. Na página do produto ou no carrinho de compras, basta informar o seu CEP para visualizar as formas de envios disponíveis para sua região e o prazo para entrega de cada uma delas.
+                            p  
+                                ul
+                                    li(style='list-style-type: decimal; font-size: 11pt; font-family: Calibri; color: #000000; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;')
+                                        strong Como acompanhar o meu pedido?
+                            p   Para acompanhar seu pedido, basta entrar com seu e-mail e senha na sua conta em nossa loja. Lá você vai encontrar todas as informações sobre o andamento do seu pedido. E para facilitar ainda mais para você, a Casa e Garagem vai enviar um e-mail informativo a cada atualização de status do seu pedido, mantendo você sempre informado.
+                            p Se preferir, vá direto para os nossos 
+                            p Canais de Atendimento, teremos o prazer em falar com você. Conte conosco!
+                            ul
+                                li(style='list-style-type: decimal; font-size: 11pt; font-family: Calibri; color: #000000; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;')
+                                    strong Posso trocar/devolver o meu produto? Preciso pagar o envio?
+                            p Para realizar a troca ou devolução do seu produto é muito simples e rápido! Basta entrar em contato através de um dos nossos canais de atendimento e solicitar a troca ou devolução, em seguida, você receberá todas as instruções necessárias. E O MELHOR: O custo da primeira troca é sempre por nossa conta!
+                            p Para saber mais sobre o assunto, acesse o nosso menu Trocas e Devoluções, lá você encontrará todos os detalhes sobre o processo.
+                            ul
+                                li(style='list-style-type: decimal; font-size: 11pt; font-family: Calibri; color: #000000; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;')
+                                    strong Posso comprar por telefone?
+                            p Com certeza! Se você preferir ou tiver algum problema na compra através do site, não fique na dúvida e entre em contato conosco imediatamente. Além de auxiliar na finalização da compra, teremos o prazer em ajudá-lo no que mais for preciso.
+                            p Estamos prontos para lhe atender no telefone: (24) 2221-2353, WhatsApp: (24) 2221-2353 ou por e-mail: sac@casaegaragem.com.br.
+                

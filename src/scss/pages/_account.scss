@@ -78,7 +78,7 @@
  .modal {
    position: fixed;
    top: 10%;
-   left: 50%;
+   left: 50% !important;
    z-index: 1050;
    width: 560px;
    margin-left: -280px;
@@ -180,6 +180,23 @@
          align-items: stretch;
      }
  }
+
+ .modal {
+     .controls {
+        display: flex;
+        align-items: center;
+     }
+     .gender-female-label {
+         margin-top: 0;
+     }
+
+     .radio {
+         input {
+             position: static;
+             margin-left: 0;
+         }
+     }
+ }
  
  .account {
      .navbar {
@@ -196,7 +213,7 @@
          margin: 10px;
      }
 
-     h4 {
+     .section__account h4 {
          text-transform: uppercase;
          font-size: 32px;
          padding: 5px 0 25px 20px;
@@ -220,6 +237,10 @@
          }
      }
 
+     .address-update {
+         font-size: 14px;
+     }
+
      .modal {
          bottom: inherit;
      }
@@ -234,5 +255,64 @@
          margin: 10px 0;
      }
  }
+
+
+body.orders {
+  .nav-pills>li>a {
+    color: $c-primary;
+  }
+  .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background: $c-primary;
+    color: $c-white;
+  }
+} 
+
+.account {
+    .number {
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: inherit;
+        border-radius: none;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        font-size: inherit;
+        height: inherit;
+        -ms-flex-pack: center;
+        justify-content: inherit;
+        margin-right: 0;
+        min-width: inherit;
+        padding: 0;
+        text-align: inherit;
+        vertical-align: inherit;
+    }
+
+    .address-display-unit {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .edit-address-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
+
+        #address-update {
+            font-size: 14px;
+    
+        }
+    }
+
+    #address-update {
+        font-size: 14px;
+
+    }
+
+    .address-display-unit-info {
+        width: 100%;
+    }
+    
+}
 
  

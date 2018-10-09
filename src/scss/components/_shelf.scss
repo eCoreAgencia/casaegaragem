@@ -40,7 +40,7 @@
     overflow: hidden;
     width: 100%;
     position: relative;
-    max-height: 510px;
+    max-height: 655px;
     .spinner {
       top: 50%;
     }
@@ -121,6 +121,7 @@
       grid-template-columns: repeat(3, 350px);
       grid-column-gap: 55px;
       grid-row-gap: 55px;
+      padding: 35px 60px;
     }
     li {
      padding: 0;
@@ -224,7 +225,7 @@
   .shelf .slick-arrow {
     position: absolute;
     z-index: 20;
-    top: 50%;
+    top: 36%;
     margin-top: -15px;
   }
 
