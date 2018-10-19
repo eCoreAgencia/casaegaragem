@@ -34,7 +34,7 @@ $(document).ready(function(){
       }
 
       if($('.shelf--flip')[0]){
-        $('.shelf--flip').joker();
+        //$('.shelf--flip').joker();
       }
 
 

@@ -4,10 +4,9 @@ class checkLogin {
     }
 
     init() {
-        vtexjs.checkout.getOrderForm().done(function(orderForm) {
-            let stateLogin = true;
-            let email = orderForm.clientProfileData.email;
-            if(stateLogin) {
+        $(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
+            if(orderForm.loggedIn) {
+                let email = orderForm.clientProfileData.email;
                 var htmlLogin = "<span class='contact__box contact_login'>"+email+"</span>";
                 $(htmlLogin).insertAfter('.contact__whatsapp');
             }
