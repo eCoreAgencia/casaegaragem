@@ -1,6 +1,9 @@
 import {
-  addToCart
+  addToCart,
+  formatter
 } from '../utils';
+
+import swal from 'sweetalert';
 /*
 import Price from '../modules/price';
 
@@ -56,17 +59,85 @@ export const productShelf = (product, list = false) => {
 }*/
 
 $(document).ready(function () {
+
+$('.product--shelf').each(function(){
+
+    const productId = $('.product__id', this).data('product-id')
+    const priceElement = $('.product__price .price__list', this);
+    let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
+    price = formatter.format(price * 0.9);
+    price = `${price} no boleto`;
+    priceElement.html(price);
+    // vtexjs.catalog.getProductWithVariations(productId).done(function(product){
+    //     const sku = product.skus[0]
+
+    //     const html = sku.bestPrice ? sku.bestPriceFormated.replace('R$ ', '').replace(',', '.') : sku.listPriceFormated.replace('R$').replace(',', '.')
+    //     if(sku.bestPrice){
+    //         console.log(sku.bestPrice, 'list');
+    //         priceElement.html(html);
+    //     }else{
+    //         console.log(sku.listPrice, 'best');
+    //     }
+        
+    // })
+
+});
+
   $('body').on('click','.product--shelf .product__buy', function (e) {
     e.preventDefault();
     const button = $(this);
     const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
+
+    console.log(productID);
+
+
+    
+
     vtexjs.catalog.getProductWithVariations(productID).done(function(product){
+        console.log(product)
         if(product.skus.length > 1){
+            let wrap = document.createElement('div');
+            let skus = product.skus.map(product => `<button class="button button--sku" value="${product.sku}"> ${product.skuname}</button>`).join('');
+            wrap.innerHTML = skus;
+
+            let sku = ''
+
+            swal({
+                text: "Selecione a voltagem",
+                content: wrap,
+                buttons: {
+                    cancel: {
+                        text: "Cancelar",
+                        className: "button"
+                    },
+                    confirm: {
+                        text: "Comprar",
+                        value: '',
+                        visible: true,
+                        className: "button button--primary",
+                        closeModal: true
+                    }
+                }
+
+            }).then((value) => {
+                console.log(value, 'modal');
+                if(value){
+                    addToCart(button, value);
+                }
+            })
+
+            $('body').on('click', '.button--sku', function(){
+                console.log($(this).attr('value'))
+                swal.setActionValue($(this).val());
+            })
+
+            
 
         }else{
             addToCart(button, product.skus[0].sku);
         }
     });
+
 
     //
   })

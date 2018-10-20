@@ -107,6 +107,17 @@ $(document).ready(function(){
 
     $(window).on('productFinished', function () {
       console.log('productFinished');
+      $('.buy-by-category .product--shelf').each(function(){
+
+        const productId = $('.product__id', this).data('product-id')
+        const priceElement = $('.product__price .price__list', this);
+        let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
+        price = formatter.format(price * 0.9);
+        price = `${price} no boleto`;
+        priceElement.html(price);
+        
+    
+    });
       $('.buy-by-category .shelf ul').each(function () {
         if($('li.helperComplement', this)[0]){
           $('li.helperComplement', this).remove();

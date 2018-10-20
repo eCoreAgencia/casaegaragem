@@ -26,8 +26,12 @@
       font-size: 19px;
     }
 
-    .product--shelf:hover & {
-      display: flex;
+    
+
+    @include desktop {
+        .product--shelf:hover & {
+            display: flex;
+        }
     }
     .product--shelf-flip & {
       display: flex;
@@ -222,6 +226,10 @@
     border-color: $c-blue;
     .product--shelf & {
       font-size: 19px;
+    }
+
+    &--fast {
+        width: 100%;
     }
   }
 
@@ -883,7 +891,7 @@
     font-weight: 300;
 }
 
-.swal-button.button--checkout {
+.swal-button.button--primary {
     color: $c-white !important;
 }
 

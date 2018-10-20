@@ -11,6 +11,7 @@ import './components/shelf';
 import './components/filter';
 //import './components/buyBuyCategory';
 import './components/product';
+import './components/check_login';
 
 
 import './components/buy-by-category/main'
@@ -33,7 +34,7 @@ $(document).ready(function(){
       }
 
       if($('.shelf--flip')[0]){
-        $('.shelf--flip').joker();
+        //$('.shelf--flip').joker();
       }
 
 

@@ -1,3 +1,5 @@
+import { formatter } from '../utils';
+
 (function ($) {
 	/**
 	 * FormulÃ¡rio de busca nos moldes do Rex
@@ -61,8 +63,8 @@
 			  //   console.log(productId)
 				vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
 				  //   console.log(data);
-					let bestPriceFormated = data.skus[0].bestPriceFormated;
-					let listPriceFormated = data.skus[0].listPriceFormated;
+					let bestPriceFormated = formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9);
+					let listPriceFormated = formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9);
 					let stock = data.skus[0].availablequantity;
 					let listPrice = data.skus[0].listPrice;
 					let html = '';
