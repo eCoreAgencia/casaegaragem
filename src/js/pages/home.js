@@ -84,15 +84,53 @@ $(document).ready(function(){
     const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
     const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
 
-    $('.shelf__carousel--full ul').slick({
-      arrows: true,
-      slideToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
-      variableWidth: true,
-      prevArrow: shelf__prev,
-      nextArrow:shelf__next
-    });
+    const varSlick = {
+		dots: true,
+		slideToShow: 2,
+		slidesToScroll: 1,
+		infinite: true,
+		prevArrow: shelf__prev,
+		nextArrow: shelf__next,
+		mobileFirst: true,
+		responsive: [
+		  {
+			breakpoint: 1024,
+			settings: {
+			  slidesToShow: 4,
+			  slidesToScroll: 2
+			}
+		  },
+		  {
+			breakpoint: 800,
+			settings: {
+			  slidesToShow: 3
+			}
+		  },
+		  {
+			breakpoint: 319,
+			settings: {
+			  slidesToShow: 2,
+			  slidesToScroll: 1,
+              dots: true,
+              arrows: false
+			}
+		  }
+		]
+	  }
+
+
+
+
+	  $(".shelf__carousel--full .prateleira > ul").each(function() {
+		var shelf = $(this);
+		shelf.find("li.helperComplement").remove();
+		if($('li', this).length >= 4){
+			shelf.slick(varSlick);
+		} else if(isMobile.any()){
+			shelf.slick(varSlick);
+		}
+
+	  });
 
     $('.shelf__brand').slick({
       arrows: true,

@@ -5,6 +5,10 @@
   border-radius: 10px;
   position: relative;
 
+    @include mobile {
+        display: none;
+    }
+
   &__link {
       text-align: center;
       color: $c-primary; 
