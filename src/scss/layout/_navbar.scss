@@ -105,7 +105,12 @@
 		}
 
 
-	}
+    }
+    
+
+    @include mobile {
+        display: none;
+    }
 
 
 }

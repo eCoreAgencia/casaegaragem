@@ -41,7 +41,9 @@
     border-bottom: 1px solid $c-gray;
     padding: 0;
 
-
+    @include only-mobile {
+        display: none;
+    }
   }
 
   &__main {
@@ -67,6 +69,10 @@
 
       & .icon-mark {
         font-size: 30px;
+      }
+
+      @include only-mobile {
+          display: none;
       }
     }
   }
