@@ -135,14 +135,15 @@ $(document).ready(function () {
 
 	if($('body').hasClass('buy-list')){
 		const getProducts = () => {
-			const userEmail = getUserEmail(orderForm);
-			const products = getInMasterData('LC', `email=${userEmail}`, 'products');
+            $(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
+                const userEmail = getUserEmail(orderForm);
+                const products = getInMasterData('LT', `email=${userEmail}`, 'product');
 
+                console.log(products);
+            });     
 		}
 
-		$(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
-			getProducts()
-		});
+		getProducts()
 	};
 
 
