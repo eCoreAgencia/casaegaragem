@@ -8,15 +8,10 @@ block content
     section.section__page.section__diff
         .container
           include ../vtexParts/diff.pug
-    section.section__page.section__banner
-        .container
-            .banner.banner__category
-                +vtex-controller('<vtex:contentPlaceHolder id="Banner Full" />')
-                    .box-banner
-                        a(href="")
-                            img(src="http://via.placeholder.com/2000x207")/
-    section.section__page.section__filter.container
-    
+
+    section.section__page.section__shelf.container
+
+
 
 block scripts
     script(src='/arquivos/vtex-smartResearch.js?v=%PROJECT_VERSION%')

@@ -1,4 +1,7 @@
-
+import {
+	addToCart,
+	formatter
+  } from '../utils';
 
 
 /* $('.shelf__carousel--category ul').slick({
@@ -15,7 +18,7 @@
 
 $(document).ready(function(){
   if($('body').hasClass('home')){
-    
+
 
     if($('.call__box')[0]){
       $('.call__box').each(function(){
@@ -85,7 +88,6 @@ $(document).ready(function(){
     const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
 
     const varSlick = {
-		dots: true,
 		slideToShow: 2,
 		slidesToScroll: 1,
 		infinite: true,
@@ -97,7 +99,7 @@ $(document).ready(function(){
 			breakpoint: 1024,
 			settings: {
 			  slidesToShow: 4,
-			  slidesToScroll: 2
+			  slidesToScroll: 1
 			}
 		  },
 		  {
@@ -146,15 +148,22 @@ $(document).ready(function(){
     $(window).on('productFinished', function () {
       console.log('productFinished');
       $('.buy-by-category .product--shelf').each(function(){
+		  if(!$(this).hasClass('price--updated')){
+			  $(this).addClass('price--updated')
+			const productId = $('.product__id', this).data('product-id')
+			const priceElement = $('.product__price .price__list', this);
+			let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
+			console.log(price);
 
-        const productId = $('.product__id', this).data('product-id')
-        const priceElement = $('.product__price .price__list', this);
-        let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
-        price = formatter.format(price * 0.9);
-        price = `${price} no boleto`;
-        priceElement.html(price);
-        
-    
+			price = formatter.format(price * 0.9);
+			price = `${price} no boleto`;
+			priceElement.html(price);
+		  }
+
+
+
+
+
     });
       $('.buy-by-category .shelf ul').each(function () {
         if($('li.helperComplement', this)[0]){

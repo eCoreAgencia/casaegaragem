@@ -9,3 +9,7 @@
         }
     }
 }
+
+.swal-button--confirm {
+	@extend .button--primary;
+}

@@ -1,6 +1,7 @@
 import swal from 'sweetalert';
 import {
-  addToCart
+  addToCart,
+  formatter
 } from '../utils';
 
 import SimulateShipping from './simulateShipping';
@@ -9,6 +10,12 @@ export default (function() {
 if ($('body').hasClass('product')) {
 
   const productID = $('#___rc-p-id').val();
+
+  	const priceElement = $('.skuBestPrice', this);
+	let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.'));
+	price = formatter.format(price * 0.9);
+	price = `${price}`;
+	priceElement.html(price);
 
   if($('.value-field.Garantia').is(':not(:empty)')){
     const garantia = $('.value-field.Garantia').text();
@@ -64,34 +71,34 @@ if ($('body').hasClass('product')) {
       this.simulateShipping()
 
 
-      
-      if($('td.buy')[0]){   
+
+      if($('td.buy')[0]){
           $('.section__buy-together').show();
-      } 
+      }
 
     if($('td.buy')[0]){
-                    
+
         const regex = /Valor total:.*/gmi;
         const str = $('td.buy').html();
         let m = str.match(regex);
         console.log(m);
         m = m[0].replace('Valor total:  R$ ', 'Compre todos por  <strong>R$ ');
-        
+
 
         const price = '<span class="price-cash">'+ m +'</strong></span>';
-        
+
         if(!$('td.buy span').hasClass('price-cash')) {
             $(price).insertBefore('td.buy .comprar-junto');
         }
-        
+
 
     }
 
       if($('.flag.leve-mais-pague-menos')[0]){
         $('.product__more').addClass('is-active');
-        $('.buy-more__inner').empty();       
+        $('.buy-more__inner').empty();
 
-        
+
         const desc = [
             { leve: 2, pague: 0.02 },
             { leve: 3, pague: 0.07 },
@@ -109,7 +116,7 @@ if ($('body').hasClass('product')) {
             $('.buy-more__inner').append(html);
         });
 
-        
+
 
       }
 
@@ -138,7 +145,7 @@ if ($('body').hasClass('product')) {
         self.changeQuantity(-1);
       })
 
-      $('.buy-button').on('click', function(e){ 
+      $('.buy-button').on('click', function(e){
         e.preventDefault();
         let href = $(this).attr('href');
         const text = "javascript:alert('Por favor, selecione o modelo desejado.');";
@@ -157,12 +164,12 @@ if ($('body').hasClass('product')) {
         const sku = href[0].split('=');
         console.log(sku);
         addToCart($(this), sku[1], qtd)
-        
+
       });
       const thumbsCarousel = () => {
         const shelf__prev = `<button type='button' class='slick-prev shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M0 32.47l30.24 29.98 2.62-2.49L4.19 31.23 32.95 2.49 30.22 0 0 29.98v2.49z"/></svg></button>`
         const shelf__next = `<button type='button' class='slick-next shelf__button'><svg data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.96 62.45"><path fill="#9e9e9e" d="M32.95 29.98L2.72 0 .1 2.49l28.66 28.74L0 59.96l2.73 2.49 30.22-29.98v-2.49z"/></svg></button>`
-  
+
         $('ul.thumbs').slick({
           vertical: true,
             slidesToShow: 3,
@@ -178,19 +185,19 @@ if ($('body').hasClass('product')) {
 
 
     $(window).on('skuSelected', function(){
-    
+
         if($('ul.thumbs li').length > 3) {
             $('ul.thumbs').slick('unslick');
-            
+
             setTimeout(function(){
                 thumbsCarousel();
             }, 2000)
-        
+
         }
-    
+
     })
 
-      
+
     }
 
     changeQuantity(val) {
@@ -219,7 +226,7 @@ if ($('body').hasClass('product')) {
       window.SimulateShipping = new SimulateShipping()
     }
 
-    
+
   }
 
   $(() => {

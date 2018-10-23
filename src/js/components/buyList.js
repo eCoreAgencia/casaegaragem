@@ -5,11 +5,11 @@ const R = require('ramda');
 import { isLogin, getUserEmail } from '../utils';
 
 $(document).ready(function () {
-    
 
 
-    
-      
+
+
+
 
 
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
         }
     }
 
-    
+
 
 
 
@@ -51,31 +51,41 @@ $(document).ready(function () {
                 swal({
                     text: 'Produto Adicionado',
                     icon: 'success',
-                })
+				})
+
+				$('.button--add-list').removeClass('is-loading');
+				$('.button--add-list').html('Adicionado');
             }
         });
 
     }
 
-    const updateList = (item, productId) => {
 
-        item.products.push(productId);
 
-        putInMasterData('LC', item);
-
-    }
-    
-    
     const postInMasterData = async (entity, fields) => {
         try {
             var urlProtocol = window.location.protocol;
 		    var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/${entity}/documents`;
-            const response = await axios.post(apiUrl, headers);
+			const response = await axios.post(apiUrl, fields, headers);
+			return response;
             console.log(response);
         } catch(error) {
             console.log(error)
         }
-        
+
+	}
+
+	const getInMasterData = async (entity, where, fields) => {
+        try {
+            var urlProtocol = window.location.protocol;
+		    var apiUrl = `${urlProtocol}//api.vtex.com/${variables.STORE_ID}/dataentities/${entity}/search?_where=${where}&_fields=${fields}`;
+			const response = await get.get(apiUrl, fields, headers);
+			return response;
+            console.log(response);
+        } catch(error) {
+            console.log(error)
+        }
+
     }
 
 
@@ -121,7 +131,19 @@ $(document).ready(function () {
             window.userEmail = getUserEmail(orderForm);
             checkLogin();
         }
-    })
+	})
+
+	if($('body').hasClass('buy-list')){
+		const getProducts = () => {
+			const userEmail = getUserEmail(orderForm);
+			const products = getInMasterData('LC', `email=${userEmail}`, 'products');
+
+		}
+
+		$(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
+			getProducts()
+		});
+	};
 
 
 
