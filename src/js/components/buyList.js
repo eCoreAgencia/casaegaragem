@@ -126,6 +126,7 @@ $(document).ready(function () {
 		const getProducts = () => {
             $(window).on('orderFormUpdated.vtex', (evt, orderForm) => {
                 const userEmail = getUserEmail(orderForm);
+<<<<<<< HEAD
                 const products = getInMasterData('LT', `email=${userEmail}`, 'product,id');
 
                 // const products = [
@@ -250,6 +251,13 @@ $(document).ready(function () {
         }
         
         
+=======
+                const products = getInMasterData('LT', `email=${userEmail}`, 'product');
+
+                console.log(products);
+            });     
+		}
+>>>>>>> develop
 
 		getProducts()
 	};
