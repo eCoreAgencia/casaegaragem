@@ -81,13 +81,11 @@ import { formatter } from '../utils'
                 let thumb = `http://casaegaragem.vteximg.com.br/arquivos/ids/${imgId}-120-120`
 
 
-                let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
-    price = formatter.format(price * 0.9);
-    price = `${price} no boleto`;
+                
 
                 vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
-                    let bestPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9)} no boleto</span>`;
-					let listPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9)} no boleto</span>`;
+                    let bestPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9)} no boleto</span>`;
+					let listPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9)} no boleto</span>`;
 					let stock = data.skus[0].availablequantity;
 					let listPrice = data.skus[0].listPrice;
 					let html = '';

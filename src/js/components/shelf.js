@@ -63,11 +63,16 @@ $(document).ready(function () {
 $('.product--shelf').each(function(){
 
     const productId = $('.product__id', this).data('product-id')
-    const priceElement = $('.product__price .price__list', this);
-    let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
-    price = formatter.format(price * 0.9);
-    price = `${price} no boleto`;
-    priceElement.html(price);
+
+    const unvailable = $('.product__unavailable', this)[0];
+    if(!unvailable) {
+        const priceElement = $('.product__price .price__list', this);
+        let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
+        price = formatter.format(price * 0.9);
+        price = `${price} no boleto`;
+        priceElement.html(price);
+    }
+    
     // vtexjs.catalog.getProductWithVariations(productId).done(function(product){
     //     const sku = product.skus[0]
 

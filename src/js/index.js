@@ -26,7 +26,13 @@ import './components/send-form'
 $(document).ready(function(){
   if($('body').hasClass('search')){
     const search = window.location.pathname.replace('/', '');
-    $('.search__word').text(`"${search}"`);
+    if(search != 'busca'){
+        $('.search__word').text(`"${search}"`);
+    }else{
+        const searchParams = window.location.search.replace('?ft=', '');
+        $('.search__word').text(`"${searchParams}"`);
+    }
+   
   }
   $('.search-form').searchform({'vtexStore': 'casaegaragem', 'showDepartments': false});
     if($('li.helperComplement')[0]){

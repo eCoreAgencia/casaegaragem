@@ -115,7 +115,7 @@ if ($('body').hasClass('product')) {
         console.log(desc);
         desc.map(item => {
 			console.log($('.skuBestPrice').html())
-            const skuPrice = $('.skuBestPrice').html().replace('R$', '').replace('.', '').replace(',', '.').replace('&nbsp;', '');
+            const skuPrice = $('.skuBestPrice').html().replace('R$', '').replace('.', '').replace(',', '.').replace('&nbsp;', '') * 0.9;
 
 			console.log(skuPrice);
 			const html = `
