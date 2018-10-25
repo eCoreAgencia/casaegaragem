@@ -54,7 +54,7 @@ import { formatter } from '../utils'
                 return image;
             },
             create: function(item){
-                const urlProduct = `'http://casaegaragem.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=productId:${item.productId}`;
+                const urlProduct = `/api/catalog_system/pub/products/search?fq=productId:${item.productId}`;
                 $.ajax({
                     url: urlProduct,
                     type: "GET",

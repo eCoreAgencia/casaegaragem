@@ -69,5 +69,14 @@
 
     .section__buy-together {
         display: none;
-    }
+	}
+
+	.texto {
+		font-size: 30px;
+		margin-bottom: 20px;
+	}
+
+	.texto-garantia, .texto-troca {
+		display: none;
+	}
 }

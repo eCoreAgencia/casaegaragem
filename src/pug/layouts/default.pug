@@ -1,47 +1,50 @@
 include ../helpers
 
 block vars
-  - var pageTitle = ''
-  - var bodyClass = ''
+	- var pageTitle = ''
+	- var bodyClass = ''
 
 doctype html
 html(xmlns="http://www.w3.org/1999/xhtml", xmlns:vtex="http://www.vtex.com.br/2009/vtex-common", xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce", lang="pt-br")
-  head
-    +vtex-controller()
-      title= "%STORE_NAME%" + pageTitle
-    meta(charset="UTF-8")/
-    meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")/
-    meta(name="format-detection", content="telephone=no")/
-    
+	head
+		+vtex-controller()
+			title= "%STORE_NAME%" + pageTitle
+		meta(charset="UTF-8")/
+		meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")/
+		meta(name="format-detection", content="telephone=no")/
 
-    +vtex-controller('<vtex:metaTags />')
-    
-    +vtex-controller()
-      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
-      script
-        include ../../../config/vtxctx.js
-        if bodyClass == 'product'
-          include ../../../config/skuJson.js
-        include ../../../config/vtexjs-mock.js
 
-    block head
-    +vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%head" />')
-    link(rel='shortcut icon', href='/arquivos/casaegaragem-favicon.ico?v=636645743729130000')/
+		+vtex-controller('<vtex:metaTags />')
 
-  body(class= bodyClass)
-    +vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%header" />')
-      include ../subtemplates/header
+		+vtex-controller()
+			script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
+			script
+				include ../../../config/vtxctx.js
+				if bodyClass == 'product'
+					include ../../../config/skuJson.js
+				include ../../../config/vtexjs-mock.js
 
-    main.page__content
-      block content
+		block head
+		+vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%head" />')
+		link(rel='shortcut icon', href='/arquivos/casaegaragem-favicon.ico?v=636645743729130000')/
 
-    +vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%footer" />')
-      include ../subtemplates/footer
+	body(class= bodyClass)
+		+vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%header" />')
+			include ../subtemplates/header
 
-    block scripts
+		main.page__content
+			block content
+		#chat__whatsapp
+			a(href='https://api.whatsapp.com/send?phone=5524993126425', target='_blank')
+				img(src='/arquivos/desktop-wpp-icon.png', alt='Entre em contato conosco por WhatsApp!', title='Entre em contato conosco por WhatsApp!')
 
-    +vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%bottom" />')
-      script(src='/arquivos/ec-slick.js')
+		+vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%footer" />')
+			include ../subtemplates/footer
+
+		block scripts
+
+		+vtex-controller('<vtex:template id="%TEMPLATE_PREFIX%bottom" />')
+			script(src='/arquivos/ec-slick.js')
 
 
 

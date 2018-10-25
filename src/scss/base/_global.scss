@@ -59,12 +59,12 @@ $family-sans-serif: $f-base;
   margin: 0 auto;
   width: 100%;
   max-width: #{$g-max-width + ($g-spacing * 2)};
-  
+
 
   @media screen and (min-width: $g-max-width) {
 
   }
-  
+
 }
 
 * {
@@ -78,4 +78,11 @@ $family-sans-serif: $f-base;
 
 .swal-footer {
     text-align: center !important;
+}
+
+#chat__whatsapp {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1;
+    right: 20px;
 }

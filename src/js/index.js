@@ -25,7 +25,7 @@ import './components/send-form'
 
 $(document).ready(function(){
   if($('body').hasClass('search')){
-    const search = window.location.pathname;
+    const search = window.location.pathname.replace('/', '');
     $('.search__word').text(`"${search}"`);
   }
   $('.search-form').searchform({'vtexStore': 'casaegaragem', 'showDepartments': false});
@@ -34,7 +34,7 @@ $(document).ready(function(){
       }
 
       if($('.shelf--flip')[0]){
-        //$('.shelf--flip').joker();
+        $('.shelf--flip').joker();
       }
 
 
@@ -46,6 +46,9 @@ $(document).ready(function(){
 
     $('body').on('click', '.vtexIdUI-page .close', function(){
         window.location.href = '/';
-    })  
+	})
+
+	$('link[href="//io.vtex.com.br/front-libs/bootstrap/2.3.2/css/bootstrap-responsive.min.css"]').remove();
+	$('link[href="//io.vtex.com.br/front-libs/bootstrap/2.3.2/css/bootstrap.min.css"]').remove();
 })
 

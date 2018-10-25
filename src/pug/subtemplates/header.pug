@@ -5,15 +5,15 @@ header.header
                 span.contact__phone.contact__box
                     i.icon-phone
                     strong Compre pelo Televendas:
-                        a(href="tel:(24) 2221-2353") (24) 2221-2353
+                        a(href="tel:(24) 2221-2353", target='_blank') (24) 2221-2353
                 span.contact__help.contact__box
                     i.icon-help
                     strong Dúvida? Queremos ouvir você:
-                        a(href="tel:(24) 2221-2353") (24) 2221-2353
+                        a(href="tel:(24) 2221-2353", target='_blank') (24) 2221-2353
                 span.contact__whatsapp.contact__box
                     i.icon-whatsapp
                     strong Atendimento via Whatsapp:
-                        a(href="https://wa.me/(24)2221-2353") (24) 2221-2353
+                        a(href="https://api.whatsapp.com/send?phone=552499312-6425", target='_blank') (24) 99312-6425
     .header__area.header__main.container
         .header__inner
             .columns
@@ -22,7 +22,7 @@ header.header
                         .logo__brand
                             a.logo__link(href="/")
                                 img.logo__image(src="/arquivos/logo.png", alt="")/
-                .header__search-form.column.is-6-mobile
+                .header__search-form.column.is-7
                     #header-form
                         form.search-form(action="/busca")
                             .field.has-addons
@@ -31,12 +31,10 @@ header.header
                                 .control
                                     button.button
                                         span.icon-search
-                        .search-form__result-list        
+                        .search-form__result-list
                 .header__action-user.column
 
-                    a.button.button--buy-list(href='/lista-de-compras')
-                        span.icon-mark
-                        span Lista de Compras
+
                     a.button.button--account(href='/account')
                         span.icon-user
                         span Minha Conta

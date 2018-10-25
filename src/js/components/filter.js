@@ -9,12 +9,18 @@ class Filter {
       const value = $(this).val();
       window.location.href = window.location.href + '?PS=12&O=' + value;
     })
-    
+
     if(this.isExist(this.menu)){
       console.log(this.menu);
     } else {
       console.log('Não existe');
-    }
+	}
+
+	$('.filter .search-single-navigator h4').each(function(){
+		const html = $(this).html();
+
+		$('.filter__category .filter__options').append(html);
+	})
 
     $('.filter .search-multiple-navigator fieldset').each(function(){
       if($('div', this).find('label')[0]){
@@ -43,6 +49,6 @@ if($('body').hasClass('category')){
   $(document).ready(function(){
     window.filter = new Filter();
   })
- 
+
 }
 

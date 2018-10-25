@@ -10,12 +10,18 @@ export default (function() {
 if ($('body').hasClass('product')) {
 
   const productID = $('#___rc-p-id').val();
+  	vtexjs.catalog.getProductWithVariations(productID).done(function(product){
+	  //console.log(product)
+	  if(product.available){
+		const priceElement = $('.skuBestPrice');
+		let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.'));
+		price = formatter.format(price * 0.9);
+		price = `${price}`;
+		priceElement.html(price);
+	  }
+	})
 
-  	const priceElement = $('.skuBestPrice', this);
-	let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.'));
-	price = formatter.format(price * 0.9);
-	price = `${price}`;
-	priceElement.html(price);
+
 
   if($('.value-field.Garantia').is(':not(:empty)')){
     const garantia = $('.value-field.Garantia').text();
@@ -108,10 +114,13 @@ if ($('body').hasClass('product')) {
         ]
         console.log(desc);
         desc.map(item => {
-            const skuPrice = $('.skuBestPrice').text().replace(',', '.').replace('R$ ', '');
-            const html = `
+			console.log($('.skuBestPrice').html())
+            const skuPrice = $('.skuBestPrice').html().replace('R$', '').replace('.', '').replace(',', '.').replace('&nbsp;', '');
+
+			console.log(skuPrice);
+			const html = `
             <div class="buy-more__item">
-                    <span class="buy-more__text">Leve ${item.leve} pague <strong>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(skuPrice - skuPrice*item.pague)}</strong></span>
+                    <span class="buy-more__text">Leve ${item.leve} pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong></span>
                 </div>`;
             $('.buy-more__inner').append(html);
         });
@@ -122,7 +131,37 @@ if ($('body').hasClass('product')) {
 
       $('.button--more-products').on('click', () => {
         $('.buy-more').toggleClass('is-active');
-      })
+	  })
+
+	  $('body').on('click', function(e){
+		console.log(e.target);
+
+		const buyMore = document.querySelector('.button--more-products')
+		if(e.target != buyMore && e.target.parentNode != buyMore) {
+			$('.buy-more').removeClass('is-active');
+		}
+	  })
+
+	  $('.button--change').on('click', function(e){
+		  e.preventDefault()
+		const wrapText = $('.texto-troca').html();
+		let wrap = document.createElement('div');
+		wrap.innerHTML = wrapText
+		  swal({
+			content: wrap
+		  })
+	  })
+
+
+	  $('.button--garantia').on('click', function(e){
+		e.preventDefault()
+	  const wrapText = $('.texto-garantia').html();
+	  let wrap = document.createElement('div');
+	  wrap.innerHTML = wrapText
+		swal({
+		  content: wrap
+		})
+	})
 
       $('.button--add-list').on('click', () => {
         vtexjs.checkout.getOrderForm()

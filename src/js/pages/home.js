@@ -152,7 +152,7 @@ $(document).ready(function(){
 			  $(this).addClass('price--updated')
 			const productId = $('.product__id', this).data('product-id')
 			const priceElement = $('.product__price .price__list', this);
-			let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
+			let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
 			console.log(price);
 
 			price = formatter.format(price * 0.9);

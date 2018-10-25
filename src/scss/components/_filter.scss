@@ -63,14 +63,15 @@
         width: 1300px;
         padding: 20px;
         flex-wrap: wrap;
-        label {
+        label, a {
             display: flex;
             text-transform: uppercase;
             align-items: center;
             justify-content: space-between;
             flex-direction: row-reverse;
-            margin-left: 10px;
-        
+			margin-left: 10px;
+			color: #4a4a4a;
+
             &.sr_selected .sr_box::after {
                 content: '';
                 display: block;
@@ -79,12 +80,12 @@
                 background-color: $c-primary;
                 border-radius: 50%;
                 transition: all .3s ease;
-            }  
+            }
         }
         input {
             display: none;
         }
-        
+
         .sr_box {
             width: 30px;
             height: 30px;
@@ -97,14 +98,14 @@
             align-items: center;
             justify-content: center;
             transition: all .2s ease-in-out;
-                       
+
         }
-        
+
         .sr_box2 {
             display: none;
-        }            
-        
-        
+        }
+
+
     }
 
     &__actions {

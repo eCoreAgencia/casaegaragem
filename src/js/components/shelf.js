@@ -64,7 +64,7 @@ $('.product--shelf').each(function(){
 
     const productId = $('.product__id', this).data('product-id')
     const priceElement = $('.product__price .price__list', this);
-    let price = parseFloat(priceElement.html().replace('R$ ', '').replace(',', '.').replace(' no boleto', ''));
+    let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
     price = formatter.format(price * 0.9);
     price = `${price} no boleto`;
     priceElement.html(price);
@@ -78,7 +78,7 @@ $('.product--shelf').each(function(){
     //     }else{
     //         console.log(sku.listPrice, 'best');
     //     }
-        
+
     // })
 
 });
@@ -91,7 +91,7 @@ $('.product--shelf').each(function(){
     console.log(productID);
 
 
-    
+
 
     vtexjs.catalog.getProductWithVariations(productID).done(function(product){
         console.log(product)
@@ -131,7 +131,7 @@ $('.product--shelf').each(function(){
                 swal.setActionValue($(this).val());
             })
 
-            
+
 
         }else{
             addToCart(button, product.skus[0].sku);

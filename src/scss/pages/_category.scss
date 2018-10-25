@@ -71,9 +71,10 @@
 	&__word {
 		color: $c-primary;
 		font-weight: 700;
+		margin-left: 10px;
 	}
 
 	&__word, &__title {
-		font-size: 23px;
+		font-size: 18px;
 	}
 }
