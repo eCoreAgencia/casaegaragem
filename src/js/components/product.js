@@ -9,7 +9,7 @@ import SimulateShipping from './simulateShipping';
 export default (function() {
 if ($('body').hasClass('product')) {
 
-  const productID = $('#___rc-p-id').val();
+    const productID = $('#___rc-p-id').val();
   	vtexjs.catalog.getProductWithVariations(productID).done(function(product){
 	  //console.log(product)
 	  if(product.available){
@@ -72,7 +72,7 @@ if ($('body').hasClass('product')) {
     constructor() {
       let self = this
       window.ImageControl = () => null
-      this.skuJson = skuJson ? skuJson : skuJson_1
+      //this.skuJson = skuJson ? skuJson : skuJson_1
       this.thumbsClickEvent()
       this.simulateShipping()
 
@@ -148,20 +148,22 @@ if ($('body').hasClass('product')) {
 		let wrap = document.createElement('div');
 		wrap.innerHTML = wrapText
 		  swal({
+			className: 'swal--product',
 			content: wrap
 		  })
 	  })
 
 
-	  $('.button--garantia').on('click', function(e){
+	    $('.button--garantia').on('click', function(e){
 		e.preventDefault()
-	  const wrapText = $('.texto-garantia').html();
-	  let wrap = document.createElement('div');
-	  wrap.innerHTML = wrapText
-		swal({
-		  content: wrap
-		})
-	})
+        const wrapText = $('.texto-garantia').html();
+        let wrap = document.createElement('div');
+        wrap.innerHTML = wrapText
+            swal({
+                className: 'swal--product',
+                content: wrap
+            })
+        })
 
       $('.button--add-list').on('click', () => {
         vtexjs.checkout.getOrderForm()

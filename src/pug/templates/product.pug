@@ -105,6 +105,7 @@ block content
 									strong Leve mais
 									| Pague Menos
 									i.icon-stars
+                                    span.btn--arrow
 								.buy-more
 									.buy-more__inner
 										.buy-more__item
@@ -225,12 +226,17 @@ block content
 								li
 									include ../shelves/prateleira
 		.texto-garantia
-			h3.texto Sobre a Garantia
 			+vtex-controller('<vtex:contentPlaceHolder id="Texto Garantia" />')
-				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sunt voluptatum doloribus placeat ad quos. Consequatur impedit sunt eius ratione tenetur error dicta voluptates, animi, cupiditate consequuntur repudiandae, aliquam vero!
+				p O produto que você está visualizando possui garantia oferecida pelo nosso fornecedor!
+
+				p Nós da Casa e Garagem prezamos por trabalhar com as melhores marcas do mercado para cada segmento.
+				p Com o objetivo de oferecer aos nossos clientes produtos com garantia de qualidade e uma ampla rede de assistências técnicas por todo o país para que você tenha toda tranquilidade em adquirir nossos produtos.
+				p Para saber mais sobre garantia, acesse o menu Trocas e Devoluções, <a href="/institucional/politica-de-troca-e-devolucao">clicando aqui</a>
 		.texto-troca
-			h3.texto Sobre a Troca Grátis
 			+vtex-controller('<vtex:contentPlaceHolder id="Texto Troca" />')
-				p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti voluptate doloremque cum eius eum nam provident optio omnis! Facere, illo. Cupiditate vero libero accusantium ipsa. Minima, eligendi impedit. Facilis, recusandae!
+				p A troca em nosso site é totalmente gratuita* e, além dos 7 dias previstos pelo Código de Defesa do Consumidor, aqui na Casa e Garagem garantimos mais 7 dias corridos por nossa conta, totalizando 14 dias corridos caso se arrependa de sua compra ou queira trocar o produto.
+				p Saiba que estaremos aqui para solucionar seu caso e proporcionar uma ótima experiência de compra.
+				p Para saber mais sobre garantia, acesse o menu Trocas e Devoluções, <a href="/institucional/politica-de-troca-e-devolucao">clicando aqui</a>
+				p *Exceto em caso de troca recorrente na mesma compra.
 block scripts
 	script(src='/arquivos/ec-easyzoom.js')
