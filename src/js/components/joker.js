@@ -81,7 +81,7 @@ import { formatter } from '../utils'
                 let thumb = `http://casaegaragem.vteximg.com.br/arquivos/ids/${imgId}-120-120`
 
 
-                
+
 
                 vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
                     let bestPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9)} no boleto</span>`;
@@ -94,7 +94,11 @@ import { formatter } from '../utils'
                     if(valorParcela !== 0){
                         var num = valorParcela / 100;
                         valorParcela = formatter.format(num);
-                    }
+					}
+
+					if(!data.available){
+						listPrice = 0;
+					}
                     let installments = `<span class="price__instament">${parcelas}x de R$ ${valorParcela} sem juros</span>`
 
 
@@ -122,7 +126,7 @@ import { formatter } from '../utils'
                                 <h3 class="product__name"><a class="product__link" title="${productName}" href="${link}">${productName}</a></h3>
                                 <div class="product__price">
                                     <div class="price">
-                                        ${(listPrice !== 0) ? listPriceFormated : bestPriceFormated}
+                                        ${(listPrice !== 0) ? listPriceFormated : ''}
                                         ${(valorParcela !== 0) ? installments : ''}
                                     </div>
                                 </div>

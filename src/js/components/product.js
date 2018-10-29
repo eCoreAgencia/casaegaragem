@@ -148,6 +148,7 @@ if ($('body').hasClass('product')) {
 		let wrap = document.createElement('div');
 		wrap.innerHTML = wrapText
 		  swal({
+			className: 'swal--product',
 			content: wrap
 		  })
 	  })
@@ -159,7 +160,8 @@ if ($('body').hasClass('product')) {
 	  let wrap = document.createElement('div');
 	  wrap.innerHTML = wrapText
 		swal({
-		  content: wrap
+			className: 'swal--product',
+		  	content: wrap
 		})
 	})
 
