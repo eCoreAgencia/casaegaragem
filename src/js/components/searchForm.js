@@ -63,8 +63,8 @@ import { formatter } from '../utils';
 			  //   console.log(productId)
 				vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
 				  //   console.log(data);
-					let bestPriceFormated = formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9);
-					let listPriceFormated = formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace(',', '.')) * 0.9);
+					let bestPriceFormated = formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9);
+					let listPriceFormated = formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9);
 					let stock = data.skus[0].availablequantity;
 					let listPrice = data.skus[0].listPrice;
 					let html = '';
@@ -135,11 +135,11 @@ import { formatter } from '../utils';
                       }
 					list.prepend(html)
                     $('.searchform-list').css('top', $('.pageHeader').height());
-                    
+
 				});
             })
-            
-            
+
+
 		}
 
 		self.searchformSelecHint = function () {

@@ -26,7 +26,7 @@
       font-size: 19px;
     }
 
-    
+
 
     @include desktop {
         .product--shelf:hover & {
@@ -60,15 +60,15 @@
         font-size: 22px;
         border-bottom: 1px solid #bdbdbd;
     }
-    
+
     fieldset {
         border: none;
     }
-    
+
     input#notifymeClientName, input#notifymeClientEmail {
         background-color: #fff;
         color: #363636;
-       
+
         max-width: 100%;
         width: 300px;
             -moz-appearance: none;
@@ -132,7 +132,7 @@
       justify-content: flex-start;
       padding-left: 30px;
       align-items: center;
-      
+
     }
     strong {
       margin-right: 10px;
@@ -284,7 +284,7 @@
       font-family: $f-base;
 
       .price__list, .price__instament {
-        
+
         display: block;
       }
 
@@ -339,7 +339,7 @@
 
   &__front {
     z-index: 2;
-    background-color: #FFB808;
+    background-color: $c-yellow;
 
     &:hover {
       cursor: pointer;
@@ -520,7 +520,7 @@
       display: flex;
       flex-direction: row-reverse;
     }
-    
+
   }
 
   &__description {
@@ -567,7 +567,7 @@
     text-transform: uppercase;
     font-size: 18px;
   }
-  
+
 
   &__secure {
     &-buy {
@@ -594,7 +594,7 @@
       i {
         font-size: 30px;
         color: $c-primary;
-        margin-right: 10px;  
+        margin-right: 10px;
       }
 
       span {
@@ -713,7 +713,7 @@
 
 .shipping {
   &__form {
-    
+
     border: 1px solid #e8e8e8;
     border-radius: 10px;
     background-color: $c-white;
@@ -724,7 +724,7 @@
       box-shadow: none !important;
       border: none !important;
       outline: none !important;
-      
+
     }
     .is-expanded {
       padding: 10px;
@@ -807,7 +807,7 @@
 
     &__text {
         font-size: 20px;
-        
+
         strong {
             color: $c-primary;
         }
@@ -832,7 +832,7 @@
         text-align: center;
         font-size: 0;
         margin-top: 20px;
-        
+
         .price-cash {
             font-size: 40px;
             margin-bottom: 20px;

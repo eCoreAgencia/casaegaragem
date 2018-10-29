@@ -60,19 +60,32 @@ export const productShelf = (product, list = false) => {
 
 $(document).ready(function () {
 
+	if($('body').hasClass('search')){
+		const search = window.location.pathname.replace('/', '');
+		if(search != 'busca'){
+			$('.search__word').text(`"${search}"`);
+		}else{
+			const searchParams = window.location.search.replace('?ft=', '');
+			$('.search__word').text(`"${searchParams}"`);
+		}
+
+	  }
+
 $('.product--shelf').each(function(){
 
     const productId = $('.product__id', this).data('product-id')
 
-    const unvailable = $('.product__unavailable', this)[0];
-    if(!unvailable) {
+	const unvailable = $('.product__price .price__list', this).length;
+
+    if(unvailable) {
+		console.log(unvailable);
         const priceElement = $('.product__price .price__list', this);
         let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
         price = formatter.format(price * 0.9);
         price = `${price} no boleto`;
         priceElement.html(price);
     }
-    
+
     // vtexjs.catalog.getProductWithVariations(productId).done(function(product){
     //     const sku = product.skus[0]
 
