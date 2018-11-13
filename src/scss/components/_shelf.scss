@@ -264,27 +264,12 @@
 		position: absolute;
 		top: -1px;
 		right: -1px;
-		width: 50%;
-		height: 100%;
+		width: 128px;
+		height: 128px;
 		font-size: 0;
 		display: block;
 		background-image: url('/arquivos/leve-mais-pague-menos.png');
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
-}
-
-.flag {
-    &.leve-mais-pague-menos {
-        position: absolute;
-        top: -1px;
-        right: -1px;
-        width: 50%;
-        height: 100%;
-        font-size: 0;
-        display: block;
-        background-image: url('/arquivos/leve-mais-pague-menos.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
 }
