@@ -271,5 +271,14 @@
 		background-image: url('/arquivos/leve-mais-pague-menos.png');
 		background-repeat: no-repeat;
 		background-size: contain;
+		z-index: 10;
+	}
+
+	&.black-friday {
+		background: #000;
+		color: #fff;
+		text-align: center;
+		width: 70%;
+		border-radius: 5px;
 	}
 }

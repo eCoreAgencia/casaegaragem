@@ -14,10 +14,17 @@ export default (function () {
 			//console.log(product)
 			if (product.available) {
 				const priceElement = $('.skuBestPrice');
+				if ($('.economia-de')[0]) {
+					$('.economia-de').insertBefore('.price-installments');
+				}
+				console.log(priceElement.html());
 				let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.'));
 				price = formatter.format(price * 0.9);
-				price = `${price}`;
-				priceElement.html(price);
+				price = `<em class="valor-boleto price-boleto"><strong class="skuBoletoPrice">ou ${price} no boleto</strong></em>`;
+
+
+
+				$(price).insertAfter('.price-installments');
 			}
 		})
 
@@ -104,6 +111,7 @@ export default (function () {
 
 				if ($('.flag.leve-mais-pague-menos')[0]) {
 					$('.product__more').addClass('is-active');
+					$('.product__action-bottom .product__qtd').hide();
 					$('.buy-more__inner').empty();
 
 
@@ -143,6 +151,8 @@ export default (function () {
 
 
 
+				} else {
+					$('.product__action-top').hide();
 				}
 
 				$('.button--more-products').on('click', () => {

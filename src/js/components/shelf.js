@@ -1,6 +1,6 @@
 import {
-  addToCart,
-  formatter
+	addToCart,
+	formatter
 } from '../utils';
 
 import swal from 'sweetalert';
@@ -60,103 +60,109 @@ export const productShelf = (product, list = false) => {
 
 $(document).ready(function () {
 
-	if($('body').hasClass('search')){
+	if ($('body').hasClass('search')) {
 		const search = window.location.pathname.replace('/', '');
-		if(search != 'busca'){
+		if (search != 'busca') {
 			$('.search__word').text(`"${search}"`);
-		}else{
+		} else {
 			const searchParams = window.location.search.replace('?ft=', '');
 			$('.search__word').text(`"${searchParams}"`);
 		}
 
-	  }
+	}
 
-$('.product--shelf').each(function(){
+	$('.product--shelf').each(function () {
 
-    const productId = $('.product__id', this).data('product-id')
+		const productId = $('.product__id', this).data('product-id')
 
-	const unvailable = $('.product__price .price__list', this).length;
+		const unvailable = $('.product__price .price__list', this).length;
 
-    if(unvailable) {
-		console.log(unvailable);
-        const priceElement = $('.product__price .price__list', this);
-        let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
-        price = formatter.format(price * 0.9);
-        price = `${price} no boleto`;
-        priceElement.html(price);
-    }
+		if ($('.black-friday', this)[0]) {
+			const flag = $('.black-friday', this).clone();
+			$(flag).insertBefore('.product__reviews', this);
+		}
 
-    // vtexjs.catalog.getProductWithVariations(productId).done(function(product){
-    //     const sku = product.skus[0]
+		if (unvailable) {
+			console.log(unvailable);
+			const priceElement = $('.product__price .price__list', this);
+			let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
+			price = formatter.format(price * 0.9);
+			price = `${price} no boleto`;
+			priceElement.html(price);
 
-    //     const html = sku.bestPrice ? sku.bestPriceFormated.replace('R$ ', '').replace(',', '.') : sku.listPriceFormated.replace('R$').replace(',', '.')
-    //     if(sku.bestPrice){
-    //         console.log(sku.bestPrice, 'list');
-    //         priceElement.html(html);
-    //     }else{
-    //         console.log(sku.listPrice, 'best');
-    //     }
+		}
 
-    // })
+		// vtexjs.catalog.getProductWithVariations(productId).done(function(product){
+		//     const sku = product.skus[0]
 
-});
+		//     const html = sku.bestPrice ? sku.bestPriceFormated.replace('R$ ', '').replace(',', '.') : sku.listPriceFormated.replace('R$').replace(',', '.')
+		//     if(sku.bestPrice){
+		//         console.log(sku.bestPrice, 'list');
+		//         priceElement.html(html);
+		//     }else{
+		//         console.log(sku.listPrice, 'best');
+		//     }
 
-  $('body').on('click','.product--shelf .product__buy', function (e) {
-    e.preventDefault();
-    const button = $(this);
-    const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
+		// })
 
-    console.log(productID);
+	});
 
+	$('body').on('click', '.product--shelf .product__buy', function (e) {
+		e.preventDefault();
+		const button = $(this);
+		const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
 
-
-
-    vtexjs.catalog.getProductWithVariations(productID).done(function(product){
-        console.log(product)
-        if(product.skus.length > 1){
-            let wrap = document.createElement('div');
-            let skus = product.skus.map(product => `<button class="button button--sku" value="${product.sku}"> ${product.skuname}</button>`).join('');
-            wrap.innerHTML = skus;
-
-            let sku = ''
-
-            swal({
-                text: "Selecione a voltagem",
-                content: wrap,
-                buttons: {
-                    cancel: {
-                        text: "Cancelar",
-                        className: "button"
-                    },
-                    confirm: {
-                        text: "Comprar",
-                        value: '',
-                        visible: true,
-                        className: "button button--primary",
-                        closeModal: true
-                    }
-                }
-
-            }).then((value) => {
-                console.log(value, 'modal');
-                if(value){
-                    addToCart(button, value);
-                }
-            })
-
-            $('body').on('click', '.button--sku', function(){
-                console.log($(this).attr('value'))
-                swal.setActionValue($(this).val());
-            })
+		console.log(productID);
 
 
 
-        }else{
-            addToCart(button, product.skus[0].sku);
-        }
-    });
+
+		vtexjs.catalog.getProductWithVariations(productID).done(function (product) {
+			console.log(product)
+			if (product.skus.length > 1) {
+				let wrap = document.createElement('div');
+				let skus = product.skus.map(product => `<button class="button button--sku" value="${product.sku}"> ${product.skuname}</button>`).join('');
+				wrap.innerHTML = skus;
+
+				let sku = ''
+
+				swal({
+					text: "Selecione a voltagem",
+					content: wrap,
+					buttons: {
+						cancel: {
+							text: "Cancelar",
+							className: "button"
+						},
+						confirm: {
+							text: "Comprar",
+							value: '',
+							visible: true,
+							className: "button button--primary",
+							closeModal: true
+						}
+					}
+
+				}).then((value) => {
+					console.log(value, 'modal');
+					if (value) {
+						addToCart(button, value);
+					}
+				})
+
+				$('body').on('click', '.button--sku', function () {
+					console.log($(this).attr('value'))
+					swal.setActionValue($(this).val());
+				})
 
 
-    //
-  })
+
+			} else {
+				addToCart(button, product.skus[0].sku);
+			}
+		});
+
+
+		//
+	})
 });
