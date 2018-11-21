@@ -83,12 +83,12 @@ $(document).ready(function () {
 		}
 
 		if (unvailable) {
-			console.log(unvailable);
 			const priceElement = $('.product__price .price__list', this);
+			const priceInstallment = $('.product__price .price', this);
 			let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
 			price = formatter.format(price * 0.9);
-			price = `${price} no boleto`;
-			priceElement.html(price);
+			price = `<span class="price__boleto">${price} <small> no boleto</small><span>`;
+			priceInstallment.append(price);
 
 		}
 
