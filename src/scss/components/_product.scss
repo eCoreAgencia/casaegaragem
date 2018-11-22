@@ -302,7 +302,7 @@
 			font-family: $f-base;
 
 			.price__list,
-			.price__instament {
+			.price__installment {
 
 				display: block;
 			}
@@ -310,12 +310,26 @@
 			.price__list {
 				font-weight: 700;
 				margin-bottom: 10px;
-				font-size: 22px;
+				font-size: 20px;
 			}
 
-			.price__instament {
+			.price__installment {
 				font-size: 18px;
 				font-weight: 700;
+				margin-bottom: 5px;
+			}
+
+			.price__boleto {
+				font-size: 22px;
+				display: block;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+
+			.price__old {
+				font-size: 18px;
+				text-decoration: line-through;
+				text-align: left;
 			}
 		}
 
@@ -327,7 +341,7 @@
 				font-size: 18px;
 			}
 
-			.price__instament {
+			.price__installment {
 				font-size: 16px;
 			}
 		}
@@ -718,11 +732,12 @@
 		font-size: 14px;
 	}
 
-	&__list,
+	&__boleto,
 	.skuBoletoPrice {
 		color: $c-primary;
 	}
 
+	&__list,
 	.skuBestPrice {
 		color: $c-black;
 	}
@@ -782,7 +797,7 @@
 		}
 
 		&:after {
-			content: ' de'
+			content: ' de '
 		}
 	}
 
@@ -812,6 +827,12 @@
 			display: inline-block;
 		}
 	}
+
+	.valor-boleto {
+		width: 100%;
+	}
+
+
 }
 
 .shipping {
