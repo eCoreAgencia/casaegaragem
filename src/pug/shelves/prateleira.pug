@@ -49,8 +49,8 @@ else
 					!= '\n    		<span class="price__list">' + listPrice + '</span>'
 					!= '\n    	#end'
 					!= '\n    	#if ($product.NumbersOfInstallment > 1)'
-					!= '\n      	<span class="price__installment">ou até'
-					!= '\n        		${product.NumbersOfInstallment}X de ${product.InstallmentValue}'
+					!= '\n      	<span class="price__installment">em até'
+					!= '\n        		<strong>${product.NumbersOfInstallment}X</strong> de <strong>${product.InstallmentValue}</strong>'
 					!= '\n      	</span>'
 					!= '\n    	#end'
 					!= '\n  </div>'
@@ -61,6 +61,10 @@ else
 					.price
 						span.price__old R$ 1.305,99
 						span.price__list R$ 1.205,99
-						span.price__installment 12x R$ 13,24 sem juros
+						span.price__installment
+							| em até
+							strong 12x
+							| de
+							strong R$ 13,24
 		.product__category
 			a.button(href= categoryHref)= categoryName

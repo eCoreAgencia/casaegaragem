@@ -45,7 +45,11 @@
 	&__action {
 		&-top {
 			padding: 10px 0;
-			display: flex;
+			display: none;
+
+			&.is-active {
+				display: flex;
+			}
 		}
 
 		&-bottom {
@@ -309,14 +313,18 @@
 
 			.price__list {
 				font-weight: 700;
-				margin-bottom: 10px;
-				font-size: 20px;
+				font-size: 18px;
+				color: #454545;
 			}
 
 			.price__installment {
-				font-size: 18px;
-				font-weight: 700;
+				font-size: 16px;
 				margin-bottom: 5px;
+
+				strong {
+					color: $c-primary;
+					margin: 0 5px;
+				}
 			}
 
 			.price__boleto {
@@ -324,12 +332,18 @@
 				display: block;
 				font-weight: 700;
 				margin-bottom: 10px;
+
+				small {
+					font-weight: 400;
+					color: $c-black;
+				}
 			}
 
 			.price__old {
-				font-size: 18px;
+				font-size: 16px;
 				text-decoration: line-through;
 				text-align: left;
+				color: #9b9b9b;
 			}
 		}
 
@@ -739,7 +753,7 @@
 
 	&__list,
 	.skuBestPrice {
-		color: $c-black;
+		color: #454545;
 	}
 
 	.skuBoletoPrice {
@@ -825,6 +839,10 @@
 		&:before {
 			content: "(";
 			display: inline-block;
+		}
+
+		.economia {
+			font-size: 16px;
 		}
 	}
 
