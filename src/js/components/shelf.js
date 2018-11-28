@@ -77,12 +77,9 @@ $(document).ready(function () {
 
 		const unvailable = $('.product__price .price__list', this).length;
 
-		if ($('.black-friday', this)[0]) {
-			const flag = $('.black-friday', this).clone();
-			$(flag).insertBefore('.product__reviews', this);
-		}
 
-		if (unvailable) {
+
+		if ($('.product__price .price__list', this)[0]) {
 			const priceElement = $('.product__price .price__list', this);
 			const priceInstallment = $('.product__price .price', this);
 			let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
