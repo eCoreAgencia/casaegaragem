@@ -66,23 +66,26 @@ block content
 										p.descricao-preco
 											em.valor-de.price-list-price(style='display: block;')
 												| De:
-												strong.skuListPrice R$ 24,99
+												strong.skuListPrice R$ 365,00
 											em.valor-por.price-best-price(style='display: block;')
 												| Por:
-												strong.skuBestPrice R$ 1.639,90
+												strong.skuBestPrice R$ 279,23
 											em.valor-dividido.price-installments(style='display: block;')
 												span
 													span
 														| ou
 														label.skuBestInstallmentNumber
-															| 12
-															span.x x
+														| 6
+														span.x x
 														|  de
 													strong
-														label.skuBestInstallmentValue R$ 53,32
-										p.preco-a-vista.price-cash(style='display: block;')
-											| Preço a vista:
-											strong.skuPrice R$ 639,90
+														label.skuBestInstallmentValue R$ 51,70
+											p.preco-a-vista.price-cash(style='display: block;')
+												| Preço a vista:
+												strong.skuPrice R$ 310,25
+											em.economia-de
+												| Economia de
+												span.economia R$ 54,75
 					.product__skus
 						+vtex-controller('<vtex.cmc:skuRichSelection changeImage="1" />')
 							.sku-selector-container.sku-selector-container-0
@@ -115,6 +118,10 @@ block content
 										.buy-more__item
 											span.buy-more__text Leve 4 pague R$ 6,45
 						.product__action-bottom
+							.product__qtd
+								button.button.button--minus -
+								input.product__qtd-value(type="text" value="1")/
+								button.button.button--plus +
 							+vtex-controller('<vtex.cmc:BuyButton/>')
 								a.buy-button.buy-button-ref(target='_top', href="javascript:alert('Por favor, selecione o modelo desejado.');", style='display:block')
 									| Comprar
@@ -164,7 +171,7 @@ block content
 							a.button--secure.button--change(href="")
 								i.icon-refresh
 								span
-									strong Troca Grátis (7 dias)
+									strong Troca Grátis (14 dias)
 							a.selo-seguro(href="")
 
 		section.section__page.section__buy-together
