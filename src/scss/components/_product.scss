@@ -658,8 +658,17 @@
     font-size: 14px;
   }
 
-  &__list, .skuBestPrice {
+  &__list,
+  .skuBoletoPrice {
     color: $c-primary;
+  }  
+  .skuBestPrice {
+    color: $c-black;
+  }
+  .skuBoletoPrice {
+    font-size: 24px;
+    font-style: normal;
+    width: 100%;
   }
 
   .skuBestPrice {
@@ -698,16 +707,29 @@
 
   .valor-dividido {
 
-    span, strong {
+    span, strong, .skuBestInstallmentNumber {
       font-size: 20px;
       font-style: normal;
       font-weight: 700;
       color: #565656;
     }
+
+    span span {
+        font-size: 0;
+    }
+    .skuBestInstallmentNumber {
+        &:after {
+            content: 'até '
+          }
+    }
   }
 
   .preco-a-vista {
     display: none !important;
+  }
+
+  .skuBestInstallmentNumber {
+
   }
 }
 

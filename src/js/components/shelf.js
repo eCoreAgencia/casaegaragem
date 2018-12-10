@@ -75,7 +75,12 @@ $('.product--shelf').each(function(){
 
     const productId = $('.product__id', this).data('product-id')
 
-	const unvailable = $('.product__price .price__list', this).length;
+    const unvailable = $('.product__price .price__list', this).length;
+    if($('.black-friday', this)[0]){
+        const flag = $('.black-friday', this);
+        const reviews = $('.product__reviews', this);
+        flag.insertBefore(reviews);
+    }
 
     if(unvailable) {
 		console.log(unvailable);

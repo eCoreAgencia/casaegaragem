@@ -12,13 +12,20 @@ export default (function () {
 		const productID = $('#___rc-p-id').val();
 		vtexjs.catalog.getProductWithVariations(productID).done(function (product) {
 			//console.log(product)
-			if (product.available) {
-				const priceElement = $('.skuBestPrice');
-				let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.'));
-				price = formatter.format(price * 0.9);
-				price = `${price}`;
-				priceElement.html(price);
-			}
+			if(product.available){
+                const priceElement = $('.skuBestPrice');
+                if($('.economia-de')[0]){
+                    $('.economia-de').insertBefore('.price-installments');
+                }
+                console.log(priceElement.html());
+                let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.'));
+                price = formatter.format(price * 0.9);
+                price = `<em class="valor-boleto price-boleto"><strong class="skuBoletoPrice">ou ${price} no boleto</strong></em>`;
+        
+                
+                
+                $(price).insertAfter('.price-installments');
+              }
 		})
 
 
@@ -136,7 +143,7 @@ export default (function () {
 						console.log(skuPrice);
 						const html = `
             <div class="buy-more__item">
-                    <span class="buy-more__text">Leve ${item.leve} pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong></span>
+                    <span class="buy-more__text">Leve ${item.leve} pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong> cada</span>
                 </div>`;
 						$('.buy-more__inner').append(html);
 					});
