@@ -110,6 +110,7 @@
           </div>`
 
         list.html(spinner);
+        list.addClass('.shelf--loading');
 
         const query = `fq=C:/${this.id}/${id}/`;
 
