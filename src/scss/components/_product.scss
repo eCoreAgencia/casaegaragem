@@ -748,13 +748,15 @@
 		&__old {
 			text-decoration: line-through;
 			width: 100%;
-			font-size: 16px;
+			font-size: 18px;
+			color: #9c9c9c;
 
 		}
 
 		&__best {
 			color: $c-black;
 			font-size: 28px;
+			font-weight: 700;
 		}
 
 		&__economy {
@@ -764,6 +766,7 @@
 
 		&__installments {
 			width: 100%;
+			font-size: 18px;
 			strong {
 				color: $c-primary;
 			}

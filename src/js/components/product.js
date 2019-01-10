@@ -16,7 +16,7 @@ export default (function () {
 					<div class="price">
 						${ sku.listPrice > 0 ? '<span class="price__old"> R$ ' + (sku.listPrice/100).formatMoney() + '</span>': ''}
 						<span class="price__best"> R$ ${(sku.bestPrice/100).formatMoney()}</span>
-						${ sku.listPrice > 0 ? '<span class="price__economy"> Economia de (R$ ' + ((sku.listPrice - sku.bestPrice)/100).formatMoney() + ')</span>': ''}
+						${ sku.listPrice > 0 ? '<span class="price__economy"> (Economia de R$ ' + ((sku.listPrice - sku.bestPrice)/100).formatMoney() + ')</span>': ''}
 						${ sku.installments > 0 ? '<span class="price__installments"> em até <strong>' + sku.installments + 'x</strong> de <strong> R$ '+ (sku.installmentsValue/100).formatMoney() +'</strong> s/ juros</span>': ''}
 						<span class="price__boleto"> ou <strong>R$ ${((sku.bestPrice/100) * 0.9 ).formatMoney()}</strong> no boleto </span>
 					</div>`;
