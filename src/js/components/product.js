@@ -21,7 +21,7 @@ export default (function () {
 						<span class="price__boleto"> ou <strong>R$ ${((sku.bestPrice/100) * 0.9 ).formatMoney()}</strong> no boleto </span>
 					</div>`;
 
-				$('.product__price').html(html);
+				$('.product__main .product__price').html(html);
 			})
 		}
 
