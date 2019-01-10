@@ -13,7 +13,9 @@
 			.navbar-link {
 				color: $c-white;
 				background-color: $c-primary;
+
 			}
+
 
 			.icon-menu {margin-right: 5px;}
 
@@ -40,22 +42,22 @@
   }
 
   &-link {
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    font-size: 14px;
-    padding: 10px;
-    color: $c-blue;
-    @media screen and (max-width: $g-max-width) {
-      font-size: 14px;
-    }
-    &:hover {
-      text-decoration: none;
-    }
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: center;
+		font-size: 14px;
+		padding: 10px;
+		color: $c-blue;
+		@media screen and (max-width: $g-max-width) {
+		font-size: 14px;
+		}
+		&:hover {
+		text-decoration: none;
+		}
 
-    &::after {
-      display: none;
-    }
+		&::after {
+			display: none !important;
+		}
 	}
 
 	&-dropdown {
@@ -106,7 +108,7 @@
 
 
     }
-    
+
 
     @include mobile {
         display: none;

@@ -749,7 +749,7 @@
   &__list,
   .skuBoletoPrice {
     color: $c-primary;
-  }  
+  }
   .skuBestPrice {
     color: $c-black;
   }
@@ -1006,6 +1006,12 @@
 
 .swal-button.button--primary {
 	color: $c-white !important;
+	background-color: #8CC44B  !important;
+	border-color: #8CC44B  !important;
+
+	&:hover {
+		background-color: #72a636 !important;
+	}
 }
 
 .vtexIdUI .modal-header .close {

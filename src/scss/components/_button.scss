@@ -13,11 +13,21 @@
         color: #fff;
         background-color: #8CC44B;
         border-color: #8CC44B;
-        &:hover {
+        &:hover, &:not([disabled]):hover {
             background-color: darken(#8CC44B, 10%);
-            color: #fff;
+			color: #fff;
+			border-color: #8CC44B;
         }
-    }
+	}
+
+	&--active {
+		color: #fff !important;
+        background-color: #004774;
+		border-color: #004774;
+		&:hover {
+			color: #fff;
+		}
+	}
 }
 
 .btn--arrow {
@@ -32,4 +42,5 @@
 
 .swal-button--confirm {
 	@extend .button--success;
+
 }

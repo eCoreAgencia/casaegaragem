@@ -110,7 +110,7 @@
           </div>`
 
         list.html(spinner);
-        list.addClass('.shelf--loading');
+        list.addClass('shelf--loading');
 
         const query = `fq=C:/${this.id}/${id}/`;
 
@@ -122,7 +122,7 @@
               }, 1000)
               list.html(response)
             } else {
-              list.html('<span class="">Não há produtos nesta categoria</span>')
+              list.html('<span class="no-product">Não há produtos nesta categoria</span>')
             }
           });
       }

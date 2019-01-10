@@ -82,3 +82,14 @@ export const formatter = new Intl.NumberFormat('pt-BR', {
 export const isLogin = (orderForm) => orderForm.loggedIn;
 
 export const getUserEmail = (orderForm) => orderForm.clientProfileData.email;
+
+export const discountPrice = (element) => {
+	if ($('.product__price .price__list', element)[0]) {
+		const priceElement = $('.product__price .price__list', element);
+		const priceInstallment = $('.product__price .price', element);
+		let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
+		price = formatter.format(price * 0.9);
+		price = `<span class="price__boleto">${price} <small> no boleto</small><span>`;
+		priceInstallment.append(price);
+	}
+}

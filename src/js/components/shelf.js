@@ -1,6 +1,7 @@
 import {
 	addToCart,
-	formatter
+	formatter,
+	discountPrice
 } from '../utils';
 
 import swal from 'sweetalert';
@@ -74,39 +75,7 @@ $(document).ready(function () {
 	$('.product--shelf').each(function () {
 
 		const productId = $('.product__id', this).data('product-id')
-
-    const unvailable = $('.product__price .price__list', this).length;
-    if($('.black-friday', this)[0]){
-        const flag = $('.black-friday', this);
-        const reviews = $('.product__reviews', this);
-        flag.insertBefore(reviews);
-    }
-
-
-
-		if ($('.product__price .price__list', this)[0]) {
-			const priceElement = $('.product__price .price__list', this);
-			const priceInstallment = $('.product__price .price', this);
-			let price = parseFloat(priceElement.html().replace('R$ ', '').replace('.', '').replace(',', '.').replace(' no boleto', ''));
-			price = formatter.format(price * 0.9);
-			price = `<span class="price__boleto">${price} <small> no boleto</small><span>`;
-			priceInstallment.append(price);
-
-		}
-
-		// vtexjs.catalog.getProductWithVariations(productId).done(function(product){
-		//     const sku = product.skus[0]
-
-		//     const html = sku.bestPrice ? sku.bestPriceFormated.replace('R$ ', '').replace(',', '.') : sku.listPriceFormated.replace('R$').replace(',', '.')
-		//     if(sku.bestPrice){
-		//         console.log(sku.bestPrice, 'list');
-		//         priceElement.html(html);
-		//     }else{
-		//         console.log(sku.listPrice, 'best');
-		//     }
-
-		// })
-
+		discountPrice(this);
 	});
 
 	$('body').on('click', '.product--shelf .product__buy', function (e) {
@@ -123,7 +92,8 @@ $(document).ready(function () {
 			console.log(product)
 			if (product.skus.length > 1) {
 				let wrap = document.createElement('div');
-				let skus = product.skus.map(product => `<button class="button button--sku" value="${product.sku}"> ${product.skuname}</button>`).join('');
+				const oldName = `${product.name} - `
+				let skus = product.skus.map(variation => `<button class="button button--sku" value="${variation.sku}"> ${variation.skuname.replace(oldName, '')}</button>`).join('');
 				wrap.innerHTML = skus;
 
 				let sku = ''
@@ -154,6 +124,8 @@ $(document).ready(function () {
 
 				$('body').on('click', '.button--sku', function () {
 					console.log($(this).attr('value'))
+					$('.button--sku').removeClass('button--active')
+					$(this).addClass('button--active')
 					swal.setActionValue($(this).val());
 				})
 

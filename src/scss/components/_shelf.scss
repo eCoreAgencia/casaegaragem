@@ -136,6 +136,12 @@
 		}
 	}
 
+	&--loading {
+		.prateleira {
+			opacity: 0;
+		}
+	}
+
 
 }
 
@@ -264,8 +270,8 @@
 		position: absolute;
 		top: -1px;
 		right: -1px;
-		width: 128px;
-		height: 128px;
+		width: 58px;
+		height: 58px;
 		font-size: 0;
 		display: block;
 		background-image: url('/arquivos/leve-mais-pague-menos.png');
@@ -281,4 +287,6 @@
 		width: 70%;
 		border-radius: 5px;
 	}
+
+
 }
