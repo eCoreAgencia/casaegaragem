@@ -16,9 +16,9 @@ export default (function () {
 					<div class="price">
 						${ sku.listPrice > 0 ? '<span class="price__old"> R$ ' + (sku.listPrice/100).formatMoney() + '</span>': ''}
 						<span class="price__best"> R$ ${(sku.bestPrice/100).formatMoney()}</span>
-						${ sku.listPrice > 0 ? '<span class="price__economy"> R$ ' + ((sku.listPrice - sku.bestPrice)/100).formatMoney() + '</span>': ''}
+						${ sku.listPrice > 0 ? '<span class="price__economy"> Economia de (R$ ' + ((sku.listPrice - sku.bestPrice)/100).formatMoney() + ')</span>': ''}
 						${ sku.installments > 0 ? '<span class="price__installments"> em até <strong>' + sku.installments + 'x</strong> de <strong> R$ '+ (sku.installmentsValue/100).formatMoney() +'</strong> s/ juros</span>': ''}
-						<span class="price__boleto"> ou R$ ${((sku.bestPrice/100) * 0.9 ).formatMoney()} no boleto </span>
+						<span class="price__boleto"> ou <strong>R$ ${((sku.bestPrice/100) * 0.9 ).formatMoney()}</strong> no boleto </span>
 					</div>`;
 
 				$('.product__price').html(html);
@@ -144,7 +144,7 @@ export default (function () {
 						console.log(skuPrice);
 						const html = `
             	<div class="buy-more__item">
-                    <span class="buy-more__text">Leve ${item.leve} e pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong> cada.</span>
+                    <span class="buy-more__text">Leve ${item.leve} e pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong>cada.</span>
                 </div>`;
 						$('.buy-more__inner').append(html);
 					});

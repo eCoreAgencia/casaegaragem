@@ -740,6 +740,45 @@
 
 }
 
+.product__main {
+	.price {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		&__old {
+			text-decoration: line-through;
+			width: 100%;
+			font-size: 16px;
+
+		}
+
+		&__best {
+			color: $c-black;
+			font-size: 28px;
+		}
+
+		&__economy {
+			color: $c-yellow;
+			margin-left: 10px;
+		}
+
+		&__installments {
+			width: 100%;
+			strong {
+				color: $c-primary;
+			}
+		}
+
+		&__boleto {
+			width: 100%;
+			font-size: 28px;
+			strong {
+				color: $c-primary;
+			}
+		}
+	}
+}
+
 
 .price {
 	&__list {
