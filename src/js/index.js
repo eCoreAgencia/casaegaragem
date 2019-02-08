@@ -13,6 +13,7 @@ import './components/filter';
 import './components/product';
 import './components/check_login';
 
+import './pages/global';
 
 import './components/buy-by-category/main'
 import './components/buyList';
