@@ -1,0 +1,32 @@
+extends ../layouts/default.pug
+
+block vars
+	- var pageTitle = 'Categoria'
+	- var bodyClass = 'catalog search empty-search'
+
+block content
+		section.section__page.section__diff
+			.container
+				include ../vtexParts/diff.pug
+		section.section__page.section__empty
+			.section__inner.container
+				.empty
+					.empty__inner
+						i.empty__icon
+								include ../../svg/search.svg
+						span.empty__title
+							|	DESCULPE. NÃO ENCONTRAMOS NENHUM RESULTADO PARA O TERMO DIGITADO.
+						span.empty__subtitle
+							|	Dica: Tente palavras menos específicas digite palavras-chave diferentes ou se preferir navegue no nosso Menu.
+		section.section__page.section__shelf
+			.container
+				h2.section__title Ofertas da semana
+				+vtex-controller('<vtex:contentPlaceHolder id="Ofertas da semana" />')
+					.shelf.prateleira
+						ul
+							each val in [1, 2, 3, 4, 5]
+								li
+									include ../shelves/prateleira
+
+
+

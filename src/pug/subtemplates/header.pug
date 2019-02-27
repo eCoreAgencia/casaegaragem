@@ -1,0 +1,79 @@
+header.header.header--mobile
+  //- .header__area.header__info.container
+  //-   .header__inner.row
+  //-     .header__contact-bar
+  //-       span.contact__phone.contact__box
+  //-         i.icon-phone
+  //-           include ../../svg/phone.svg
+  //-         strong Compre pelo Televendas:
+  //-         | (24) 99259 1944
+  //-       span.contact__help.contact__box
+  //-         i.icon-help
+  //-           include ../../svg/help.svg
+  //-         strong Dúvida? Queremos ouvir você:
+  //-         | (24) 2255 0796
+  //-       span.contact__whatsapp.contact__box
+  //-         i.icon-whatsapp
+  //-           include ../../svg/whatsapp.svg
+  //-         strong Atendimento via Whatsapp:
+  //-         | (24) 99259 1944
+  .header__area.header__main
+    .header__inner
+      .header__menu
+        span.icon-menu
+      .header__logo
+        .logo
+          h1.logo__brand
+            a.logo__link(href="/")
+              img.logo__image(src="/arquivos/logo.png", alt="")/
+      .header__search
+        span.icon-search
+      .header__cart
+        span.icon-cart
+    .header__search-form
+      #header-form
+        form.search-form(action="/busca")
+          .field.has-addons
+            .control.is-expanded
+              input.input(type='search', name='ft', required='required', autocomplete='off', placeholder='Digite o nome do produto...', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Digite o nome do produto...'")/
+            .control
+              button.button
+                span.icon-search
+        .search-form__result-list
+  .menu.menu--modal
+    button.button.button--close
+      span +
+    .menu--modal__overlay
+    .menu--modal__inner
+      ul.menu-list
+        li
+          a(href="/account")
+            span.icon-user
+            span Minha Conta
+            i.icon-arrow-right
+
+        li.menu__dropdown
+          a(href="")
+            i.icon-help
+            span Atendimento Rápido
+            i.icon-plus +
+          ul.menu-list.submenu
+            li
+              i.icon-phone
+              strong Televendas:
+              span
+                a(href="tel:(24) 2221-2353") (24) 2221-2353
+            li
+              i.icon-help
+              strong SAC:
+              span
+                a(href="tel:(24) 2221-2353") (24) 2221-2353
+            li
+              i.icon-whatsapp
+              strong Whatsapp:
+              span
+                a(href="https://api.whatsapp.com/send?phone=5524993126425", target="_blank") (24) 99312-6425
+
+      include ../components/menu.pug
+
+

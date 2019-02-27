@@ -1,0 +1,53 @@
+.diff {
+
+  &__container {
+    display: flex;
+    padding: 20px 15px;
+    flex-wrap: wrap;
+
+    f &--no-shadow {
+      box-shadow: none;
+    }
+
+  }
+
+  &__item {
+    width: calc(100vw - 20px);
+  }
+
+  &__box {
+    display: flex;
+    min-width: 60vw;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  &__icon {
+    font-size: 28px;
+    color: $c-primary;
+    margin-right: 25px;
+  }
+
+  &__info {
+    margin-left: 15px;
+    text-align: center;
+    font-family: $f-base;
+  }
+
+  &__title {
+    display: block;
+    color: $c-blue;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    text-align: left;
+  }
+}

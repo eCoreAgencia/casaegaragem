@@ -1,0 +1,17 @@
+.logo {
+  &__brand {
+    margin: 0;
+    font-size: 0;
+    @include respond-to($tablet-portrait) {
+      max-width: 150px;
+    }
+
+    @include respond-to($tablet-landscape) {
+      max-width: 220px;
+    }
+  }
+
+  &__link {
+    display: block;
+  }
+}

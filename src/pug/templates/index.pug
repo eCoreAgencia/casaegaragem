@@ -1,0 +1,102 @@
+extends ../layouts/default.pug
+
+block vars
+    - var pageTitle = 'Home'
+    - var bodyClass = 'home '
+
+block content
+    section.section__page.section__hero
+        .container
+            .banner.banner--full
+                .slide-count-wrap
+                    span.current
+                    | |
+                    span.total
+                .banner__inner
+                    +vtex-controller('<vtex:contentPlaceHolder id="Banner Full" />')
+                        .box-banner
+                            a(href="")
+                                img(src="http://via.placeholder.com/640x736")/
+                        .box-banner
+                            a(href="")
+                                img(src="http://via.placeholder.com/640x736")/
+                        .box-banner
+                            a(href="")
+                                img(src="http://via.placeholder.com/640x736")/
+            .kits.kits--absolute
+    section.section__page.section__diff
+        .container
+            include ../vtexParts/diff.pug
+
+    section.section__page.section__shelf
+        .container
+            h2.section__title Mais Vendidos
+            .shelf.shelf__carousel--full#vendidos
+                +vtex-controller('<vtex:contentPlaceHolder id="Colecao Mais Vendidos" />')
+                    .prateleira
+                        ul
+                            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                li
+                                    include ../shelves/prateleira
+
+    section.section__page.section__shelf
+        .container
+            h2.section__title Ofertas da semana
+            .shelf.shelf__carousel--full#oferta
+                +vtex-controller('<vtex:contentPlaceHolder id="Ofertas da semana" />')
+                    .prateleira
+                        ul.owl-carousel
+                            each val in [1, 2, 3, 4]
+                                li
+                                    include ../shelves/prateleira
+    span.is-invisible.js-department-ids
+        include ../vtexParts/departmentsIDs
+
+    section.section__page.section__shelf
+        .container
+            h2.section__title Comprar por categoria
+            #buyByCategory
+    section.section__page.section__shelf
+        .container
+            h2.section__title Novidades
+            .shelf.shelf__carousel--full
+                +vtex-controller('<vtex:contentPlaceHolder id="Colecao Novidades" />')
+                    .prateleira
+                        ul
+                            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                li
+                                    include ../shelves/prateleira
+    section.section__page.section__call
+        .container
+            +vtex-controller('<vtex:contentPlaceHolder id="Chamadas" />')
+                .call
+                    .call__box
+                        img(src="https://casaegaragem.vtexcommercestable.com.br/arquivos/faca-voce-mesmo.jpg?v=636730421948330000")
+                        .call__inner
+                            h2.call__title Faça você mesmo
+                            span.call__subtitle Selecionamos as ferramentas ideias para você começar por a mão na obra
+                            a.button.button-transparent Ver Produtos
+                    .call__box
+                        img(src="https://casaegaragem.vtexcommercestable.com.br/arquivos/faca-voce-mesmo.jpg?v=636730421948330000")
+                        .call__inner
+                            h2.call__title Seleção Profissionais
+                            span.call__subtitle Selecionamos as ferramentas ideias para você começar por a mão na obra
+                            a.button.button-transparent Ver Produtos
+                    .call__box
+                        img(src="https://casaegaragem.vtexcommercestable.com.br/arquivos/faca-voce-mesmo.jpg?v=636730421948330000")
+                        .call__inner
+                            h2.call__title Compre por atacado
+                            span.call__subtitle Selecionamos as ferramentas ideias para você começar por a mão na obra
+                            a.button.button-transparent Ver Produtos
+
+    section.section__page.section__brand
+        .container
+            .shelf.shelf__brand
+                +vtex-controller('<vtex:contentPlaceHolder id="Carrossel de Marcas" />')
+                    each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        .box-banner
+                            a(href='')
+                                img(src='http://via.placeholder.com/175x75')/
+
+
+

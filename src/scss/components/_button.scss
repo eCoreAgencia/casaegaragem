@@ -1,0 +1,35 @@
+.button {
+    &--primary {
+        color: #fff;
+        background-color: #004774;
+        border-color: #004774;
+        &:hover {
+            background-color: darken(#004774, 10%);
+            color: #fff;
+        }
+    }
+
+    &--success {
+        color: #fff;
+        background-color: #8CC44B;
+        border-color: #8CC44B;
+        &:hover {
+            background-color: darken(#8CC44B, 10%);
+            color: #fff;
+        }
+    }
+}
+
+.btn--arrow {
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top: 10px solid black;
+    margin-left: 10px;
+}
+
+.swal-button--confirm {
+	@extend .button--success;
+}

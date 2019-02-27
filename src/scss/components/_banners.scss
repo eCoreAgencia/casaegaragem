@@ -1,0 +1,45 @@
+.banner {
+  &--full {
+    .slide-count-wrap {
+      display: none;
+    }
+
+
+    .box-banner {
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .banner__inner,
+    .slick-list,
+    .slick-track {}
+
+    .slick-dots {
+      position: absolute;
+      bottom: 20px;
+      display: flex !important;
+      width: 100%;
+      justify-content: center;
+
+      li {
+        margin: 5px;
+
+      }
+
+      button {
+        background-color: #fff;
+        border: none;
+        font-size: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+
+        .slick-active & {}
+      }
+    }
+  }
+}

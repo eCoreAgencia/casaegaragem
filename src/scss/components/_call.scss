@@ -1,0 +1,43 @@
+.call {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__box {
+    /*max-width: calc(100%/3);*/
+    width: 100%;
+    padding: 35px 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    img {
+        display: none;
+    }
+  }
+
+  &__title {
+    color: $c-white;
+    font-family: $f-secondary;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    display: block;
+    color: $c-white;
+  }
+
+  .button-transparent {
+    margin: 20px 0;
+    background-color: rgba(0,0,0,0.4);
+    border-width: 1px;
+    border-color: $c-white;
+    color: $c-white;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 10px;
+    max-width: 150px;
+    width: 100%;
+  }
+}

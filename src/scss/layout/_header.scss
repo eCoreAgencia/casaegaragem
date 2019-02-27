@@ -1,0 +1,135 @@
+.header {
+  position: relative;
+  &__inner {
+    .header__main & {
+      display: flex;
+    }
+  }
+
+  &__logo {
+    @include respond-to($tablet-landscape) {
+        margin-left: 30px;
+    }
+  }
+
+  &__contact-bar {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    * {
+      padding: 0 10px;
+      font-family: $f-secondary;
+      font-size: 12px;
+      color: $c-primary;
+    }
+
+    svg {
+      width: 20px;
+      padding: 0;
+    }
+  }
+  &__info {
+    border-bottom: 1px solid $c-gray;
+    padding: 0;
+
+
+  }
+
+  &__main {
+    padding: 20px 10px;
+    
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include respond-to($tablet-portrait) {
+      
+      padding: 10px;
+    }
+  }
+
+  &__search {
+    margin-left: auto;
+    .icon-search {
+      font-size: 25px;
+    }
+  }
+
+  &__cart, &__search, &__menu {
+    padding: 10px;
+  }
+
+  &__cart {
+    .icon-cart {
+      font-size: 25px;
+    }
+  }
+
+  &__menu {
+    .icon-menu {
+      font-size: 20px;
+    }
+  }
+
+  &__action-user {
+    .button {
+      border: none;
+
+      .icon:first-child:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      svg {
+        width: 30px;
+      }
+
+      &--account {
+        svg {
+          width: 40px;
+        }
+      }
+    }
+  }
+
+  &__action-menu {
+    .button--menu {
+      border: none;
+      svg {
+        width: 100%;
+      }
+
+      path {
+        fill: $c-black;
+      }
+    }
+    @include respond-to($tablet-portrait) {
+      
+      
+    }
+  }
+
+  .contact {
+    &__box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+	}
+
+	#top-menu {
+		display: none;
+	}
+
+	&__menu {
+    
+  }
+  
+  &__search-form {
+    display: none;
+  }
+
+}
