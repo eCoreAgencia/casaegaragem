@@ -62,46 +62,62 @@
       & li {
         width: calc(50vw - 20px);
       }
-    }
-}
+		}
 
-.search {
-	.pages {
-
-		.first.pgEmpty,
-		.last.pgEmpty {
+		.searchResultsTime,
+		div.sub {
 			display: none;
 		}
-		
-		li {
-			width: 30px;
-			border: 1px solid $c-primary;
-			border-radius: 5px;
-			padding: 5px;
-			text-align: center;
-			margin: 5px 10px;
 
-			&.pgCurrent {
-				background-color: $c-primary;
-				color: $c-white;
+		.pager {
+			&.top {
+				display: none;
 			}
+			&.bottom {
+				display: block;
 
-			&.previous, &.next {
-				font-size: 0;
-			}
-
-			&.previous{
-				&:after {
-					content: '<<';
-					font-size: 16px;
-				}
-			}
-			&.next {
-				&:after {
-					content: '>>';
-					font-size: 16px;
+				.pages {
+					display: flex;
 				}
 			}
 		}
-	}
+		
+		.pages {
+
+			.first.pgEmpty,
+			li.last {
+				display: none;
+			}
+			
+			li {
+				width: 30px;
+				border: 1px solid $c-primary;
+				border-radius: 5px;
+				padding: 5px;
+				text-align: center;
+				margin: 5px 10px;
+	
+				&.pgCurrent {
+					background-color: $c-primary;
+					color: $c-white;
+				}
+	
+				&.previous, &.next {
+					font-size: 0;
+				}
+	
+				&.previous{
+					&:after {
+						content: '<<';
+						font-size: 16px;
+					}
+				}
+				&.next {
+					&:after {
+						content: '>>';
+						font-size: 16px;
+					}
+				}
+			}
+		}
 }
