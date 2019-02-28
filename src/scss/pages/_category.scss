@@ -64,3 +64,44 @@
       }
     }
 }
+
+.search {
+	.pages {
+
+		.first.pgEmpty,
+		.last.pgEmpty {
+			display: none;
+		}
+		
+		li {
+			width: 30px;
+			border: 1px solid $c-primary;
+			border-radius: 5px;
+			padding: 5px;
+			text-align: center;
+			margin: 5px 10px;
+
+			&.pgCurrent {
+				background-color: $c-primary;
+				color: $c-white;
+			}
+
+			&.previous, &.next {
+				font-size: 0;
+			}
+
+			&.previous{
+				&:after {
+					content: '<<';
+					font-size: 16px;
+				}
+			}
+			&.next {
+				&:after {
+					content: '>>';
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
