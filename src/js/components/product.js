@@ -309,6 +309,12 @@ if ($('body').hasClass('product')) {
 
   $(document).ready(() => {
     window.OMProduct = new Product()
+
+    const notifyBox = document.querySelector('.notifyme.sku-notifyme').getAttribute('style');
+    if(notifyBox !== 'display: none;') { 
+      $('.product__price').hide();
+      $('.product__skus').hide();
+    }
   })
 }
 })()

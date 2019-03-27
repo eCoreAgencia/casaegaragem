@@ -31,29 +31,85 @@ $lines-to-show: 2;
   }
 
   &__action {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    background-color: $c-gray;
-    z-index: 20;
-    border-top: 1px solid $c-gray;
-    padding: 5px;
-
-    &-top {
-      margin-right: 20px;
-    }
-
-    &-bottom {
-      width: 100%;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-    }
-  }
+		&-top {
+			padding: 10px 0;
+			display: none;
+	
+			&.is-active {
+				display: flex;
+			}
+		}
+	
+		&-bottom {
+			padding: 10px 0;
+			display: flex;
+			align-items: center;
+		}
+	
+		a.buy-button[style*=none] {
+			display: none !important;
+		}
+	
+		.notifymetitle {
+			text-transform: uppercase;
+			color: #000000;
+			margin-bottom: 10px;
+			padding-bottom: 5px;
+			font-size: 22px;
+			border-bottom: 1px solid #bdbdbd;
+		}
+	
+		fieldset {
+			border: none;
+		}
+	
+		input#notifymeClientName,
+		input#notifymeClientEmail {
+			background-color: #fff;
+			color: #363636;
+	
+			max-width: 100%;
+			width: 300px;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-ms-flex-align: center;
+			align-items: center;
+			border: 1px solid #dbdbdb;
+			border-radius: 4px;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			display: -ms-inline-flexbox;
+			display: inline-flex;
+			font-size: 1rem;
+			height: 2.25em;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			line-height: 1.5;
+			padding-bottom: calc(0.375em - 1px);
+			padding-left: calc(0.625em - 1px);
+			padding-right: calc(0.625em - 1px);
+			padding-top: calc(0.375em - 1px);
+			position: relative;
+			vertical-align: top;
+			margin: 10px 0;
+		}
+	
+		input#notifymeButtonOK {
+			padding: 11px 19px;
+			font-size: 17.5px;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			background-color: #004774;
+			border-color: #004774;
+			background-image: none;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			font-size: 18px;
+			font-weight: 400;
+			color: #fff;
+		}
+	}
 
   &__more {
     margin: 10px 0;
