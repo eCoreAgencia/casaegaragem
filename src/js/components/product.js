@@ -6,6 +6,12 @@ import {
 
 import SimulateShipping from './simulateShipping';
 
+function clickQnt() {
+	$(this).on('click', function() {
+		console.log('teste')
+	})
+}
+
 export default (function () {
 	if ($('body').hasClass('product')) {
 
@@ -26,8 +32,6 @@ export default (function () {
 		}
 
 		DiscountPrice();
-
-
 
 		if ($('.value-field.Garantia').is(':not(:empty)')) {
 			const garantia = $('.value-field.Garantia').text();
@@ -138,15 +142,18 @@ export default (function () {
 					]
 					console.log(desc);
 					desc.map(item => {
-						console.log($('.skuBestPrice').html())
-						const skuPrice = $('.skuBestPrice').html().replace('R$', '').replace('.', '').replace(',', '.').replace('&nbsp;', '') * 0.9;
+						setTimeout(function() {
+							console.log($('.price__best').html())
+						
+							const skuPrice = $('.price__best').html().replace('R$', '').replace('.', '').replace(',', '.').replace('&nbsp;', '') * 0.9;
 
-						console.log(skuPrice);
-						const html = `
-            	<div class="buy-more__item">
-                    <span class="buy-more__text">Leve ${item.leve} e pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong>cada.</span>
-                </div>`;
-						$('.buy-more__inner').append(html);
+							console.log(skuPrice);
+							const html = `
+					<div class="buy-more__item">
+						<span class="buy-more__text" >Leve ${item.leve} e pague <strong>${formatter.format(skuPrice - skuPrice*item.pague)}</strong>cada.</span>
+					</div>`;
+							$('.buy-more__inner').append(html);
+						}, 1000)
 					});
 
 

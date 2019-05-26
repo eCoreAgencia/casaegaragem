@@ -266,18 +266,20 @@
 }
 
 .flag {
+	display: none;
 	&.leve-mais-pague-menos {
 		position: absolute;
-		top: -1px;
-		right: -1px;
+		top: 2px;
+		right: 2px;
 		width: 58px;
 		height: 58px;
 		font-size: 0;
 		display: block;
-		background-image: url('/arquivos/leve-mais-pague-menos.png');
+		background-image: url('/arquivos/flag-leve-mais.png');
 		background-repeat: no-repeat;
 		background-size: contain;
 		z-index: 10;
+		display: block;
 	}
 
 	&.black-friday {

@@ -25,4 +25,7 @@ class Global{
     }
 }
 
-window.Global = new Global();
+
+$(document).ready(function(){
+    window.Global = new Global();
+})
