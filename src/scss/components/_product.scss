@@ -365,6 +365,10 @@
 	&--shelf {
 		position: relative;
 
+		.flagDescant {
+			display: block!important;
+		}
+
 		&-flip {
 			perspective: 1000;
 

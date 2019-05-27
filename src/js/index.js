@@ -20,6 +20,7 @@ import './components/buyList';
 
 
 import './pages/home';
+import './pages/catalog';
 //import './pages/empty-search';
 import './components/send-form'
 

@@ -11,11 +11,11 @@
 
   &__link {
       text-align: center;
-      color: $c-primary; 
+      color: $c-primary;
       font-size: 16px;
       display: none;
       padding: 10px;
-      font-weight: 700;  
+      font-weight: 700;
 
       .product--shelf  + & {
           display: block;
@@ -57,7 +57,12 @@
 
   .field {
     margin: 0;
-    align-items: center;
+	align-items: center;
+
+	&.has-addons {
+		display: flex;
+		justify-content: space-between;
+	}
   }
   &__result-list {
     display: none;

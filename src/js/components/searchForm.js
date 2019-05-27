@@ -60,9 +60,9 @@ import { formatter } from '../utils';
 				let imgId = items[0].images[0].imageId
 				let thumb = `http://${vtexStore}.vteximg.com.br/arquivos/ids/${imgId}-${thumbWidth}-${thumbHeight}`
 
-			  //   console.log(productId)
+			     console.log('productId', productId)
 				vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
-				  //   console.log(data);
+				     console.log('data', data);
 					let bestPriceFormated = formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9);
 					let listPriceFormated = formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9);
 					let stock = data.skus[0].availablequantity;
@@ -76,7 +76,7 @@ import { formatter } from '../utils';
 					if (stock == 0) {
 						estoque = "<p style='color: red;'>Sem estoque</p>"
 					} else {
-						estoque = bestPriceFormated;
+						estoque = listPriceFormated;
 					}
 
 				  //   function _formatCurrency(value){

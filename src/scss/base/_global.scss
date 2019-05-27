@@ -95,6 +95,8 @@ $family-sans-serif: $f-base;
 	width: 580px;
 }
 
+.swal--product div { display: block!important;}
+
 .swal-content {
 	div {
 		display: flex;
