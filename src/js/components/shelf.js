@@ -1,10 +1,6 @@
-import {
-	addToCart,
-	formatter,
-	discountPrice
-} from '../utils';
+import { addToCart, formatter, discountPrice } from "../utils";
 
-import swal from 'sweetalert';
+import swal from "sweetalert";
 /*
 import Price from '../modules/price';
 
@@ -59,84 +55,92 @@ export const productShelf = (product, list = false) => {
   return product_shelf;
 }*/
 
-$(document).ready(function () {
-
-	if ($('body').hasClass('search')) {
-		const search = window.location.pathname.replace('/', '');
-		if (search != 'busca') {
-			$('.search__word').text(`"${search}"`);
+$(document).ready(function() {
+	if ($("body").hasClass("search")) {
+		const search = window.location.pathname.replace("/", "");
+		if (search != "busca") {
+			$(".search__word").text(`"${search}"`);
 		} else {
-			const searchParams = window.location.search.replace('?ft=', '');
-			$('.search__word').text(`"${searchParams}"`);
+			const searchParams = window.location.search.replace("?ft=", "");
+			$(".search__word").text(`"${searchParams}"`);
 		}
-
 	}
 
-	$('.product--shelf').each(function () {
+	$("body").ajaxStop(function() {
+		$(".product--shelf:not(.product--eached)").each(function() {
+			const productId = $(".product__id", this).data("product-id");
+			discountPrice(this);
 
-		const productId = $('.product__id', this).data('product-id')
-		discountPrice(this);
+			$(this).addClass("product--eached");
+		});
 	});
 
-	$('body').on('click', '.product--shelf .product__buy', function (e) {
+	$("body").on("click", ".product--shelf .product__buy", function(e) {
 		e.preventDefault();
 		const button = $(this);
-		const productID = button.parents('.product--shelf').find('.product__id').data('product-id');
+		const productID = button
+			.parents(".product--shelf")
+			.find(".product__id")
+			.data("product-id");
 
 		console.log(productID);
 
+		vtexjs.catalog
+			.getProductWithVariations(productID)
+			.done(function(product) {
+				console.log(product);
+				if (product.skus.length > 1) {
+					let wrap = document.createElement("div");
+					const oldName = `${product.name} - `;
+					let skus = product.skus
+						.map(
+							variation =>
+								`<button class="button button--sku" value="${
+									variation.sku
+								}"> ${variation.skuname.replace(
+									oldName,
+									""
+								)}</button>`
+						)
+						.join("");
+					wrap.innerHTML = skus;
 
+					let sku = "";
 
-
-		vtexjs.catalog.getProductWithVariations(productID).done(function (product) {
-			console.log(product)
-			if (product.skus.length > 1) {
-				let wrap = document.createElement('div');
-				const oldName = `${product.name} - `
-				let skus = product.skus.map(variation => `<button class="button button--sku" value="${variation.sku}"> ${variation.skuname.replace(oldName, '')}</button>`).join('');
-				wrap.innerHTML = skus;
-
-				let sku = ''
-
-				swal({
-					text: "Selecione a voltagem",
-					content: wrap,
-					buttons: {
-						cancel: {
-							text: "Cancelar",
-							className: "button"
-						},
-						confirm: {
-							text: "Comprar",
-							value: '',
-							visible: true,
-							className: "button button--primary",
-							closeModal: true
+					swal({
+						text: "Selecione a voltagem",
+						content: wrap,
+						buttons: {
+							cancel: {
+								text: "Cancelar",
+								className: "button"
+							},
+							confirm: {
+								text: "Comprar",
+								value: "",
+								visible: true,
+								className: "button button--primary",
+								closeModal: true
+							}
 						}
-					}
+					}).then(value => {
+						console.log(value, "modal");
+						if (value) {
+							addToCart(button, value);
+						}
+					});
 
-				}).then((value) => {
-					console.log(value, 'modal');
-					if (value) {
-						addToCart(button, value);
-					}
-				})
-
-				$('body').on('click', '.button--sku', function () {
-					console.log($(this).attr('value'))
-					$('.button--sku').removeClass('button--active')
-					$(this).addClass('button--active')
-					swal.setActionValue($(this).val());
-				})
-
-
-
-			} else {
-				addToCart(button, product.skus[0].sku);
-			}
-		});
-
+					$("body").on("click", ".button--sku", function() {
+						console.log($(this).attr("value"));
+						$(".button--sku").removeClass("button--active");
+						$(this).addClass("button--active");
+						swal.setActionValue($(this).val());
+					});
+				} else {
+					addToCart(button, product.skus[0].sku);
+				}
+			});
 
 		//
-	})
+	});
 });

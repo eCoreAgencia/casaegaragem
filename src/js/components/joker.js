@@ -1,109 +1,114 @@
 // Price from '../modules/price';
 
-import { formatter } from '../utils'
+import { formatter } from "../utils";
 
 (function($) {
-    $.fn.joker = function(options) {
+	$.fn.joker = function(options) {
+		var element = $(this);
 
+		var defaults = {};
 
+		var settings = $.extend({}, defaults, options);
 
-        var element = $(this);
+		var html = "";
+		var methods = {
+			init: function() {
+				var urlProtocol = window.location.protocol;
+				var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/PC/search?_where=active=True&_fields=productId,text`;
+				var response;
 
-        var defaults = {};
+				$.ajax({
+					headers: {
+						Accept:
+							"application/vnd.vtex.masterdata.v10.profileSchema+json"
+					},
+					url: apiUrl,
+					async: false,
+					crossDomain: true,
+					type: "GET"
+				})
+					.success(function(data) {
+						data.map(item => {
+							console.log(item, "masterData");
+							methods.create(item);
+						});
+					})
+					.fail(function(data) {
+						response = data;
+					});
+			},
+			getPrice: function(product) {
+				const price = new Price(product);
+				return price.mont(product);
+			},
+			getUrlImageTag: function(image, width, height) {
+				image = image.replace("#width#", width);
+				image = image.replace("#height#", height);
+				image = image.replace(
+					"~",
+					"http://casaegaragem.vteximg.com.br"
+				);
+				image = image.replace("-undefined", "");
 
-        var settings = $.extend( {}, defaults, options );
-
-        var html = '';
-        var methods = {
-            init: function() {
-
-
-                var urlProtocol = window.location.protocol;
-                var apiUrl = `${urlProtocol}//api.vtex.com/casaegaragem/dataentities/PC/search?_where=active=True&_fields=productId,text`;
-                var response;
-
-                $.ajax({
-                    "headers": {
-                        "Accept": "application/vnd.vtex.masterdata.v10.profileSchema+json"
-                    },
-                    "url": apiUrl,
-                    "async": false,
-                    "crossDomain": true,
-                    "type": "GET"
-                }).success(function (data) {
-                    data.map(item => {
-                        console.log(item, 'masterData')
-                        methods.create(item)
-                    })
-                }).fail(function (data) {
-                    response = data;
-                });
-
-            },
-            getPrice: function(product){
-                const price = new Price(product);
-                return price.mont(product);
-            },
-            getUrlImageTag: function(image, width, height){
-
-                image = image.replace('#width#', width)
-                image = image.replace('#height#', height)
-                image = image.replace('~', 'http://casaegaragem.vteximg.com.br')
-                image = image.replace('-undefined', '')
-
-                return image;
-            },
-            create: function(item){
-                const urlProduct = `/api/catalog_system/pub/products/search?fq=productId:${item.productId}`;
-                $.ajax({
-                    url: urlProduct,
-                    type: "GET",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-type": "rapplication/json"
-                    }
-                }).done(function (product) {
-                    methods.render(item.text, product[0]);
-                })
-
-                //vtexjs.ca
-
-            },
-            render: function(text, item){
-
-                let {
-					link,
-					productName,
-					items,
-					productId
-				} = item
-				let imgId = items[0].images[0].imageId
-                let thumb = `http://casaegaragem.vteximg.com.br/arquivos/ids/${imgId}-120-120`
-
-
-
-
-                vtexjs.catalog.getProductWithVariations(productId).done(function (data) {
-                    let bestPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].bestPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9)} no boleto</span>`;
-					let listPriceFormated = `<span class="price__list">${formatter.format(parseFloat(data.skus[0].listPriceFormated.replace('R$ ', '').replace('.', '').replace(',', '.')) * 0.9)} no boleto</span>`;
-					let stock = data.skus[0].availablequantity;
-					let listPrice = data.skus[0].listPrice;
-					let html = '';
-					let parcelas = data.skus[0].installments;
-                    let valorParcela = data.skus[0].installmentsValue;
-                    if(valorParcela !== 0){
-                        var num = valorParcela / 100;
-                        valorParcela = formatter.format(num);
+				return image;
+			},
+			create: function(item) {
+				const urlProduct = `/api/catalog_system/pub/products/search?fq=productId:${
+					item.productId
+				}`;
+				$.ajax({
+					url: urlProduct,
+					type: "GET",
+					headers: {
+						Accept: "application/json",
+						"Content-type": "rapplication/json"
 					}
+				}).done(function(product) {
+					methods.render(item.text, product[0]);
+				});
 
-					if(!data.available){
-						listPrice = 0;
-					}
-                    let installments = `<span class="price__instament">${parcelas}x de R$ ${valorParcela} sem juros</span>`
+				//vtexjs.ca
+			},
+			render: function(text, item) {
+				let { link, productName, items, productId } = item;
+				let imgId = items[0].images[0].imageId;
+				let thumb = `http://casaegaragem.vteximg.com.br/arquivos/ids/${imgId}-120-120`;
 
+				vtexjs.catalog
+					.getProductWithVariations(productId)
+					.done(function(data) {
+						let bestPriceFormated = `<span class="price__list">${formatter.format(
+							parseFloat(
+								data.skus[0].bestPriceFormated
+									.replace("R$ ", "")
+									.replace(".", "")
+									.replace(",", ".")
+							) * 0.9
+						)} no boleto</span>`;
+						let listPriceFormated = `<span class="price__list">${formatter.format(
+							parseFloat(
+								data.skus[0].listPriceFormated
+									.replace("R$ ", "")
+									.replace(".", "")
+									.replace(",", ".")
+							) * 0.9
+						)} no boleto</span>`;
+						let stock = data.skus[0].availablequantity;
+						let listPrice = data.skus[0].listPrice;
+						let html = "";
+						let parcelas = data.skus[0].installments;
+						let valorParcela = data.skus[0].installmentsValue;
+						if (valorParcela !== 0) {
+							var num = valorParcela / 100;
+							valorParcela = formatter.format(num);
+						}
 
+						if (!data.available) {
+							listPrice = 0;
+						}
+						let installments = `<span class="price__instament">${parcelas}x de R$ ${valorParcela} s/ juros</span>`;
 
-                    var shelf = `<div class="product product--shelf product--shelf-flip">
+						var shelf = `<div class="product product--shelf product--shelf-flip">
                         <div class="product__flip">
                         <div class="product__front">
                             <div class="product__front-inner">
@@ -124,10 +129,14 @@ import { formatter } from '../utils'
                                 </div>
                                 <div class="product__info">
                                 <h3 class="product__name"><a class="product__link" title="${productName}" href="${link}">${productName}</a></h3>
-                                <div class="product__price">
+                                <div class="product__price teste">
                                     <div class="price">
-                                        ${(listPrice !== 0) ? listPriceFormated : ''}
-                                        ${(valorParcela !== 0) ? installments : ''}
+                                        ${
+											listPrice !== 0
+												? listPriceFormated
+												: "Indisponível"
+										}
+                                        ${listPrice !== 0 ? installments : ""}
                                     </div>
                                 </div>
                             </div>
@@ -138,21 +147,15 @@ import { formatter } from '../utils'
                                 <a class="button button--primary product__buy" href="${link}" data-product-id="${productId}">Compre Rápido</a></div>
                         </div>
                         </div>
-                    </div>`
+                    </div>`;
 
-                    html += `<li>${shelf}</li>`;
-                    element.find('ul').append(html);
-                });
-
-
-
-
-
-            }
-
-        }
-        return this.each(function() {
-            methods.init();
-        });
-    };
-})(jQuery)
+						html += `<li>${shelf}</li>`;
+						element.find("ul").append(html);
+					});
+			}
+		};
+		return this.each(function() {
+			methods.init();
+		});
+	};
+})(jQuery);
